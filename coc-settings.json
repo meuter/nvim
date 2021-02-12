@@ -1,0 +1,25 @@
+{
+    "suggest.noselect": false,
+    "diagnostic.errorSign": "✘",
+    "diagnostic.infoSign": "ℹ",
+    "diagnostic.hintSign": "➤",
+    "diagnostic.enableHighlightLineNumber": true,
+    "clangd.semanticHighlighting":true,
+
+	"explorer.width": 30,
+	"explorer.icon.enableNerdfont": true,
+	"explorer.previewAction.onHover": false,
+    "explorer.quitOnOpen": true,
+	"explorer.keyMappings.global": {
+	    "<cr>": [
+			"expandable?",
+			[ "expanded?", "collapse", "expand" ],
+ 			"open"
+  		],
+	    "<2-LeftMouse>": [
+   			"expandable?",
+	 	    ["expanded?", "collapse", "expand"],
+      		"open"
+	    ]
+	} 
+}
