@@ -2,7 +2,6 @@
 " File Explorer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call g:AddPlug('preservim/nerdtree')
-call g:AddPlug('ryanoasis/vim-devicons')
 call g:AddPlug('vwxyutarooo/nerdtree-devicons-syntax')
 
 " Focus on most used filetype for efficiency

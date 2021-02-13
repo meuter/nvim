@@ -7,7 +7,7 @@ function! ToggleQuickFix()
 endfunction
 
 " when hitting enter in quickfix, open file and close quickfix
-nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "<CR>:call ToggleQuickFix()<CR>" : '<CR>'
+nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? "<CR>:call ToggleQuickFix()<CR>" : '<CR>'
 
 " CTRL+L to toggle quickfix
 nnoremap <silent> <C-l> :call ToggleQuickFix()<cr>
