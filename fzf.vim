@@ -2,7 +2,7 @@
 " Command Pallette
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call g:AddPlug('junegunn/fzf', { 'dir': '~/.config/nvim/fzf', 'do': './install --bin' })
-call g:AddPlug('junegunn/fzf.vim')
+call g:AddPlug('meuter/fzf.vim')
 
 " Use a floating pane at the top like in VSCode
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
