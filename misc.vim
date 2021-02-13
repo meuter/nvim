@@ -21,3 +21,8 @@ call g:AddPlug('ntpeters/vim-better-whitespace')
 
 " icons for file types
 call g:AddPlug('ryanoasis/vim-devicons')
+
+" CTRL+W to close buffer (keep vim open)
+call g:AddPlug('moll/vim-bbye')
+nnoremap <silent> <C-w> :Bdelete<CR>
+inoremap <silent> <C-w> <C-\><C-N>:Bdelete<CR>
