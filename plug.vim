@@ -31,7 +31,7 @@ function! g:BootstrapPlugs()
     if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
         autocmd VimEnter * PlugInstall --sync | q | exec 'source ' . s:vimrc
     endif
-    
+
     " trigger the 'init' hook
     for p in s:list_of_plugs
         if len(p) == 2 && has_key(p[1], 'init')

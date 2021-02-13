@@ -1,4 +1,12 @@
-call g:AddPlug('https://github.com/milkypostman/vim-togglelist.git')
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        copen
+    else
+        cclose
+    endif
+endfunction
 
 
-nnoremap <C-l> :call ToggleQuickfixList()<cr>
+nnoremap <expr> <CR> &buftype ==# 'quickfix' ? "<CR>:call ToggleQuickFix()<CR>" : '<CR>'
+
+nnoremap <silent> <C-l> :call ToggleQuickFix()<cr>
