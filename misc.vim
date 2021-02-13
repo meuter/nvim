@@ -16,4 +16,7 @@ call g:AddPlug('matze/vim-move')
 " Remember cursor position when editing a file
 call g:AddPlug('https://github.com/farmergreg/vim-lastplace')
 
+" display trailing whitespace 
+call g:AddPlug('ntpeters/vim-better-whitespace')
+
 

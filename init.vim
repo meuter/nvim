@@ -7,5 +7,6 @@ source $HOME/.config/nvim/fzf.vim
 source $HOME/.config/nvim/terminal.vim
 source $HOME/.config/nvim/git.vim
 source $HOME/.config/nvim/misc.vim
+source $HOME/.config/nvim/search.vim
 
 call g:BootstrapPlugs()

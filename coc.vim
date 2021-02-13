@@ -1,12 +1,12 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Code Completion 
+" Code Completion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call g:AddPlug('neoclide/coc.nvim', {'branch': 'release', 'do': ':CocUpdateSync' })
 
 " list extensions
 let g:coc_global_extensions = [
-    \ 'coc-json', 'coc-python', 
-    \ 'coc-cmake', 'coc-clangd', 
+    \ 'coc-json', 'coc-python',
+    \ 'coc-cmake', 'coc-clangd',
     \ 'coc-vimlsp', 'coc-marketplace',
     \ 'coc-explorer'
     \ ]
