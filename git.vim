@@ -14,9 +14,6 @@ autocmd FileType fugitive nmap <silent><buffer> cc :q<bar>:botright Git commit -
 " ctrp+p automatically quits git view
 autocmd Filetype fugitive nmap <silent><buffer> <C-P> :q<bar><CR><C-P>
 
-" ctrp+p automatically escapes commit view
-autocmd Filetype fugitive nmap <silent><buffer> <C-A-P> :q<bar><CR><C-A-P>
-
 " use = to toggle fold in git commit view
 autocmd Filetype git nmap <silent><buffer> = za
 

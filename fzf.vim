@@ -6,9 +6,6 @@ call g:AddPlug('meuter/fzf.vim')
 
 " Use a floating pane at the top like in VSCode
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-
 function! FloatingFZF()
     let buf = nvim_create_buf(v:false, v:true)
     call setbufvar(buf, '&signcolumn', 'no')
@@ -26,8 +23,8 @@ function! FloatingFZF()
     call nvim_open_win(buf, v:true, opts)
 endfunction
 
-" Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" Ignore content if .git and gitignored files
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -35,18 +32,7 @@ let g:fzf_buffers_jump = 1
 " Empty value to disable preview window altogether
 let g:fzf_preview_window = ''
 
-command! -bang Commits call fzf#vim#commits({'options': '--no-preview'}, <bang>0)
-
+" map CTRL+P to open file box
 nnoremap <silent> <C-P> :Files<cr>
-inoremap <silent> <C-P> <Esc>:Files<CR>
-vnoremap <silent> <C-P> <Esc>:Files<CR>
-
-nnoremap <silent> <C-A-P> :Commands<CR>
-inoremap <silent> <C-A-P> <Esc>:Commands<CR>
-vnoremap <silent> <C-A-P> <Esc>:Commands<CR>
-
-nnoremap <silent> <C-Space> :Buffers<CR>
-vnoremap <silent> <C-Space> <Esc>:Buffers<CR>
-inoremap <silent> <C-Space> <Esc>:Buffers<CR>
-
-
+inoremap <silent> <C-P> <C-\><C-N>:Files<CR>
+vnoremap <silent> <C-P> <C-\><C-N>:Files<CR>

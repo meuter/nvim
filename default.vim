@@ -10,7 +10,7 @@ set hidden                                            " hide buffer when switchi
 set mouse=a                                           " mouse integration
 set updatetime=300                                    " improve responsiveness
 set pastetoggle=<F2>                                  " toggle paste mode using <F2>
-set nofoldenable    								  " disable folding
+set nofoldenable    				                  " disable folding
 
 " Esc-Esc to remove highlight
 nnoremap <esc><esc> :silent! nohls<cr>

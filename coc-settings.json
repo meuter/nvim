@@ -6,7 +6,7 @@
     "diagnostic.enableHighlightLineNumber": true,
     "clangd.semanticHighlighting":true,
 
-	"explorer.width": 30,
+	"explorer.width": 40,
 	"explorer.icon.enableNerdfont": true,
 	"explorer.previewAction.onHover": false,
     "explorer.quitOnOpen": true,
