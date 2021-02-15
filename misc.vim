@@ -28,3 +28,6 @@ inoremap <silent> <C-l> <C-\><-N>:QToggle<CR>
 " When selecting in quickfix/location, open file and close quickfix/location
 nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? '<CR>:cclose<CR>:lclose<CR>' : '<CR>'
 
+" Some support for cmake
+call g:AddPlug('cdelledonne/vim-cmake')
+let g:cmake_link_compile_commands=1
