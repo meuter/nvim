@@ -13,7 +13,7 @@ set pastetoggle=<F2>                                  " toggle paste mode using 
 set nofoldenable    				                  " disable folding
 
 " Esc-Esc to remove highlight
-nnoremap <esc><esc> :silent! nohls<cr>
+nnoremap <silent> <esc><esc> :nohls<cr>
 
 " Keeps tabls for Makefile
 filetype plugin indent on
