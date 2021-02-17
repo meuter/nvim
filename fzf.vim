@@ -11,9 +11,9 @@ function! FloatingFZF()
     call setbufvar(buf, '&signcolumn', 'no')
 
     let height = float2nr(10)
-    let width = float2nr(120)
+    let width = float2nr((&columns) / 3 * 2)
     let horizontal = float2nr((&columns - width) / 2)
-    let vertical = 1
+    let vertical = 0
 
     let opts = {
         \ 'relative': 'editor', 'row': vertical,
