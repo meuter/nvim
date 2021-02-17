@@ -1,7 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Theming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call g:AddPlug('tomasiser/vim-code-dark', { 'init' : 'colorscheme codedark'})
+call g:AddPlug('tomasiser/vim-code-dark')
 call g:AddPlug('vim-airline/vim-airline', { 'init' : ':AirlineRefresh' })
 
 " Do not display current mode, will be done in status bar
@@ -9,7 +9,7 @@ set noshowmode laststatus=2
 
 " Status bar color scheme
 let g:airline_theme='codedark'
- 
+
 " Initialize the global config
 if !exists('g:airline_symbols')
    let g:airline_symbols = {}
