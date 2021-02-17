@@ -31,3 +31,6 @@ nnoremap <silent> <expr> <CR> &buftype ==# 'quickfix' ? '<CR>:cclose<CR>:lclose<
 " Some support for cmake
 call g:AddPlug('cdelledonne/vim-cmake')
 let g:cmake_link_compile_commands=1
+
+" color hexcode
+call g:AddPlug('ap/vim-css-color')
