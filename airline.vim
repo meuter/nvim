@@ -38,3 +38,7 @@ let g:airline_section_d = ' %{substitute(getcwd(), $HOME, "~", "")}'
 " Config for the tab
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+
+" Clock
+call g:AddPlug('enricobacis/vim-airline-clock')
+let g:airline#extensions#clock#format = '| %H:%M:%S'
