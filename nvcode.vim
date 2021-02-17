@@ -1,4 +1,4 @@
-call g:AddPlug('christianchiarulli/nvcode-color-schemes.vim')
+call g:AddPlug('christianchiarulli/nvcode-color-schemes.vim', { 'init': 'colorscheme nvcode' })
 call g:AddPlug('nvim-treesitter/nvim-treesitter', { 'init': ':call g:ConfigureTreeSitter()"' })
 
 function! g:ConfigureTreeSitter()
@@ -16,12 +16,13 @@ EOF
     " configure nvcode-color-schemes
     let g:nvcode_termcolors=256
 
-    syntax on
-    colorscheme nvcode
-
     " checks if your terminal has 24-bit color support
     if (has("termguicolors"))
         set termguicolors
         hi LineNr ctermbg=NONE guibg=NONE
     endif
+
+    " search color different from visual select color
+    highlight Search guibg='Yellow' guifg='Black'
+
 endfunction
