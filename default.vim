@@ -12,6 +12,7 @@ set updatetime=300                                    " improve responsiveness
 set pastetoggle=<F2>                                  " toggle paste mode using <F2>
 set nofoldenable    				                  " disable folding
 set scrolloff=7                                       " when scrolling keeps some lines at the top/bottom
+set backspace=indent,eol,start                        " backspace works even beyond eol
 
 " turn on syntax hightlighting
 syntax on
