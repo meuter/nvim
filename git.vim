@@ -3,9 +3,11 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call g:AddPlug('tpope/vim-fugitive')
 call g:AddPlug('mhinz/vim-signify')
+call g:AddPlug('kdheepak/lazygit.nvim')
 
 " ctrl+g to toggle the git status window
-nnoremap <silent><C-G> :botright Git<CR>
+" nnoremap <silent><C-G> :botright Git<CR>
+nnoremap <silent><C-G> :LazyGit<CR>
 autocmd FileType fugitive nmap <silent><buffer> <C-G> :q<CR>
 
 " 'cc' to commit in git view
