@@ -10,3 +10,4 @@ nnoremap <silent> <C-J> :Ttoggle<CR>
 inoremap <silent> <C-J> <C-\><C-N>:Ttoggle<CR>
 vnoremap <silent> <C-J> <C-\><C-N>:Ttoggle<CR>
 tnoremap <silent> <C-J> <C-\><C-N>:Ttoggle<CR>
+tnoremap <silent> <esc><esc> <C-\><C-N>
