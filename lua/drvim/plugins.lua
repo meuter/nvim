@@ -25,6 +25,7 @@ return function(use)
     use "MunifTanjim/nui.nvim"                  -- ui framework used by neo-tree
     use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
     use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
+    use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
 
     -- tabs line but for buffers
     use {
