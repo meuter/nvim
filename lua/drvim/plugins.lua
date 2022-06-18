@@ -28,6 +28,7 @@ return function(use)
     use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
     use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
     use "tpope/vim-fugitive"                    -- magit style plugin for VIM
+    use 'stevearc/dressing.nvim'                -- improved vim.input() and vim.select() used e.g. for LSP renaming
 
     -- tabs line but for buffers
     use {
@@ -76,7 +77,6 @@ return function(use)
         require = "nvim-telescope/telescope.nvim",
         run = "make",
     }
-
 
 end
 
