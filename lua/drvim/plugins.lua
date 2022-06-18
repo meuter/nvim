@@ -27,6 +27,7 @@ return function(use)
     use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
     use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
     use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
+    use "tpope/vim-fugitive"                    -- magit style plugin for VIM
 
     -- tabs line but for buffers
     use {
