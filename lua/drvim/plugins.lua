@@ -3,6 +3,7 @@
 return function(use)
     use "wbthomason/packer.nvim"
     use "projekt0n/github-nvim-theme"
+    use "kyazdani42/nvim-web-devicons"
     use "nvim-treesitter/nvim-treesitter"
 end
 
