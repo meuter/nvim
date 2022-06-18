@@ -6,15 +6,17 @@ end
 
 require("packer").startup {
     function(use)
-        local function use_and_configure(package_name)
-            use {
-                package_name,
+        local function improved_use(args)
+            if type(args) == "string" then
+                args = { args }
+            end
+            use(vim.tbl_deep_extend("force", args, {
                 config = function(name)
                     require("drvim.configs." .. name:gsub("%.","-"))
                 end
-            }
+            }))
         end
-        require("drvim.plugins")(use_and_configure)
+        require("drvim.plugins")(improved_use)
     end,
     config = {
         display = {

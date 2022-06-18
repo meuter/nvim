@@ -23,6 +23,23 @@ return function(use)
     use "fedepujol/move.nvim"                   -- move lines around in V mode
     use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
     use "MunifTanjim/nui.nvim"                  -- ui framework used by neo-tree
-    use "akinsho/bufferline.nvim"               -- tabs line but for buffers
+
+    -- tabs line but for buffers
+    use {
+        "akinsho/bufferline.nvim",
+        require = "kyazdani42/nvim-web-devicons"
+    }
+
+    -- side panel file explorer
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons",
+            "MunifTanjim/nui.nvim"
+        },
+    }
+
 end
 
