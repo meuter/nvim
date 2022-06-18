@@ -18,6 +18,8 @@ return function(use)
     use "projekt0n/github-nvim-theme"           -- github colorscheme
     use "kyazdani42/nvim-web-devicons"          -- icons for bufferline and others.
     use "nvim-treesitter/nvim-treesitter"       -- improved syntax hightlighing
+    use "nvim-ts-context-commentstring"         -- select comment string based on TS parser
+    use "terrortylor/nvim-comment"              -- toggle comment blocks/lines
     use "farmergreg/vim-lastplace"              -- rememnber position in file when restarting
     use "valloric/listtoggle"                   -- toggle quick and location lists
     use "fedepujol/move.nvim"                   -- move lines around in V mode
