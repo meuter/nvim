@@ -41,5 +41,14 @@ return function(use)
         },
     }
 
+    -- status line at the botton
+    use {
+        "nvim-lualine/lualine.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons"
+        }
+    }
+
 end
 
