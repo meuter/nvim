@@ -46,6 +46,7 @@ WORKDIR /home/${USER_NAME}/
 
 # copy config to container
 COPY init.lua .config/nvim/
+COPY lua      .config/nvim/lua
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
 
 # bootstrap vim
