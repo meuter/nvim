@@ -54,5 +54,14 @@ return function(use)
         }
     }
 
+    -- dedicated tab pane to view the git diffs
+    use {
+        "sindrets/diffview.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons"
+        }
+    }
+
 end
 
