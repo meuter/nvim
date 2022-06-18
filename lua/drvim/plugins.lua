@@ -23,6 +23,8 @@ return function(use)
     use "fedepujol/move.nvim"                   -- move lines around in V mode
     use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
     use "MunifTanjim/nui.nvim"                  -- ui framework used by neo-tree
+    use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
+    use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
 
     -- tabs line but for buffers
     use {
