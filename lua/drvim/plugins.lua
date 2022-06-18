@@ -81,5 +81,10 @@ return function(use)
         run = "make",
     }
 
+    -- language server protocol
+    use "neovim/nvim-lspconfig"
+    use {
+        "williamboman/nvim-lsp-installer",
+        require = "neovim/nvim-lspconfig"
+    }
 end
-
