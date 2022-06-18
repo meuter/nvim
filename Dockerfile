@@ -50,8 +50,15 @@ ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
 # copy config to container
 COPY init.lua .config/nvim/
 COPY lua      .config/nvim/lua
+COPY samples  ./samples
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
+
+# prepare sample as a git repo for testing purposes
+RUN git config --global user.email "drvim@sample.com" && \
+    git config --global user.name "Dr. VIM" && \
+    git config --global init.defaultBranch master && \
+    cd samples && git init && git add . && git commit -am sample
 
 # bootstrap vim
 RUN nvim --headless -c "autocmd User PackerComplete quitall" +PackerSync
-ENTRYPOINT [ "/bin/bash", "-c", "nvim" ]
+ENTRYPOINT [ "/bin/bash", "-c", "cd /home/cme/samples && nvim +Neotree" ]
