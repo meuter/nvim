@@ -13,6 +13,10 @@ local function startup(use)
         "wbthomason/packer.nvim",
     }
     use {
+        "projekt0n/github-nvim-theme",
+        config = drvim_config
+    }
+    use {
         "nvim-treesitter/nvim-treesitter",
         config = drvim_config
     }
