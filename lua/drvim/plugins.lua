@@ -64,5 +64,19 @@ return function(use)
         }
     }
 
+    -- telescope...
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = "nvim-lua/plenary.nvim",
+    }
+
+    -- ... with fzf extension
+    use {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        require = "nvim-telescope/telescope.nvim",
+        run = "make",
+    }
+
+
 end
 
