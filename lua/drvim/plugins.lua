@@ -1,14 +1,14 @@
 --
--- Note that the 'use' function here is not the original packer
--- 'use' function. It is a function that automatically loads the
--- plugin and its configuration from the 'configs' folder. For
--- instance for package 'foo', a configuration file is expected
--- in 'drvim/configs/foo.lua'.
+-- Note that the "use" function here is not the original packer
+-- "use" function. It is a function that automatically loads the
+-- plugin and its configuration from the "configs" folder. For
+-- instance for package "foo", a configuration file is expected
+-- in "drvim/configs/foo.lua".
 --
--- Some packages have a '.' in their name (e.g. 'bufferline.nvim'),
+-- Some packages have a "." in their name (e.g. "bufferline.nvim"),
 -- in which case the expected configuration file should have the
--- same name as the package name except that '.' are replaced by
--- '-', this to avoid any lua import problems.
+-- same name as the package name except that "." are replaced by
+-- "-", this to avoid any lua import problems.
 --
 
 return function(use)
@@ -30,7 +30,8 @@ return function(use)
     use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
     use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
     use "tpope/vim-fugitive"                    -- magit style plugin for VIM
-    use 'stevearc/dressing.nvim'                -- improved vim.input() and vim.select() used e.g. for LSP renaming
+    use "stevearc/dressing.nvim"                -- improved vim.input() and vim.select() used e.g. for LSP renaming
+    use "windwp/nvim-autopairs"                 -- automativally insert matching pair for parens and quotes
 
     -- tabs line but for buffers
     use {
