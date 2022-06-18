@@ -12,10 +12,17 @@
 --
 
 return function(use)
-    use "wbthomason/packer.nvim"
-    use "projekt0n/github-nvim-theme"
-    use "kyazdani42/nvim-web-devicons"
-    use "nvim-treesitter/nvim-treesitter"
-    use "akinsho/bufferline.nvim"
+    use "wbthomason/packer.nvim"                -- manage packer itself when updating
+    use "nvim-lua/popup.nvim"                   -- an implementation of the Popup API from vim in Neovim
+    use "nvim-lua/plenary.nvim"                 -- useful lua functions used by lots of plugins
+    use "projekt0n/github-nvim-theme"           -- github colorscheme
+    use "kyazdani42/nvim-web-devicons"          -- icons for bufferline and others.
+    use "nvim-treesitter/nvim-treesitter"       -- improved syntax hightlighing
+    use "farmergreg/vim-lastplace"              -- rememnber position in file when restarting
+    use "valloric/listtoggle"                   -- toggle quick and location lists
+    use "fedepujol/move.nvim"                   -- move lines around in V mode
+    use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
+    use "MunifTanjim/nui.nvim"                  -- ui framework used by neo-tree
+    use "akinsho/bufferline.nvim"               -- tabs line but for buffers
 end
 
