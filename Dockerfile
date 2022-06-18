@@ -44,10 +44,14 @@ RUN echo "%${USER_NAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}/
 
+# force rebuild
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
+
 # copy config to container
 COPY init.lua .config/nvim/
 COPY lua      .config/nvim/lua
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
 
 # bootstrap vim
+RUN nvim --headless -c "autocmd User PackerComplete quitall" +PackerSync
 ENTRYPOINT [ "/bin/bash", "-c", "nvim" ]
