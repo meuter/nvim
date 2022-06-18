@@ -5,7 +5,17 @@ if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
 end
 
 require("packer").startup {
-    require("drvim.plugins"),
+    function(use)
+        local function use_and_configure(package_name)
+            use {
+                package_name,
+                config = function(package_name)
+                    pcall(require, "drvim.configs." .. package_name)
+                end
+            }
+        end
+        require("drvim.plugins")(use_and_configure)
+    end,
     config = {
         display = {
             open_fn = function()
@@ -14,4 +24,3 @@ require("packer").startup {
         }
     }
 }
-

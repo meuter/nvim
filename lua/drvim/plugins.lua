@@ -1,18 +1,8 @@
-local drvim_config = function(package_name)
-    require("drvim.configs." .. package_name)
-end
-
+-- note that the 'use' function automatically loads
+-- a configuration from the configs folder if available
 return function(use)
-    use {
-        "wbthomason/packer.nvim",
-    }
-    use {
-        "projekt0n/github-nvim-theme",
-        config = drvim_config
-    }
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        config = drvim_config
-    }
+    use "wbthomason/packer.nvim"
+    use "projekt0n/github-nvim-theme"
+    use "nvim-treesitter/nvim-treesitter"
 end
 
