@@ -1,2 +1,2 @@
 require("drvim.options")
-require("drvim.plugins")
+require("drvim.packer")
