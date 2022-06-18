@@ -26,6 +26,7 @@ return function(use)
     use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
     use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
     use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
+    use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
 
     -- tabs line but for buffers
     use {
