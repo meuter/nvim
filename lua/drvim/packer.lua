@@ -9,8 +9,8 @@ require("packer").startup {
         local function use_and_configure(package_name)
             use {
                 package_name,
-                config = function(package_name)
-                    pcall(require, "drvim.configs." .. package_name)
+                config = function(name)
+                    require("drvim.configs." .. name:gsub("%.","-"))
                 end
             }
         end
