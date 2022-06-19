@@ -6,7 +6,7 @@ end
 
 require("packer").startup {
     function(use)
-        local function improved_use(args)
+        local function use_with_config(args)
             if type(args) == "string" then
                 args = { args }
             end
@@ -16,7 +16,7 @@ require("packer").startup {
                 end
             }))
         end
-        require("drvim.plugins")(improved_use)
+        require("drvim.plugins")(use, use_with_config)
     end,
     config = {
         display = {
