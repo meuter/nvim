@@ -12,8 +12,9 @@ local cwd = {
 local filename = {
     function()
         local filename = vim.fn.expand("%")
+        if vim.bo.filetype == "neo-tree" then return "" end
+        if vim.bo.filetype == "toggleterm" then return "" end
         if filename == "" then return "" end
-        if filename:find("term://", 1, true) == 1 then return "" end
         return "📝 " .. Path:new { filename, sep = "/" }:make_relative(vim.fn.getcwd())
     end,
     color = { fg = "AliceBlue" }
