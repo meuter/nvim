@@ -15,3 +15,8 @@ require("telescope").setup {
     },
 }
 
+-- Ctrl+P to open file using fuzzy finder
+vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
+vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
+vim.keymap.set("i", "<C-p>", "<C-\\><C-N><CMD>ProjectFiles<CR>")
+

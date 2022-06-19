@@ -5,3 +5,9 @@ require("nvim_comment").setup {
         end
     end
 }
+
+-- Ctrl+/ to toggle comment
+vim.keymap.set("n", "<C-_>", "<CMD>CommentToggle<CR>j")
+vim.keymap.set("i", "<C-_>", "<C-\\><C-N><CMD>CommentToggle<CR>ji")
+vim.keymap.set("v", "<C-_>", ":'<,'>CommentToggle<CR>gv<esc>j")
+
