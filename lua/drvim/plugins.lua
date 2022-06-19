@@ -96,4 +96,18 @@ return function(use, use_with_config)
         "williamboman/nvim-lsp-installer",
         require = "neovim/nvim-lspconfig"
     }
+
+    -- completion engine
+    use_with_config {
+        "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lua",
+            "L3MON4D3/LuaSnip",
+            "saadparwaiz1/cmp_luasnip",
+        },
+    }
 end
