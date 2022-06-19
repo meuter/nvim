@@ -2,11 +2,6 @@ local lsp_installer = require("nvim-lsp-installer")
 local lspconfig = require("lspconfig")
 
 lsp_installer.setup {
-    ensure_installed = {
-        "clangd",
-        "sumneko_lua",
-        "pyright"
-    },
     ui = {
         border = 'rounded'
     }

@@ -62,7 +62,7 @@ RUN git config --global user.email "drvim@sample.com" && \
 
 # bootstrap vim
 RUN nvim --headless -c "autocmd User PackerComplete quitall" +PackerSync
+RUN nvim --headless -c "InstallLanguages" +qa
 RUN nvim --headless -c "PackerSnapshot ~/drvim.json" -c "sleep 1" -c "qa!"
-RUN nvim --headless -c "LspInstall --sync clangd" +qa
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
