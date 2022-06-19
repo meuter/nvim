@@ -6,3 +6,5 @@ command("Close", "Bd", { desc = "Close Current Buffer" })
 command("CloseAll", ":bufdo Bd", { desc = "Close All Buffers"})
 command("CloseAllExceptCurrent", "%bd|e#|bd#", { desc="Close All Buffers Except Current"})
 
+command("ProjectFiles", require('drvim.utils').project_files, { desc="Fuzzy File Search Through Project Files" })
+

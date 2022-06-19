@@ -1,0 +1,14 @@
+local function map(mode, key, command)
+    local options = {noremap=true, silent=true}
+    return vim.api.nvim_set_keymap(mode, key, command, options)
+end
+
+local function map_all_modes(key, command)
+    map("n", key, command)
+    map("i", key, "<C-\\><C-N>" .. command)
+    map("v", key, "<C-\\><C-N>" .. command)
+end
+
+-- ctrl+p to open file
+map_all_modes("<C-p>", "<CMD>ProjectFiles<CR>")
+
