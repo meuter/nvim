@@ -70,8 +70,8 @@ require("lualine").setup {
         lualine_a = { mode },
         lualine_b = { branch },
         lualine_c = { cwd, filename },
-        lualine_x = { diagnostics },
-        lualine_y = { "filetype", lsp },
+        lualine_x = { "filetype", diagnostics },
+        lualine_y = { lsp },
         lualine_z = { "fileformat" }
     },
 }
