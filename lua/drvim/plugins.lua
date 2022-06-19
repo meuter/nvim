@@ -28,6 +28,7 @@ return function(use, use_with_config)
     use "fedepujol/move.nvim"                               -- move lines around in V mode
     use "MunifTanjim/nui.nvim"                              -- ui framework used by neo-tree
     use "valloric/listtoggle"                               -- toggle quick and location lists
+    use "moll/vim-bbye"                                     -- allow to kill buffer without exiting VIM
 
     use_with_config "projekt0n/github-nvim-theme"           -- github colorscheme
     use_with_config "kyazdani42/nvim-web-devicons"          -- icons for bufferline and others.
