@@ -14,5 +14,6 @@ which_key.register({
         l = { "<cmd>Telescope git_commits<cr>", "Git Logs" },
         b = { "<cmd>G blame<cr>", "Git Blame" },
     }
-
+    -- TODO(cme): review and add some more
+    -- TODO(cme): make this modular dependin on what plugin is installed
 }, { mode = "n" })

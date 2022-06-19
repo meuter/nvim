@@ -1,3 +1,5 @@
+-- TODO(cme): map F2 to rename a file
+-- TODO(cme): map F5 to refresh
 require("neo-tree").setup {
     close_if_last_window = true,
     popup_border_style = "rounded",

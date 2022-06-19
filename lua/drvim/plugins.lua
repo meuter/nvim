@@ -106,7 +106,12 @@ return function(use, use_with_config)
             "hrsh7th/cmp-nvim-lua",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
+            -- TODO(cme): friendly snippet
         },
     }
 
+    -- TODO(cme): nvim dap + ui
+    -- TODO(cme): neocplip
+    -- TODO(cme): aerial for outline
+    -- TODO(cme): support null-ls
 end

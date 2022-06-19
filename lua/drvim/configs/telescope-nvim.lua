@@ -28,6 +28,9 @@ local function search_todo()
     telescope_builtin.grep_string { search="todo(cme)" }
 end
 
+-- TODO(cme): navigate directory
+-- TODO(cme): live search + search file under cursor
+
 -- Commands
 vim.api.nvim_create_user_command("ProjectFiles", project_files, { desc="Find Project File" })
 vim.api.nvim_create_user_command("Todo", search_todo, { desc="Search for TODO(cme)" })
