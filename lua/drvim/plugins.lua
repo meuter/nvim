@@ -21,15 +21,11 @@ return function(use, use_with_config)
     use "wbthomason/packer.nvim"                                    -- manage packer itself when updating
     use "kheaactua/aosp-vim-syntax"                                 -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
     use "stevearc/dressing.nvim"                                    -- improved vim.input() and vim.select() used e.g. for LSP renaming
-    use "nvim-lua/popup.nvim"                                       -- an implementation of the Popup API from vim in Neovim
-    use "nvim-lua/plenary.nvim"                                     -- useful lua functions used by lots of plugins
     use "farmergreg/vim-lastplace"                                  -- rememnber position in file when restarting
     use "tpope/vim-fugitive"                                        -- magit style plugin for VIM
     use "fedepujol/move.nvim"                                       -- move lines around in V mode
-    use "MunifTanjim/nui.nvim"                                      -- ui framework used by neo-tree
     use "valloric/listtoggle"                                       -- toggle quick and location lists
     use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
-    use "JoosepAlviste/nvim-ts-context-commentstring"               -- select comment string based on TS parser
 
     use_with_config "projekt0n/github-nvim-theme"                   -- github colorscheme
     use_with_config "kyazdani42/nvim-web-devicons"                  -- icons for bufferline and others.
