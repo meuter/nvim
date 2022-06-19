@@ -31,7 +31,7 @@ build/drvim.json: build/container
 	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/drvim.json" > $@
 
 test: build/container
-	docker run $(DOCKER_RUN_ARGS) nvim +Neotree
+	docker run $(DOCKER_RUN_ARGS) nvim
 
 shell: build/container
 	docker run $(DOCKER_RUN_ARGS) /bin/bash
