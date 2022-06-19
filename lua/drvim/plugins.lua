@@ -25,6 +25,7 @@ return function(use, use_with_config)
     use "tpope/vim-fugitive"                                        -- magit style plugin for VIM
     use "valloric/listtoggle"                                       -- toggle quick and location lists
     use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
+    -- TODO(cme): explore "famiu/bufdelete.nvim" instead
 
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
     use_with_config "projekt0n/github-nvim-theme"                   -- github colorscheme
