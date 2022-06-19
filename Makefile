@@ -16,10 +16,30 @@ DOCKER_RUN_ARGS = \
 	-h $(PROJECT) \
 	$(DOCKER_BUILD_TAG)
 
-default: run
+SOURCE = $(shell find lua/drvim/ -type f | sort)
 
-build: Dockerfile
+default: build/drvim.json
+
+build:
+	mkdir -p $@
+
+build/container: Dockerfile $(SOURCE) build
 	docker build . $(DOCKER_BUILD_ARGS) -f $<
+	touch $@
 
-run: build
-	docker run $(DOCKER_RUN_ARGS)
+build/drvim.json: build/container
+	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/drvim.json" > $@
+
+test: build/container
+	docker run $(DOCKER_RUN_ARGS) nvim +Neotree
+
+shell: build/container
+	docker run $(DOCKER_RUN_ARGS) /bin/bash
+
+release: build/drvim.json
+	cp -v $< lua/drvim/drvim.json
+
+clean:
+	rm -rf build
+
+.PHONY: clean shell test default

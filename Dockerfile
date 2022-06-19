@@ -53,6 +53,7 @@ COPY lua      .config/nvim/lua
 COPY samples  ./samples
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
 
+
 # prepare sample as a git repo for testing purposes
 RUN git config --global user.email "drvim@sample.com" && \
     git config --global user.name "Dr. VIM" && \
@@ -61,4 +62,6 @@ RUN git config --global user.email "drvim@sample.com" && \
 
 # bootstrap vim
 RUN nvim --headless -c "autocmd User PackerComplete quitall" +PackerSync
-ENTRYPOINT [ "/bin/bash", "-c", "cd /home/cme/samples && nvim +Neotree" ]
+RUN nvim --headless -c "PackerSnapshot ~/drvim.json" -c "sleep 1" -c "qa!"
+WORKDIR /home/${USER_NAME}/samples
+CMD [ "nvim" ]

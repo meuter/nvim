@@ -23,6 +23,7 @@ require("packer").startup {
             open_fn = function()
                 return require("packer.util").float { border = "rounded" }
             end,
-        }
+        },
+        snapshot = vim.fn.stdpath("config") .. "/lua/drvim/drvim.json"
     }
 }
