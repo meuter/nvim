@@ -24,7 +24,7 @@ local branch = {
     "branch",
     icons_enabled = true,
     icon = "",
-    color = { fg = "PaleGreen" }
+    color = { fg = "DarkSeaGreen1" }
 }
 
 local mode = {

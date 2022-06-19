@@ -31,8 +31,10 @@ require("bufferline").setup {
     },
     highlights = {
         background = { gui = "NONE", guifg = "grey" },
-        buffer_selected = { gui = "bold", guifg = "white" },
         close_button = { gui = "NONE", guifg = "grey" },
+        close_button_visible = { gui = "NONE", guifg = "grey" },
+        buffer_selected = { gui = "bold", guifg = "white" },
+        buffer_visible = { gui = "NONE", guifg = "grey" },
     }
 }
 
