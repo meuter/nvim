@@ -8,6 +8,11 @@ noremap("n", "<C-p>", "<CMD>ProjectFiles<CR>")
 noremap("n", "<C-p>", "<CMD>ProjectFiles<CR>")
 noremap("i", "<C-p>", "<C-\\><C-N><CMD>ProjectFiles<CR>")
 
+-- Ctrl+B to open file using fuzzy finder
+noremap("n", "<C-b>", "<CMD>NeoTreeFocusToggle<CR>")
+noremap("n", "<C-b>", "<CMD>NeoTreeFocusToggle<CR>")
+noremap("i", "<C-b>", "<C-\\><C-N><CMD>NeoTreeFocusToggle<CR>")
+
 -- Ctrl+/ to toggle comment
 noremap("n", "<C-_>", "<CMD>CommentToggle<CR>j")
 noremap("i", "<C-_>", "<C-\\><C-N><CMD>CommentToggle<CR>ji")
