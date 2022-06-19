@@ -22,16 +22,4 @@ function M.toggle_mouse_copy()
     end
 end
 
-function M.project_files(opts)
-    opts = opts or {}
-    local ok, telescope_builtin = pcall(require, "telescope.builtin")
-    if not ok then return end
-
-    local git_files_ok = pcall(telescope_builtin.git_files, opts)
-    if not git_files_ok then
-        telescope_builtin.find_files(opts)
-    end
-end
-
-
 return M
