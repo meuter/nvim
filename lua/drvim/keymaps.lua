@@ -12,3 +12,6 @@ vim.keymap.set("n", "<C-Right>", "w")
 -- Alt+Left/Right to navigate jumplist
 vim.keymap.set("n", "<A-Left>", "<C-O>")
 vim.keymap.set("n", "<A-Right>", "<C-I>")
+
+-- Ctrl+w in insert mode automatically escpaces
+vim.keymap.set("i", "<C-w>", "<C-\\><C-N><C-w>")
