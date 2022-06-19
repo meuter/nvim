@@ -36,7 +36,7 @@ return function(use, use_with_config)
     use_with_config "akinsho/toggleterm.nvim"                       -- improved persistent embedded terminal
     use_with_config "lewis6991/gitsigns.nvim"                       -- display green/red/blue guidelines for git
     use_with_config "windwp/nvim-autopairs"                         -- automativally insert matching pair for parens and quotes
-
+    use_with_config "folke/which-key.nvim"                          -- leader-key based keymap
 
     -- tabs line but for buffers
     use_with_config {
@@ -106,4 +106,5 @@ return function(use, use_with_config)
             "saadparwaiz1/cmp_luasnip",
         },
     }
+
 end
