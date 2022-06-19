@@ -12,3 +12,9 @@ end
 -- ctrl+p to open file
 map_all_modes("<C-p>", "<CMD>ProjectFiles<CR>")
 
+
+-- ctrl+shift+/ to toggle comment
+map("n", "<C-_>", "<CMD>CommentToggle<CR>j")
+map("i", "<C-_>", "<C-\\><C-N><CMD>CommentToggle<CR>ji")
+map("v", "<C-_>", ":'<,'>CommentToggle<CR>gv<esc>j")
+
