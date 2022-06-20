@@ -7,10 +7,7 @@ lsp_installer.setup {
     }
 }
 
--- TODO(cme): look at https://github.com/p00f/clangd_extensions.nvim
--- NOTE(cme): see here for example https://github.com/bryant-the-coder/Cynosure/blob/main/lua/modules/lsp/init.lua
 -- TODO(cme): look at rusttools
-
 
 local common_server_options = {
     capabilities = require("cmp_nvim_lsp").update_capabilities(
