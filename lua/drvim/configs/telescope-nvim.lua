@@ -89,7 +89,6 @@ local function search_function()
     telescope_builtin.lsp_document_symbols(opts)
 end
 
-
 -- Commands
 vim.api.nvim_create_user_command("ProjectFiles", project_files, { desc="Find Project File" })
 vim.api.nvim_create_user_command("Todo", search_todo, { desc="Search for TODO(cme)" })
@@ -97,6 +96,10 @@ vim.api.nvim_create_user_command("NavigateDirectory", navigate_directory, { desc
 vim.api.nvim_create_user_command("SearchWordUnderCursor", search_word_under_cursor, { desc="Search Word Under the Cursor"})
 vim.api.nvim_create_user_command("SearchSelectedText", search_selected_text, { desc="Search Selected Text"})
 vim.api.nvim_create_user_command("SearchFunction", search_function, { desc="Search Function"})
+vim.api.nvim_create_user_command("GitHistory", 'Telescope git_commits', {desc="Search Git History"})
+vim.api.nvim_create_user_command("GitFileHistory", 'Telescope git_bcommits', {desc="Search Git File History"})
+vim.api.nvim_create_user_command("GitBranch", 'Telescope git_branches', {desc="Search Git Branches"})
+vim.api.nvim_create_user_command("GitStatus", 'Telescope git_status', {desc="Search Git Status"})
 
 -- Ctrl+p to open project files using fuzzy finder
 vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
