@@ -96,6 +96,7 @@ return function(use, use_with_config)
     }
 
     -- completion engine
+    use_with_config "L3MON4D3/LuaSnip"
     use_with_config {
         "hrsh7th/nvim-cmp",
         requires = {
@@ -106,7 +107,7 @@ return function(use, use_with_config)
             "hrsh7th/cmp-nvim-lua",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
-            -- TODO(cme): friendly snippet
+            "rafamadriz/friendly-snippets"
         },
     }
 

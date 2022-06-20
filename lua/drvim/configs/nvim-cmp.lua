@@ -53,13 +53,13 @@ cmp.setup {
         }),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     },
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' }
-    }, {
-        { name = 'buffer' },
-        { name = 'path' },
-    }),
+    sources = {
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "buffer" },
+        { name = "luasnip" },
+        { name = "path" },
+    },
     formatting = {
         fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
@@ -69,6 +69,7 @@ cmp.setup {
                 nvim_lua = "[VIM]",
                 buffer = "[Buffer]",
                 path = "[Path]",
+                luasnip = "[Snip]"
             })[entry.source.name]
             return vim_item
         end,
