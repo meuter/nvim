@@ -25,6 +25,7 @@ return function(use, use_with_config)
     use "tpope/vim-fugitive"                                        -- magit style plugin for VIM
     use "valloric/listtoggle"                                       -- toggle quick and location lists
     use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
+    use "b0o/schemastore.nvim"                                      -- collection of json schema (used by jsonls)
     -- TODO(cme): explore "famiu/bufdelete.nvim" instead
 
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
@@ -39,6 +40,7 @@ return function(use, use_with_config)
     use_with_config "windwp/nvim-autopairs"                         -- automativally insert matching pair for parens and quotes
     use_with_config "folke/which-key.nvim"                          -- leader-key based keymap
     use_with_config "mrjones2014/smart-splits.nvim"                 -- allow to resize splits
+    use_with_config 'stevearc/aerial.nvim'                          -- provide panel with outline of the code
 
     -- tabs line but for buffers
     use_with_config {
@@ -110,9 +112,6 @@ return function(use, use_with_config)
             "rafamadriz/friendly-snippets"
         },
     }
-
-    use_with_config 'stevearc/aerial.nvim' -- provide outline panel
-
 
     -- TODO(cme): nvim dap + ui
     -- TODO(cme): neocplip
