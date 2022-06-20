@@ -16,7 +16,7 @@ DOCKER_RUN_ARGS = \
 	-h $(PROJECT) \
 	$(DOCKER_BUILD_TAG)
 
-SOURCE = $(shell find lua/drvim/ -type f | sort)
+SOURCE = $(shell find lua/drvim/ -type f | sort) init.lua install.lua
 
 default: build/drvim.json
 

@@ -49,9 +49,10 @@ WORKDIR /home/${USER_NAME}/
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
 
 # copy config to container
-COPY init.lua .config/nvim/
-COPY lua      .config/nvim/lua
-COPY samples  ./samples
+COPY init.lua       .config/nvim/
+COPY install.lua    .config/nvim/
+COPY lua            .config/nvim/lua
+COPY samples        ./samples
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
 
 
@@ -62,8 +63,7 @@ RUN git config --global user.email "drvim@sample.com" && \
     cd samples && git init && git add . && git commit -am sample
 
 # bootstrap vim
-RUN nvim --headless -c "autocmd User PackerComplete quitall" +PackerSync
-RUN nvim --headless -c "InstallLanguages" +qa
+RUN pwd && nvim --headless -u .config/nvim/install.lua
 RUN nvim --headless -c "PackerSnapshot ~/drvim.json" -c "sleep 1" -c "qa!"
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
