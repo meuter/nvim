@@ -16,6 +16,7 @@ require("telescope").setup {
 }
 
 local telescope_builtin = require("telescope.builtin")
+local utils = require("drvim.utils")
 
 local function project_files()
     local git_files_ok = pcall(telescope_builtin.git_files, {})
@@ -28,14 +29,68 @@ local function search_todo()
     telescope_builtin.grep_string { search="todo(cme)" }
 end
 
--- TODO(cme): navigate directory
--- TODO(cme): live search + search file under cursor
+local function navigate_directory()
+    local actions = require('telescope.actions')
+    local config  = require('telescope.config').values
+    local pickers = require('telescope.pickers')
+    local finders = require('telescope.finders')
+    local actions_state = require('telescope.actions.state')
+    local from_entry = require('telescope.from_entry')
+
+    local cmd = { "bfs", os.getenv("HOME"), "-type", "d",
+        "-exclude", "-name", ".npm",
+        "-exclude", "-name", ".gradle",
+        "-exclude", "-name", ".vscode-server",
+        "-exclude", "-name", ".cache",
+        "-exclude", "-name", ".git",
+        "-exclude", "-name", ".repo",
+        "-exclude", "-name", "node_modules",
+    }
+
+    local opts = {}
+
+    pickers.new(opts, {
+        prompt_title = "Navigate",
+        finder = finders.new_oneshot_job(cmd),
+        sorter = config.file_sorter(opts),
+        previewer = config.file_previewer(opts),
+        attach_mappings = function(prompt_bufnr)
+            actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+                local entry = actions_state.get_selected_entry()
+                local dir = from_entry.path(entry)
+                vim.cmd('cd '..dir)
+            end)
+            return true
+        end,
+    }):find()
+end
+
+local function search_word_under_cursor()
+    telescope_builtin.grep_string {
+        search=utils.get_word_under_cursor()
+    }
+end
+
+local function search_selected_text()
+    telescope_builtin.grep_string {
+        search=utils.get_selected_text()
+    }
+end
 
 -- Commands
 vim.api.nvim_create_user_command("ProjectFiles", project_files, { desc="Find Project File" })
 vim.api.nvim_create_user_command("Todo", search_todo, { desc="Search for TODO(cme)" })
+vim.api.nvim_create_user_command("NavigateDirectory", navigate_directory, { desc="Navigate Directory"})
+vim.api.nvim_create_user_command("SearchWordUnderCursor", search_word_under_cursor, { desc="Search Word Under the Cursor"})
+vim.api.nvim_create_user_command("SearchSelectedText", search_selected_text, { desc="Seach Selected Text"})
 
--- Ctrl+P to open project files using fuzzy finder
+-- Ctrl+p to open project files using fuzzy finder
 vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
 vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
 vim.keymap.set("i", "<C-p>", "<C-\\><C-N><CMD>ProjectFiles<CR>")
+
+-- Ctrl+s to search word under the cursor/selected text
+vim.keymap.set("n", "<C-s>", "<CMD>SearchWordUnderCursor<CR>")
+vim.keymap.set("v", "<C-s>", "<esc><CMD>SearchSelectedText<CR>")
+
