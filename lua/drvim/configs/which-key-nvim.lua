@@ -8,7 +8,9 @@ which_key.register({
     },
     s = {
         name = "search",
-        l = { "<cmd>Telescope live_grep<cr>", "Live Grep" }
+        l = { "<cmd>Telescope live_grep<cr>", "Live Grep" },
+        f = { "<cmd>SearchFunction<cr>", "Search Function"},
+        t = { "<cmd>Todo<cr>", "Search TODOs"}
     },
     g = {
         name = "git",
