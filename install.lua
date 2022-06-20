@@ -14,7 +14,7 @@ local function install_packages()
             packer_done = true
         end
     })
-    require("drvim.packer")
+    require("drvim.packer_spec")
     require("packer").sync()
     while not packer_done do
         vim.cmd [[ sleep 1 ]]
