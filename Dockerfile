@@ -6,6 +6,7 @@ ARG USER_NAME
 ARG GROUP_ID
 ARG GROUP_NAME
 
+
 # install dependencies
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install --no-install-recommends \
@@ -20,13 +21,15 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     python-is-python3 \
     unzip \
     ripgrep \
-    npm \
-    nodejs \
     htop \
     fzf \
     tree \
     locales \
     bfs
+
+# add node 14 PPA
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install nodejs
 
 # install neovim
 RUN wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb && \
@@ -54,7 +57,6 @@ COPY install.lua    .config/nvim/
 COPY lua            .config/nvim/lua
 COPY samples        ./samples
 RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
-
 
 # prepare sample as a git repo for testing purposes
 RUN git config --global user.email "drvim@sample.com" && \
