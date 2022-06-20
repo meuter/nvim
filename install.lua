@@ -1,7 +1,7 @@
 local function install_packer()
     print("-- Installing Packer...")
-    local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-    vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', packer_path })
+    local packer_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    vim.fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", packer_path })
     vim.cmd "packadd packer.nvim"
 end
 
