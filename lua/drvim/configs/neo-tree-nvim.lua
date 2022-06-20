@@ -1,5 +1,3 @@
--- TODO(cme): map F2 to rename a file
--- TODO(cme): map F5 to refresh
 require("neo-tree").setup {
     close_if_last_window = true,
     popup_border_style = "rounded",
@@ -15,6 +13,9 @@ require("neo-tree").setup {
             folder_empty = "",
             default = "",
         },
+        name = {
+            use_git_status_colors = true,
+        },
         git_status = {
             symbols = {
                 added = "",
@@ -23,8 +24,8 @@ require("neo-tree").setup {
                 renamed = "➜",
                 untracked = "★",
                 ignored = "◌",
-                unstaged = "✗",
-                staged = "✓",
+                unstaged = "u",
+                staged = "s",
                 conflict = "",
             },
         },
@@ -32,19 +33,23 @@ require("neo-tree").setup {
     window = {
         width = 40,
         mappings = {
-            ["o"] = "open",
+            ["<F5>"] = "refresh",
+            ["<F2>"] = "rename",
         },
     },
     filesystem = {
         filtered_items = {
             visible = false,
-            hide_dotfiles = true,
+            hide_dotfiles = false,
             hide_gitignored = false,
             hide_by_name = {
+                "node_modules",
+            },
+            never_show = {
+                "__pycache__",
                 ".DS_Store",
                 "thumbs.db",
-                "node_modules",
-                "__pycache__",
+                ".git"
             },
         },
         follow_current_file = true,
@@ -82,4 +87,3 @@ vim.api.nvim_set_hl(0, "NeoTreeSymbolicLinkTarget", { fg = "cyan" })
 vim.keymap.set("n", "<C-b>", "<CMD>NeoTreeFocusToggle<CR>")
 vim.keymap.set("n", "<C-b>", "<CMD>NeoTreeFocusToggle<CR>")
 vim.keymap.set("i", "<C-b>", "<C-\\><C-N><CMD>NeoTreeFocusToggle<CR>")
-
