@@ -17,7 +17,7 @@ require("telescope").setup {
 
 local telescope_builtin = require("telescope.builtin")
 local telescope_themes = require('telescope.themes')
-local utils = require("drvim.utils")
+local edits = require("drvim.utils.edits")
 
 local function project_files()
     local git_files_ok = pcall(telescope_builtin.git_files, {})
@@ -69,13 +69,13 @@ end
 
 local function search_word_under_cursor()
     telescope_builtin.grep_string {
-        search=utils.get_word_under_cursor()
+        search=edits.get_word_under_cursor()
     }
 end
 
 local function search_selected_text()
     telescope_builtin.grep_string {
-        search=utils.get_selected_text()
+        search=edits.get_selected_text()
     }
 end
 
