@@ -83,6 +83,16 @@ return function(use, use_with_config)
         requires = "nvim-lua/plenary.nvim",
     }
 
+    -- add clipboard history search in telescope
+    use_with_config {
+        "AckslD/nvim-neoclip.lua",
+        requires = {
+            {'tami5/sqlite.lua', module = 'sqlite'},
+            {'nvim-telescope/telescope.nvim'},
+        }
+    }
+
+
     -- ... with fzf extension
     use_with_config {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -114,7 +124,6 @@ return function(use, use_with_config)
     }
 
     -- TODO(cme): nvim dap + ui
-    -- TODO(cme): neocplip
     -- TODO(cme): support null-ls
     -- TODO(cme): format on save + toggle
 end
