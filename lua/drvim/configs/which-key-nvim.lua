@@ -23,7 +23,6 @@ which_key.register({
     l = {
         name = "lsp",
         i = { "<cmd>LspInstall<cr>", "Install Server" },
-        c = { "<cmd>LspReconfigure<cr>", "Reconfigure Installed Server" },
         r = { "<cmd>LspRestart<cr>", "Restart LSP Server" },
         s = { "<cmd>LspInfo<cr>", "LSP Status"},
         l = { "<cmd>LspInstallInfo<cr>", "LSP List Servers" }
