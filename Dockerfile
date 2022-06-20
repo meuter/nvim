@@ -25,7 +25,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     htop \
     fzf \
     tree \
-    locales
+    locales \
+    bfs
 
 # install neovim
 RUN wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb && \
