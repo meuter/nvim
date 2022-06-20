@@ -18,7 +18,13 @@ local common_server_options = {
         vim.lsp.protocol.make_client_capabilities()
     ),
 
-    on_attach = function(_, buffer)
+    on_attach = function(client, buffer)
+
+        local aerial_available, aerial = pcall(require, "aerial")
+        if aerial_available then
+            aerial.on_attach(client, buffer)
+        end
+
         local opts = { noremap=true, silent=true, buffer=buffer }
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

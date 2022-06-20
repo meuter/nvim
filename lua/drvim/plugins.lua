@@ -110,8 +110,11 @@ return function(use, use_with_config)
         },
     }
 
+    use_with_config 'stevearc/aerial.nvim' -- provide outline panel
+
+
     -- TODO(cme): nvim dap + ui
     -- TODO(cme): neocplip
-    -- TODO(cme): aerial for outline
     -- TODO(cme): support null-ls
+    -- TODO(cme): format on save + toggle
 end
