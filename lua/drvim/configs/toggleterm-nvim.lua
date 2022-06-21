@@ -2,9 +2,7 @@ require("toggleterm").setup {
     size = 20,
     open_mapping = [[<c-\>]],
     hide_numbers = true,
-    shade_filetypes = {},
-    shade_terminals = true,
-    shading_factor = 2,
+    shade_terminals = false,
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
@@ -17,8 +15,8 @@ require("toggleterm").setup {
 vim.api.nvim_create_autocmd("TermOpen", {
     callback = function()
         local opts = { noremap = true }
-        vim.api.nvim_buf_set_keymap(0, 't', '<C-w>', [[<C-\><C-n><C-W>]], opts)
-        vim.api.nvim_buf_set_keymap(0, 't', '<Esc>', [[<C-\><C-n>]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<C-w>", [[<C-\><C-n><C-W>]], opts)
+        vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", [[<C-\><C-n>]], opts)
     end
 })
 
