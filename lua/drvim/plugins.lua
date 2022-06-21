@@ -26,7 +26,7 @@ return function(use, use_with_config)
     use "valloric/listtoggle"                                       -- toggle quick and location lists
     use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
     use "b0o/schemastore.nvim"                                      -- collection of json schema (used by jsonls)
-    -- TODO(cme): explore "famiu/bufdelete.nvim" instead
+    use "nvim-lua/plenary.nvim"                                     -- common lua library used by a lot of plugins
 
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
     use_with_config "projekt0n/github-nvim-theme"                   -- github colorscheme
@@ -41,46 +41,22 @@ return function(use, use_with_config)
     use_with_config "folke/which-key.nvim"                          -- leader-key based keymap
     use_with_config "mrjones2014/smart-splits.nvim"                 -- allow to resize splits
     use_with_config 'stevearc/aerial.nvim'                          -- provide panel with outline of the code
-
-    -- tabs line but for buffers
-    use_with_config {
-        "akinsho/bufferline.nvim",
-        require = "kyazdani42/nvim-web-devicons"
-    }
+    use_with_config "nvim-lualine/lualine.nvim"                     -- status line at the botton
+    use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
+    use_with_config "nvim-telescope/telescope.nvim"                 -- fuzzy finder
+    use_with_config "akinsho/bufferline.nvim"                       -- tabs line but for buffers
 
     -- side panel file explorer
     use_with_config {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons",
-            "MunifTanjim/nui.nvim"
-        },
+        requires = "MunifTanjim/nui.nvim"
     }
 
-    -- status line at the botton
+    --  use native fzf in telescope (faster)
     use_with_config {
-        "nvim-lualine/lualine.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons"
-        }
-    }
-
-    -- dedicated tab pane to view the git diffs
-    use_with_config {
-        "sindrets/diffview.nvim",
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "kyazdani42/nvim-web-devicons"
-        }
-    }
-
-    -- telescope...
-    use_with_config {
-        "nvim-telescope/telescope.nvim",
-        requires = "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-fzf-native.nvim",
+        require = "nvim-telescope/telescope.nvim",
+        run = "make",
     }
 
     -- add clipboard history search in telescope
@@ -90,14 +66,6 @@ return function(use, use_with_config)
             {'tami5/sqlite.lua', module = 'sqlite'},
             {'nvim-telescope/telescope.nvim'},
         }
-    }
-
-
-    -- ... with fzf extension
-    use_with_config {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        require = "nvim-telescope/telescope.nvim",
-        run = "make",
     }
 
     -- language server protocol
@@ -126,4 +94,5 @@ return function(use, use_with_config)
     -- TODO(cme): nvim dap + ui
     -- TODO(cme): support null-ls
     -- TODO(cme): format on save + toggle
+    -- TODO(cme): explore "famiu/bufdelete.nvim"
 end
