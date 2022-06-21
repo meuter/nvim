@@ -1,21 +1,21 @@
---- Startup function for the 'packer' package manager
+--- Startup function for the "packer" package manager
 -- @param use
---      the tradional 'use' function passed in the 'startup()'
+--      the tradional "use" function passed in the "startup()"
 --      function to kickstart package declaration
 -- @param use_with_config
---      an extended 'use' function that will automatically add
+--      an extended "use" function that will automatically add
 --      a config function that will execute the configuration
---      found in the 'configs' folder. Any plugin declared with
+--      found in the "configs" folder. Any plugin declared with
 --      this function will expect a corresponding configuration
 --      file with file name matching the package name. For
---      instance, if one were to declare a package 'acme/foo',
+--      instance, if one were to declare a package "acme/foo",
 --      this function would expect a configuration file named
 --      in "drvim/configs/foo.lua".
 -- @note
 --      If a packages has a "." in its name (e.g. "bufferline.nvim"),
 --      the expected configuration file should have the same
 --      name as the package with all "." are replaced by "-",
---      e.g. 'drvim/configs/bufferline-nvim.lua'
+--      e.g. "drvim/configs/bufferline-nvim.lua"
 return function(use, use_with_config)
 
     use "wbthomason/packer.nvim"                                    -- manage packer itself when updating
@@ -40,7 +40,7 @@ return function(use, use_with_config)
     use_with_config "windwp/nvim-autopairs"                         -- automativally insert matching pair for parens and quotes
     use_with_config "folke/which-key.nvim"                          -- leader-key based keymap
     use_with_config "mrjones2014/smart-splits.nvim"                 -- allow to resize splits
-    use_with_config 'stevearc/aerial.nvim'                          -- provide panel with outline of the code
+    use_with_config "stevearc/aerial.nvim"                          -- provide panel with outline of the code
     use_with_config "nvim-lualine/lualine.nvim"                     -- status line at the botton
     use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
     use_with_config "nvim-telescope/telescope.nvim"                 -- fuzzy finder
@@ -63,8 +63,8 @@ return function(use, use_with_config)
     use_with_config {
         "AckslD/nvim-neoclip.lua",
         requires = {
-            {'tami5/sqlite.lua', module = 'sqlite'},
-            {'nvim-telescope/telescope.nvim'},
+            {"tami5/sqlite.lua", module = "sqlite"},
+            {"nvim-telescope/telescope.nvim"},
         }
     }
 
