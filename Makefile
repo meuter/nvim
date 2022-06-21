@@ -23,7 +23,7 @@ SOURCE = $(shell find lua/user/ -type f | sort) \
 		 $(shell find samples -type f | sort) \
 		 init.lua install.lua
 
-default: build/user.json
+default: build/packer_lock.json
 
 build:
 	mkdir -p $@
@@ -32,8 +32,8 @@ build/container: Dockerfile $(SOURCE) build
 	docker build . $(DOCKER_BUILD_ARGS) -f $<
 	touch $@
 
-build/user.json: build/container
-	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/user.json" > $@
+build/packer_lock.json: build/container
+	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/packer_lock.json" > $@
 
 test: build/container
 	docker run $(DOCKER_RUN_ARGS) nvim
@@ -41,8 +41,8 @@ test: build/container
 shell: build/container
 	docker run $(DOCKER_RUN_ARGS) /bin/bash
 
-release: build/user.json
-	cp -v $< lua/user/user.json
+release: build/packer_lock.json
+	cp -v $< lua/user/packer_lock.json
 
 clean:
 	rm -rf build

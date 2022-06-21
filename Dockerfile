@@ -80,6 +80,6 @@ COPY --chown=cme [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
 RUN nvim --headless -u .config/nvim/install.lua
-RUN nvim --headless -c "PackerSnapshot ~/user.json" -c "sleep 1" -c "qa!"
+RUN nvim --headless -c "PackerSnapshot ~/packer_lock.json" -c "sleep 1" -c "qa!"
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
