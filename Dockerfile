@@ -6,7 +6,6 @@ ARG USER_NAME
 ARG GROUP_ID
 ARG GROUP_NAME
 
-
 # install dependencies
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y install --no-install-recommends \
@@ -48,24 +47,32 @@ RUN echo "%${USER_NAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}/
 
-# force rebuild
-ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
+# install rustup
+ENV CARGO_HOME="/home/${USER_NAME}/.local/cargo"
+ENV RUSTUP_HOME="/home/${USER_NAME}/.local/rustup"
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV PATH="/home/${USER_NAME}/.local/cargo/bin:${PATH}"
+RUN echo 'source ~/.local/cargo/env' >> $HOME/.bashrc
 
-# copy config to container
-COPY init.lua       .config/nvim/
-COPY install.lua    .config/nvim/
-COPY lua            .config/nvim/lua
-COPY samples        ./samples
-RUN sudo chown ${USER_NAME}:${GROUP_NAME} -R ${HOME}
+# install stylua
+RUN echo $PATH && cargo install stylua
 
 # prepare sample as a git repo for testing purposes
+COPY --chown=cme samples samples
 RUN git config --global user.email "drvim@sample.com" && \
     git config --global user.name "Dr. VIM" && \
     git config --global init.defaultBranch master && \
     cd samples && git init && git add . && git commit -am sample
 
+# force rebuild
+ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
+
+# copy config to container
+COPY --chown=cme [ "init.lua", "install.lua", "lua/", ".config/nvim/" ]
+COPY --chown=cme [ "lua", ".config/nvim/lua" ]
+
 # bootstrap vim
-RUN pwd && nvim --headless -u .config/nvim/install.lua
+RUN nvim --headless -u .config/nvim/install.lua
 RUN nvim --headless -c "PackerSnapshot ~/drvim.json" -c "sleep 1" -c "qa!"
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
