@@ -10,8 +10,8 @@ local kind_icons = {
     Variable = "",
     Class = "",
     Interface = "",
-    Module = "",
     Property = "",
+    Module = "",
     Unit = "",
     Value = "",
     Enum = "",
@@ -53,11 +53,11 @@ cmp.setup {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     },
     sources = {
-        { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "buffer" },
-        { name = "luasnip" },
-        { name = "path" },
+        { name = "nvim_lsp", keyword_length=3 },
+        { name = "nvim_lua" , keyword_length=3 },
+        { name = "buffer" , keyword_length=3 },
+        { name = "luasnip" , keyword_length=3 },
+        { name = "path" , keyword_length=3 },
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -74,3 +74,20 @@ cmp.setup {
         end,
     },
 }
+
+-- Use buffer source for "/"
+cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer", keyword_length=3 }
+    }
+})
+
+-- Use cmdline & path source for ":"
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "path" },
+        { name = "cmdline", keyword_length=3 }
+    }
+})
