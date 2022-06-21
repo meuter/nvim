@@ -27,6 +27,7 @@ return function(use, use_with_config)
     use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
     use "b0o/schemastore.nvim"                                      -- collection of json schema (used by jsonls)
     use "nvim-lua/plenary.nvim"                                     -- common lua library used by a lot of plugins
+    use "svermeulen/vim-cutlass"                                    -- prevent delete and cut operation from poluting the yank register
 
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
     use_with_config "projekt0n/github-nvim-theme"                   -- github colorscheme
