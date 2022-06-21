@@ -17,7 +17,7 @@ require("telescope").setup {
 
 local telescope_builtin = require("telescope.builtin")
 local telescope_themes = require('telescope.themes')
-local edits = require("drvim.utils.edits")
+local edits = require("user.utils.edits")
 
 local function project_files()
     local git_files_ok = pcall(telescope_builtin.git_files, {})

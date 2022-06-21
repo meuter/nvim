@@ -1,4 +1,4 @@
-PROJECT = drvim
+PROJECT = user
 
 DOCKER_BUILD_TAG = \
 	$(shell id -un)/$(PROJECT)
@@ -19,11 +19,11 @@ DOCKER_RUN_ARGS = \
 	-h $(PROJECT) \
 	$(DOCKER_BUILD_TAG)
 
-SOURCE = $(shell find lua/drvim/ -type f | sort) \
+SOURCE = $(shell find lua/user/ -type f | sort) \
 		 $(shell find samples -type f | sort) \
 		 init.lua install.lua
 
-default: build/drvim.json
+default: build/user.json
 
 build:
 	mkdir -p $@
@@ -32,8 +32,8 @@ build/container: Dockerfile $(SOURCE) build
 	docker build . $(DOCKER_BUILD_ARGS) -f $<
 	touch $@
 
-build/drvim.json: build/container
-	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/drvim.json" > $@
+build/user.json: build/container
+	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/user.json" > $@
 
 test: build/container
 	docker run $(DOCKER_RUN_ARGS) nvim
@@ -41,8 +41,8 @@ test: build/container
 shell: build/container
 	docker run $(DOCKER_RUN_ARGS) /bin/bash
 
-release: build/drvim.json
-	cp -v $< lua/drvim/drvim.json
+release: build/user.json
+	cp -v $< lua/user/user.json
 
 clean:
 	rm -rf build

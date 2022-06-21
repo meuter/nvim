@@ -14,7 +14,7 @@ local function install_packages()
             packer_done = true
         end
     })
-    require("drvim.packer_spec")
+    require("user.plugins")
     require("packer").sync()
     while not packer_done do
         vim.cmd [[ sleep 1 ]]
@@ -23,7 +23,7 @@ end
 
 local function install_language_support()
     print("-- Installing Language Support...")
-    local languages = require("drvim.languages")
+    local languages = require("user.languages")
     for language, lsp in pairs(languages) do
         require("nvim-treesitter.install").ensure_installed_sync(language)
         require("nvim-lsp-installer").install_sync({ lsp })

@@ -10,13 +10,13 @@
 --      file with file name matching the package name. For
 --      instance, if one were to declare a package "acme/foo",
 --      this function would expect a configuration file named
---      in "drvim/configs/foo.lua".
+--      in "user/configs/foo.lua".
 -- @note
 --      If a packages has a "." in its name (e.g. "bufferline.nvim"),
 --      the expected configuration file should have the same
 --      name as the package with all "." are replaced by "-",
---      e.g. "drvim/configs/bufferline-nvim.lua"
-return function(use, use_with_config)
+--      e.g. "user/configs/bufferline-nvim.lua"
+local function startup(use, use_with_config)
 
     use "wbthomason/packer.nvim"                                    -- manage packer itself when updating
     use "kheaactua/aosp-vim-syntax"                                 -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
@@ -104,3 +104,29 @@ return function(use, use_with_config)
     -- TODO(cme): format on save + toggle
     -- TODO(cme): explore "famiu/bufdelete.nvim"
 end
+
+-- initialize packer
+require("packer").startup {
+    function(use)
+        local function use_with_config(args)
+            if type(args) == "string" then
+                args = { args }
+            end
+            use(vim.tbl_deep_extend("force", args, {
+                config = function(name)
+                    require("user.configs." .. name:gsub("%.","-"))
+                end
+            }))
+        end
+        startup(use, use_with_config)
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require("packer.util").float { border = "rounded" }
+            end,
+        },
+        snapshot = vim.fn.stdpath("config") .. "/lua/user/packer_lock.json"
+    }
+}
+

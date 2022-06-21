@@ -1,6 +1,6 @@
 local command = vim.api.nvim_create_user_command
-local toggle_mouse_copy = require("drvim.utils.mouse_copy").toggle_mouse_copy
-local hexconvert = require("drvim.utils.hexconvert")
+local toggle_mouse_copy = require("user.utils.mouse_copy").toggle_mouse_copy
+local hexconvert = require("user.utils.hexconvert")
 
 command("Close", "Bd", { desc = "Close Current Buffer" })
 command("CloseAll", ":bufdo Bd", { desc = "Close All Buffers"})

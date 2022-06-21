@@ -35,7 +35,7 @@ local common_server_options = {
 }
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
-    local extra_available, extra_options = pcall(require, "drvim.lsp." .. server.name)
+    local extra_available, extra_options = pcall(require, "user.lsp." .. server.name)
     if not extra_available then extra_options = {} end
     local server_options = vim.tbl_deep_extend("force", common_server_options, extra_options)
     lspconfig[server.name].setup(server_options)

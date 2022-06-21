@@ -1,4 +1,4 @@
-local edits = require("drvim.utils.edits")
+local edits = require("user.utils.edits")
 
 local M = {}
 

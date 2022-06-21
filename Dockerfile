@@ -66,7 +66,7 @@ RUN echo $PATH && cargo install stylua
 
 # prepare sample as a git repo for testing purposes
 COPY --chown=cme samples samples
-RUN git config --global user.email "drvim@sample.com" && \
+RUN git config --global user.email "user@sample.com" && \
     git config --global user.name "Dr. VIM" && \
     git config --global init.defaultBranch master && \
     cd samples && git init && git add . && git commit -am sample
@@ -80,6 +80,6 @@ COPY --chown=cme [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
 RUN nvim --headless -u .config/nvim/install.lua
-RUN nvim --headless -c "PackerSnapshot ~/drvim.json" -c "sleep 1" -c "qa!"
+RUN nvim --headless -c "PackerSnapshot ~/user.json" -c "sleep 1" -c "qa!"
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
