@@ -93,7 +93,13 @@ return function(use, use_with_config)
         },
     }
 
-    -- TODO(cme): nvim dap + ui
+    -- Debugger Adapter Protocol
+    use_with_config 'mfussenegger/nvim-dap'
+    use_with_config {
+        "rcarriga/nvim-dap-ui",
+        requires = {"mfussenegger/nvim-dap"}
+    }
+
     -- TODO(cme): support null-ls
     -- TODO(cme): format on save + toggle
     -- TODO(cme): explore "famiu/bufdelete.nvim"

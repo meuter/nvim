@@ -11,12 +11,17 @@ DOCKER_BUILD_ARGS = \
 	--progress plain \
 	-t $(DOCKER_BUILD_TAG)
 
+# priviledge to be able to test debugging...
 DOCKER_RUN_ARGS = \
 	-ti --rm \
+	--privileged --cap-add=SYS_PTRACE \
+	--security-opt seccomp=unconfined \
 	-h $(PROJECT) \
 	$(DOCKER_BUILD_TAG)
 
-SOURCE = $(shell find lua/drvim/ -type f | sort) init.lua install.lua
+SOURCE = $(shell find lua/drvim/ -type f | sort) \
+		 $(shell find samples -type f | sort) \
+		 init.lua install.lua
 
 default: build/drvim.json
 
