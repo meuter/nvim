@@ -24,6 +24,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     fzf \
     tree \
     locales \
+    black \
     bfs
 
 # install node 14 (dockerls and sumneko_lua do not work with node 11)
@@ -73,7 +74,6 @@ RUN wget https://go.dev/dl/${TARBALL} && \
     tar -C ~/.local -xvf ${TARBALL} && \
     rm -rf ${TARBALL}
 
-    # export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # prepare sample as a git repo for testing purposes
 COPY --chown=cme samples samples
 RUN git config --global user.email "${USER_NAME}@sample.com" && \
