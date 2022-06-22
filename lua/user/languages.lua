@@ -8,6 +8,5 @@ return {
     ["go"]          = "gopls"
     -- TODO(cme): support html, js, ts, react
     -- TODO(cme): support rust
-    -- TODO(cme): support go
 }
 

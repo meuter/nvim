@@ -102,7 +102,6 @@ local function startup(use, use_with_config)
     }
 
     -- TODO(cme): support null-ls
-    -- TODO(cme): format on save + toggle
     -- TODO(cme): explore "famiu/bufdelete.nvim"
 end
 
