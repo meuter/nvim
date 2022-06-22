@@ -66,8 +66,8 @@ RUN echo $PATH && cargo install stylua
 
 # prepare sample as a git repo for testing purposes
 COPY --chown=cme samples samples
-RUN git config --global user.email "user@sample.com" && \
-    git config --global user.name "Dr. VIM" && \
+RUN git config --global user.email "${USER_NAME}@sample.com" && \
+    git config --global user.name "${USER_NAME}" && \
     git config --global init.defaultBranch master && \
     cd samples && git init && git add . && git commit -am sample
 
