@@ -103,10 +103,13 @@ vim.api.nvim_create_user_command("GitStatus", 'Telescope git_status', {desc="Sea
 
 -- Ctrl+p to open project files using fuzzy finder
 vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
-vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
-vim.keymap.set("i", "<C-p>", "<C-\\><C-N><CMD>ProjectFiles<CR>")
+vim.keymap.set("v", "<C-p>", "<CMD>ProjectFiles<CR>")
+vim.keymap.set("i", "<C-p>", "<c-\\><c-n><CMD>ProjectFiles<CR>")
 
 -- Ctrl+s to search word under the cursor/selected text
 vim.keymap.set("n", "<C-s>", "<CMD>SearchWordUnderCursor<CR>")
 vim.keymap.set("v", "<C-s>", "<esc><CMD>SearchSelectedText<CR>")
 
+-- \\ to switch buffer
+vim.keymap.set("n", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
+vim.keymap.set("v", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
