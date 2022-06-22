@@ -22,3 +22,9 @@ dap.configurations.c = {
 }
 
 dap.configurations.cpp = dap.configurations.c
+
+
+-- TODO(cme): add support for go debugging
+-- TODO(cme): add support for rust debugging
+-- TODO(cme): add support for python debugging
+
