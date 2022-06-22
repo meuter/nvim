@@ -58,12 +58,22 @@ WORKDIR /home/${USER_NAME}/
 ENV CARGO_HOME="/home/${USER_NAME}/.local/cargo"
 ENV RUSTUP_HOME="/home/${USER_NAME}/.local/rustup"
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-ENV PATH="/home/${USER_NAME}/.local/cargo/bin:${PATH}"
+ENV PATH="${CARGO_HOME}/bin:${PATH}"
 RUN echo 'source ~/.local/cargo/env' >> $HOME/.bashrc
 
 # install stylua
 RUN echo $PATH && cargo install stylua
 
+# install go
+ENV GOROOT="/home/${USER_NAME}/.local/go"
+ENV GOPATH="/home/${USER_NAME}/.local/go/packages"
+ENV PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
+ENV TARBALL="go1.18.3.linux-amd64.tar.gz"
+RUN wget https://go.dev/dl/${TARBALL} && \
+    tar -C ~/.local -xvf ${TARBALL} && \
+    rm -rf ${TARBALL}
+
+    # export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # prepare sample as a git repo for testing purposes
 COPY --chown=cme samples samples
 RUN git config --global user.email "${USER_NAME}@sample.com" && \
