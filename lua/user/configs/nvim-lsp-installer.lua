@@ -20,6 +20,11 @@ local common_server_options = {
             aerial.on_attach(client, buffer)
         end
 
+        local lsp_format_available, lsp_format = pcall(require, "lsp-format")
+        if lsp_format_available then
+            lsp_format.on_attach(client)
+        end
+
         local opts = { noremap=true, silent=true, buffer=buffer }
         vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

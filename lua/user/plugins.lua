@@ -47,6 +47,7 @@ local function startup(use, use_with_config)
     use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
     use_with_config "nvim-telescope/telescope.nvim"                 -- fuzzy finder
     use_with_config "akinsho/bufferline.nvim"                       -- tabs line but for buffers
+    use_with_config "lukas-reineke/lsp-format.nvim"                 -- format on save
 
     -- side panel file explorer
     use_with_config {
