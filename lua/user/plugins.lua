@@ -46,7 +46,12 @@ local function startup(use, use_with_config)
     use_with_config "nvim-lualine/lualine.nvim"                     -- status line at the botton
     use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
     use_with_config "akinsho/bufferline.nvim"                       -- tabs line but for buffers
-    use_with_config "jose-elias-alvarez/null-ls.nvim"               -- hook external linters into LSP
+
+    -- hook external linters, formatters,... into LSP
+    use_with_config {
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = "nvim-lua/plenary.nvim"
+    }
 
     -- fuzzy finder
     use_with_config {
@@ -106,7 +111,6 @@ local function startup(use, use_with_config)
         requires = {"mfussenegger/nvim-dap"}
     }
 
-    -- TODO(cme): support null-ls
     -- TODO(cme): explore "famiu/bufdelete.nvim"
 end
 
