@@ -30,17 +30,25 @@ local function on_attach(client, buffer)
     end
 
 
-    local opts = { noremap=true, silent=true, buffer=buffer }
+    local opts = { noremap = true, silent = true, buffer = buffer }
+    local telescope_available, _ = pcall(require, "telescope")
+    if telescope_available then
+        vim.keymap.set("n", "<F3>", "<cmd>Telescope lsp_references<CR>", opts)
+        vim.keymap.set("n", "<F4>", "<cmd>Telescope diagnostics<CR>", opts)
+        vim.keymap.set("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
+        vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+    else
+        vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+        vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+        vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+        vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+    end
     vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
     vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 end
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do
@@ -53,4 +61,3 @@ for _, server in ipairs(lsp_installer.get_installed_servers()) do
     local server_options = vim.tbl_deep_extend("force", common_server_options, extra_options)
     lspconfig[server.name].setup(server_options)
 end
-
