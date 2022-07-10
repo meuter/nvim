@@ -85,13 +85,11 @@ RUN git config --global user.email "${USER_NAME}@sample.com" && \
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
 
 # copy config to container
-COPY --chown=${USER_NAME} [ "init.lua", "install.lua", "lua/", ".config/nvim/" ]
+COPY --chown=${USER_NAME} [ "init.lua", "install.lua", ".config/nvim/" ]
 COPY --chown=${USER_NAME} [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
 ENV NVIM_CONFIG_INSTALL_ALL_FROM_MASTER=1
-ENV NVIM_CONFIG_FREEZE_ALL_AFTER_INSTALL=1
-ENV NVIM_CONFIG_PACKER_LOCK_FILENAME=~/packer_lock.lua
 RUN nvim --headless -u .config/nvim/install.lua
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
