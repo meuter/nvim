@@ -30,6 +30,21 @@ local function install_language_support()
     end
 end
 
+local function pin_package_to_commits()
+    print("-- Pinning Packages ...")
+    local packer_utils = require("user.utils.packer_utils")
+    local installed = packer_utils.list_installed_plugins_paths()
+    local packer_lock_table = {}
+    for _, plugin_path in ipairs(installed) do
+        local plugin_name = packer_utils.extract_plugin_name_from_path(plugin_path)
+        packer_lock_table[plugin_name] = packer_utils.get_plugin_revision(plugin_path)
+    end
+    local packer_lock_path = vim.fn.stdpath("config") .. "/lua/user/packer_lock.lua"
+    local packer_lock_file = assert(io.open(packer_lock_path, "wb"))
+    packer_lock_file:write("return " .. vim.inspect(packer_lock_table, {indent="    "}))
+    packer_lock_file:close()
+end
+
 local function all_done()
     print("-- All Done!")
     vim.cmd("quitall")
@@ -37,8 +52,6 @@ end
 
 install_packer()
 install_packages()
+pin_package_to_commits()
 install_language_support()
 all_done()
-
-
-

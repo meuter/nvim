@@ -76,8 +76,8 @@ local function startup(use, use_with_config)
     use_with_config {
         "AckslD/nvim-neoclip.lua",
         requires = {
-            {"tami5/sqlite.lua", module = "sqlite"},
-            {"nvim-telescope/telescope.nvim"},
+            { "tami5/sqlite.lua", module = "sqlite" },
+            { "nvim-telescope/telescope.nvim" },
         }
     }
 
@@ -108,11 +108,13 @@ local function startup(use, use_with_config)
     use_with_config 'mfussenegger/nvim-dap'
     use_with_config {
         "rcarriga/nvim-dap-ui",
-        requires = {"mfussenegger/nvim-dap"}
+        requires = { "mfussenegger/nvim-dap" }
     }
 
     -- TODO(cme): explore "famiu/bufdelete.nvim"
 end
+
+local packer_utils = require("user.utils.packer_utils")
 
 -- initialize packer
 require("packer").startup {
@@ -121,12 +123,19 @@ require("packer").startup {
             if type(args) == "string" then
                 args = { args }
             end
-            use(vim.tbl_deep_extend("force", args, {
+            args = vim.tbl_deep_extend("force", args, {
                 config = function(name)
-                    require("user.configs." .. name:gsub("%.","-"))
+                    require("user.configs." .. name:gsub("%.", "-"))
                 end
-            }))
+            })
+            if os.getenv("NVIM_CONFIG_INSTALL_ALL_FROM_MASTER") == nil then
+                args = vim.tbl_deep_extend("force", args, {
+                    commit = packer_utils.get_pinned_commit_for_plugin(args[1])
+                })
+            end
+            use(args)
         end
+
         startup(use, use_with_config)
     end,
     config = {
@@ -135,7 +144,5 @@ require("packer").startup {
                 return require("packer.util").float { border = "rounded" }
             end,
         },
-        snapshot = vim.fn.stdpath("config") .. "/lua/user/packer_lock.json"
     }
 }
-

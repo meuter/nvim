@@ -12,18 +12,21 @@ DOCKER_BUILD_ARGS = \
 	-t $(DOCKER_BUILD_TAG)
 
 # priviledge to be able to test debugging...
-DOCKER_RUN_ARGS = \
-	-ti --rm \
+DOCKER_RUN_NON_INTERACTIVE_ARGS = \
+	--rm \
 	--privileged --cap-add=SYS_PTRACE \
 	--security-opt seccomp=unconfined \
 	-h $(PROJECT) \
 	$(DOCKER_BUILD_TAG)
 
+DOCKER_RUN_INTERACTIVE_ARGS = \
+	-ti $(DOCKER_RUN_NON_INTERACTIVE_ARGS)
+
 SOURCE = $(shell find lua/user/ -type f | sort) \
 		 $(shell find samples -type f | sort) \
 		 init.lua install.lua
 
-default: build/packer_lock.json
+default: build/packer_lock.lua
 
 build:
 	mkdir -p $@
@@ -32,17 +35,17 @@ build/container: Dockerfile $(SOURCE) build
 	docker build . $(DOCKER_BUILD_ARGS) -f $<
 	touch $@
 
-build/packer_lock.json: build/container
-	docker run  $(DOCKER_RUN_ARGS) /bin/bash -c "cat ~/packer_lock.json" > $@
+build/packer_lock.lua: build/container
+	docker run $(DOCKER_RUN_NON_INTERACTIVE_ARGS) /bin/bash -c "cat ~/.config/nvim/lua/user/packer_lock.lua" > $@
 
 test: build/container
-	docker run $(DOCKER_RUN_ARGS) nvim
+	docker run $(DOCKER_RUN_INTERACTIVE_ARGS) nvim
 
 shell: build/container
-	docker run $(DOCKER_RUN_ARGS) /bin/bash
+	docker run $(DOCKER_RUN_INTERACTIVE_ARGS) /bin/bash
 
-release: build/packer_lock.json
-	cp -v $< lua/user/packer_lock.json
+release: build/packer_lock.lua
+	cp -v $< lua/user/packer_lock.lua
 
 clean:
 	rm -rf build
