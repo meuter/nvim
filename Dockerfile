@@ -75,7 +75,7 @@ RUN wget https://go.dev/dl/${TARBALL} && \
     rm -rf ${TARBALL}
 
 # prepare sample as a git repo for testing purposes
-COPY --chown=cme samples samples
+COPY --chown=${USER_NAME} samples samples
 RUN git config --global user.email "${USER_NAME}@sample.com" && \
     git config --global user.name "${USER_NAME}" && \
     git config --global init.defaultBranch master && \
@@ -85,11 +85,13 @@ RUN git config --global user.email "${USER_NAME}@sample.com" && \
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
 
 # copy config to container
-COPY --chown=cme [ "init.lua", "install.lua", "lua/", ".config/nvim/" ]
-COPY --chown=cme [ "lua", ".config/nvim/lua" ]
+COPY --chown=${USER_NAME} [ "init.lua", "install.lua", "lua/", ".config/nvim/" ]
+COPY --chown=${USER_NAME} [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
+ENV NVIM_CONFIG_INSTALL_ALL_FROM_MASTER=1
+ENV NVIM_CONFIG_FREEZE_ALL_AFTER_INSTALL=1
+ENV NVIM_CONFIG_PACKER_LOCK_FILENAME=~/packer_lock.lua
 RUN nvim --headless -u .config/nvim/install.lua
-RUN nvim --headless -c "PackerSnapshot ~/packer_lock.json" -c "sleep 1" -c "qa!"
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]
