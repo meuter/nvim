@@ -28,7 +28,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     bfs
 
 # install node 14 (dockerls and sumneko_lua do not work with node 11)
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install nodejs
 
 # install neovim
