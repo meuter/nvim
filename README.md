@@ -6,6 +6,8 @@ Mainly: C/C++, python, Rust, Go, Lua, Dockerfile, bash. It also comes with other
 For a complete list of plugins, see [`plugins.lua`](lua/user/plugins.lua).
 All plugin configurations can be found in [`lua/user/configs`](lua/user/configs).
 
+![Screenshot](screenshots/debugging-c.jpg)
+
 Tested on neovim 0.7.x on Linux.
 
 ## Installation
