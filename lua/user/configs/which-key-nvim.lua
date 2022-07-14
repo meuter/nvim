@@ -45,13 +45,7 @@ which_key.register({
         l = { "<cmd>LspInstallInfo<cr>", "LSP List Servers" },
         r = { "<cmd>LspRestart<cr>", "Restart LSP Server" },
         s = { "<cmd>LspInfo<cr>", "LSP Status" },
-    },
-    n = {
-        name = "lsp",
-        i = { "<cmd>Navigate<cr>", "Navigate Interactively" },
-        c = { "<cmd>cd ~/.config/nvim<cr>", "Navigate to Config" }
     }
-
     -- TODO(cme): make this modular dependin on what plugin is installed
 
 }, { mode = "n" })
