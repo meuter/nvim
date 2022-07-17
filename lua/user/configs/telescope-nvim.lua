@@ -113,3 +113,16 @@ vim.keymap.set("v", "<C-s>", "<esc><CMD>SearchSelectedText<CR>")
 -- \\ to switch buffer
 vim.keymap.set("n", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
 vim.keymap.set("v", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
+
+-- Ctrl+o to go to symbol
+vim.keymap.set("n", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>")
+vim.keymap.set("v", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>")
+vim.keymap.set("v", "<C-o>", "<c-\\><c-n><CMD>Telescope lsp_workspace_symbols<CR>")
+
+-- Ctrl+t to open telescope
+vim.keymap.set("n", "<C-t>", "<CMD>Telescope<CR>")
+vim.keymap.set("v", "<C-t>", "<CMD>Telescope<CR>")
+vim.keymap.set("v", "<C-t>", "<c-\\><c-n><CMD>Telescope<CR>")
+
+
+

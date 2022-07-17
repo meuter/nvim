@@ -19,8 +19,11 @@ vim.keymap.set("i", "<C-w>", "<C-\\><C-N><C-w>")
 -- ; as an alias to :
 vim.keymap.set("n", ";", ":")
 
-
-
+-- Cycle through buffers
 vim.keymap.set("n", "-", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "=", "<CMD>BufferLineCycleNext<CR>")
+
+-- Ctlr+g to open vim-fugitive (full screen)
+vim.keymap.set("n", "<C-g>", "<cmd>G<cr><C-w>o")
+
 

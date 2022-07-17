@@ -34,12 +34,11 @@ local function on_attach(client, buffer)
     local telescope_available, _ = pcall(require, "telescope")
     if telescope_available then
         vim.keymap.set("n", "<F3>", "<cmd>Telescope lsp_references<CR>", opts)
-        vim.keymap.set("n", "<F4>", "<cmd>Telescope diagnostics<CR>", opts)
+        vim.keymap.set("n", "<F10>", "<cmd>Telescope diagnostics<CR>", opts)
         vim.keymap.set("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
         vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
     else
         vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-        vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
         vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
         vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     end
@@ -49,6 +48,8 @@ local function on_attach(client, buffer)
 
     vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+
 end
 
 for _, server in ipairs(lsp_installer.get_installed_servers()) do

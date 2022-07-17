@@ -40,9 +40,7 @@ local function startup(use, use_with_config)
     use_with_config "akinsho/toggleterm.nvim"                       -- improved persistent embedded terminal
     use_with_config "lewis6991/gitsigns.nvim"                       -- display green/red/blue guidelines for git
     use_with_config "windwp/nvim-autopairs"                         -- automativally insert matching pair for parens and quotes
-    use_with_config "folke/which-key.nvim"                          -- leader-key based keymap
     use_with_config "mrjones2014/smart-splits.nvim"                 -- allow to resize splits
-    use_with_config "stevearc/aerial.nvim"                          -- provide panel with outline of the code
     use_with_config "nvim-lualine/lualine.nvim"                     -- status line at the botton
     use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
     use_with_config "akinsho/bufferline.nvim"                       -- tabs line but for buffers
