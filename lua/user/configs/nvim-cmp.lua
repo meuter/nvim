@@ -44,6 +44,7 @@ cmp.setup {
         ["<Down>"] = cmp.mapping.close(),
         ["<Left>"] = cmp.mapping.close(),
         ["<Right>"] = cmp.mapping.close(),
+        ["<Esc>"] = cmp.mapping.close(),
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -75,7 +76,7 @@ cmp.setup {
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "buffer" }
+        { name = "buffer", keyword_length = 3 }
     }
 })
 
@@ -83,7 +84,7 @@ cmp.setup.cmdline("/", {
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "path" },
-        { name = "cmdline" }
+        { name = "path", keyword_length = 3 },
+        { name = "cmdline", keyword_length = 3 }
     }
 })
