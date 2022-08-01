@@ -40,24 +40,20 @@ cmp.setup {
         documentation = cmp.config.window.bordered(),
     },
     mapping = {
-        ["<Up>"] = cmp.mapping.select_prev_item(),
-        ["<Down>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-y>"] = cmp.config.disable,
-        ["<C-e>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
+        ["<Up>"] = cmp.mapping.close(),
+        ["<Down>"] = cmp.mapping.close(),
+        ["<Left>"] = cmp.mapping.close(),
+        ["<Right>"] = cmp.mapping.close(),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
     },
     sources = {
-        { name = "nvim_lsp", keyword_length=3 },
-        { name = "nvim_lua" , keyword_length=3 },
-        { name = "buffer" , keyword_length=3 },
-        { name = "luasnip" , keyword_length=3 },
-        { name = "path" , keyword_length=3 },
+        { name = "nvim_lsp" },
+        { name = "nvim_lua" },
+        { name = "buffer" },
+        { name = "luasnip" },
+        { name = "path" },
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -79,7 +75,7 @@ cmp.setup {
 cmp.setup.cmdline("/", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
-        { name = "buffer", keyword_length=3 }
+        { name = "buffer" }
     }
 })
 
@@ -88,6 +84,6 @@ cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
         { name = "path" },
-        { name = "cmdline", keyword_length=3 }
+        { name = "cmdline" }
     }
 })
