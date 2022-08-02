@@ -6,7 +6,8 @@ return {
     ["bash"]            = "bashls",
     ["json"]            = "jsonls",
     ["go"]              = "gopls",
-    ["markdown_inline"] = "remark_ls"
+    ["markdown_inline"] = "remark_ls",
+    ["cmake"]           = "cmake"
     -- TODO(cme): support html, js, ts, react
     -- TODO(cme): support rust
 }
