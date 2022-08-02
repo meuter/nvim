@@ -31,7 +31,7 @@ local function startup(use, use_with_config)
 
     use_with_config "lewis6991/impatient.nvim"                      -- profile startup and byte compile what can be
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
-    use_with_config "projekt0n/github-nvim-theme"                   -- github colorscheme
+    use_with_config "rmehri01/onenord.nvim"                         -- nord colorscheme
     use_with_config "kyazdani42/nvim-web-devicons"                  -- icons for bufferline and others.
     use_with_config "nvim-treesitter/nvim-treesitter"               -- improved syntax hightlighing
     use_with_config "terrortylor/nvim-comment"                      -- toggle comment blocks/lines
