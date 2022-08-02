@@ -44,7 +44,6 @@ cmp.setup {
         ["<Down>"] = cmp.mapping.close(),
         ["<Left>"] = cmp.mapping.close(),
         ["<Right>"] = cmp.mapping.close(),
-        ["<Esc>"] = cmp.mapping.close(),
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
