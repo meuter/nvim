@@ -23,7 +23,7 @@ vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "-", "<CMD>BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "=", "<CMD>BufferLineCycleNext<CR>")
 
--- Ctlr+g to open vim-fugitive (full screen)
-vim.keymap.set("n", "<C-g>", "<cmd>G<cr><C-w>o")
+-- Ctlr+g to open vim-fugitive (full screen in a new tab)
+vim.keymap.set("n", "<C-g>", "<cmd>tabnew | G<cr><C-w>o")
 
 
