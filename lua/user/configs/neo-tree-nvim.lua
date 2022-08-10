@@ -1,7 +1,7 @@
 require("neo-tree").setup {
     close_if_last_window = true,
     popup_border_style = "rounded",
-    enable_diagnostics = true,
+    enable_diagnostics = false,
     default_component_configs = {
         indent = {
             padding = 0,
