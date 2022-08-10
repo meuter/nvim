@@ -44,6 +44,8 @@ local function startup(use, use_with_config)
     use_with_config "nvim-lualine/lualine.nvim"                     -- status line at the botton
     use_with_config "sindrets/diffview.nvim"                        -- dedicated tab pane to view the git diffs
     use_with_config "akinsho/bufferline.nvim"                       -- tabs line but for buffers
+    use_with_config "williamboman/mason.nvim"                       -- external tool installer
+
 
     -- hook external linters, formatters,... into LSP
     use_with_config {
