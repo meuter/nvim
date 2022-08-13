@@ -19,13 +19,6 @@ local telescope_builtin = require("telescope.builtin")
 local telescope_themes = require('telescope.themes')
 local edits = require("user.utils.edits")
 
-local function project_files()
-    local git_files_ok = pcall(telescope_builtin.git_files, {})
-    if not git_files_ok then
-        telescope_builtin.find_files({})
-    end
-end
-
 local function search_todo()
     telescope_builtin.grep_string { search="todo(cme)" }
 end
@@ -90,7 +83,6 @@ local function search_function()
 end
 
 -- Commands
-vim.api.nvim_create_user_command("ProjectFiles", project_files, { desc="Find Project File" })
 vim.api.nvim_create_user_command("Todo", search_todo, { desc="Search for TODO(cme)" })
 vim.api.nvim_create_user_command("NavigateDirectory", navigate_directory, { desc="Navigate Directory"})
 vim.api.nvim_create_user_command("SearchWordUnderCursor", search_word_under_cursor, { desc="Search Word Under the Cursor"})
@@ -102,9 +94,9 @@ vim.api.nvim_create_user_command("GitBranch", 'Telescope git_branches', {desc="S
 vim.api.nvim_create_user_command("GitStatus", 'Telescope git_status', {desc="Search Git Status"})
 
 -- Ctrl+p to open project files using fuzzy finder
-vim.keymap.set("n", "<C-p>", "<CMD>ProjectFiles<CR>")
-vim.keymap.set("v", "<C-p>", "<CMD>ProjectFiles<CR>")
-vim.keymap.set("i", "<C-p>", "<c-\\><c-n><CMD>ProjectFiles<CR>")
+vim.keymap.set("n", "<C-p>", "<CMD>Telescope find_files<CR>")
+vim.keymap.set("v", "<C-p>", "<CMD>Telescope find_files<CR>")
+vim.keymap.set("i", "<C-p>", "<c-\\><c-n><CMD>Telescope find_files<CR>")
 
 -- Ctrl+s to search word under the cursor/selected text
 vim.keymap.set("n", "<C-s>", "<CMD>SearchWordUnderCursor<CR>")
