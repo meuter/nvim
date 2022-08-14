@@ -111,7 +111,11 @@ local function startup(use, use_with_config)
         requires = { "mfussenegger/nvim-dap" }
     }
 
-    -- TODO(cme): explore "famiu/bufdelete.nvim"
+    -- provides completion for Cargo.toml
+    use_with_config {
+        "saecki/crates.nvim",
+        requires = "nvim-lua/plenary.nvim"
+    }
 end
 
 local packer_utils = require("user.utils.packer_utils")
