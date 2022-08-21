@@ -14,3 +14,14 @@ command("EnableFormatOnSave", format.enable_format_on_save, {desc="Enable Format
 command("DisableFormatOnSave", format.disable_format_on_save, {desc="Disable Format on Save"})
 command("CodeAction", vim.lsp.buf.code_action, { desc="Execute LSP code action"})
 
+
+
+vim.api.nvim_create_autocmd("InsertEnter", {
+    group = vim.api.nvim_create_augroup("MatchParenDisable", { clear = true }),
+    command = "NoMatchParen"
+})
+
+vim.api.nvim_create_autocmd("InsertLeave", {
+    group = vim.api.nvim_create_augroup("MatchParenEnable", { clear = true }),
+    command = "DoMatchParen"
+})
