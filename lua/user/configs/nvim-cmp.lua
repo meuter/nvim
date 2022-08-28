@@ -29,6 +29,11 @@ local kind_icons = {
     TypeParameter = "",
 }
 
+local check_backspace = function()
+    local col = vim.fn.col(".") - 1
+    return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
+end
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -40,13 +45,36 @@ cmp.setup {
         documentation = cmp.config.window.bordered(),
     },
     mapping = {
-        ["<Up>"] = cmp.mapping.close(),
-        ["<Down>"] = cmp.mapping.close(),
-        ["<Left>"] = cmp.mapping.close(),
-        ["<Right>"] = cmp.mapping.close(),
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expandable() then
+                luasnip.expand()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif check_backspace() then
+                fallback()
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
     },
     sources = {
         { name = "nvim_lsp" },
