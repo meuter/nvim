@@ -44,5 +44,7 @@ return {
     ["vim-cutlass"] = "7afd649415541634c8ce317fafbc31cd19d57589",
     ["vim-fugitive"] = "9a13fc87c4ab83ea81e71ccad9b846a5eb31a998",
     ["vim-lastplace"] = "cef9d62165cd26c3c2b881528a5290a84347059e",
-    ["onenord.nvim"] = "749ee2f7fdeb9a02f25195d4850d2ff16240c863"
+    ["onenord.nvim"] = "749ee2f7fdeb9a02f25195d4850d2ff16240c863",
+    ["mason.nvim"] = "d85d71e910d1b2c539d17ae0d47dad48f8f3c8a7",
+    ["crates.nvim"] = "1dffccc0a95f656ebe00cacb4de282473430c5a1"
 }
