@@ -24,11 +24,11 @@ local function startup(use, use_with_config)
     use "farmergreg/vim-lastplace"                                  -- rememnber position in file when restarting
     use "tpope/vim-fugitive"                                        -- magit style plugin for VIM
     use "valloric/listtoggle"                                       -- toggle quick and location lists
-    use "moll/vim-bbye"                                             -- allow to kill buffer without exiting VIM
     use "b0o/schemastore.nvim"                                      -- collection of json schema (used by jsonls)
     use "nvim-lua/plenary.nvim"                                     -- common lua library used by a lot of plugins
     use "svermeulen/vim-cutlass"                                    -- prevent delete and cut operation from poluting the yank register
 
+    use_with_config "moll/vim-bbye"                                 -- allow to kill buffer without exiting VIM
     use_with_config "lewis6991/impatient.nvim"                      -- profile startup and byte compile what can be
     use_with_config "fedepujol/move.nvim"                           -- move lines around in V mode
     use_with_config "rmehri01/onenord.nvim"                         -- nord colorscheme
