@@ -24,25 +24,33 @@ end
 local function install_language_support()
     print("-- Installing Language Support...")
     local languages = require("user.languages")
+    local ts_installed, ts = pcall(require, "nvim-treesitter.install")
+    local lsp_installed, lsp = pcall(require, "nvim-lsp-installer")
     for language, lsp in pairs(languages) do
-        require("nvim-treesitter.install").ensure_installed_sync(language)
-        require("nvim-lsp-installer").install_sync({ lsp })
+        if ts_installed then
+            ts.ensure_installed_sync(language)
+        end
+        if lsp_installed then
+            require("nvim-lsp-installer").install_sync({ lsp })
+        end
     end
 end
 
 local function pin_package_to_commits()
-    print("-- Pinning Packages ...")
-    local packer_utils = require("user.utils.packer_utils")
-    local installed = packer_utils.list_installed_plugins_paths()
-    local packer_lock_table = {}
-    for _, plugin_path in ipairs(installed) do
-        local plugin_name = packer_utils.extract_plugin_name_from_path(plugin_path)
-        packer_lock_table[plugin_name] = packer_utils.get_plugin_revision(plugin_path)
+    if os.getenv("NVIM_CONFIG_INSTALL_ALL_FROM_MASTER") ~= nil then
+        print("-- Pinning Packages ...")
+        local packer_utils = require("user.utils.packer_utils")
+        local installed = packer_utils.list_installed_plugins_paths()
+        local packer_lock_table = {}
+        for _, plugin_path in ipairs(installed) do
+            local plugin_name = packer_utils.extract_plugin_name_from_path(plugin_path)
+            packer_lock_table[plugin_name] = packer_utils.get_plugin_revision(plugin_path)
+        end
+        local packer_lock_path = vim.fn.stdpath("config") .. "/lua/user/packer_lock.lua"
+        local packer_lock_file = assert(io.open(packer_lock_path, "wb"))
+        packer_lock_file:write("return " .. vim.inspect(packer_lock_table, {indent="    "}))
+        packer_lock_file:close()
     end
-    local packer_lock_path = vim.fn.stdpath("config") .. "/lua/user/packer_lock.lua"
-    local packer_lock_file = assert(io.open(packer_lock_path, "wb"))
-    packer_lock_file:write("return " .. vim.inspect(packer_lock_table, {indent="    "}))
-    packer_lock_file:close()
 end
 
 local function all_done()
