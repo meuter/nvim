@@ -43,5 +43,6 @@ return {
     ["vim-better-whitespace"] = "1b22dc57a2751c7afbc6025a7da39b7c22db635d",
     ["vim-cutlass"] = "7afd649415541634c8ce317fafbc31cd19d57589",
     ["vim-fugitive"] = "9a13fc87c4ab83ea81e71ccad9b846a5eb31a998",
-    ["vim-lastplace"] = "cef9d62165cd26c3c2b881528a5290a84347059e"
+    ["vim-lastplace"] = "cef9d62165cd26c3c2b881528a5290a84347059e",
+    ["onenord.nvim"] = "749ee2f7fdeb9a02f25195d4850d2ff16240c863"
 }
