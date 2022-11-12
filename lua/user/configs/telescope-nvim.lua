@@ -93,28 +93,40 @@ vim.api.nvim_create_user_command("GitFileHistory", 'Telescope git_bcommits', {de
 vim.api.nvim_create_user_command("GitBranch", 'Telescope git_branches', {desc="Search Git Branches"})
 vim.api.nvim_create_user_command("GitStatus", 'Telescope git_status', {desc="Search Git Status"})
 
+local opts = { noremap = true, silent = true }
+
 -- Ctrl+p to open project files using fuzzy finder
-vim.keymap.set("n", "<C-p>", "<CMD>Telescope find_files<CR>")
-vim.keymap.set("v", "<C-p>", "<CMD>Telescope find_files<CR>")
-vim.keymap.set("i", "<C-p>", "<c-\\><c-n><CMD>Telescope find_files<CR>")
+vim.keymap.set("n", "<C-p>", "<CMD>Telescope find_files<CR>", opts)
+vim.keymap.set("v", "<C-p>", "<CMD>Telescope find_files<CR>", opts)
+vim.keymap.set("i", "<C-p>", "<C-\\><C-n><CMD>Telescope find_files<CR>", opts)
 
 -- Ctrl+s to search word under the cursor/selected text
-vim.keymap.set("n", "<C-s>", "<CMD>SearchWordUnderCursor<CR>")
-vim.keymap.set("v", "<C-s>", "<esc><CMD>SearchSelectedText<CR>")
+vim.keymap.set("n", "<C-s>", "<CMD>SearchWordUnderCursor<CR>", opts)
+vim.keymap.set("v", "<C-s>", "<ESC><CMD>SearchSelectedText<CR>", opts)
+
+-- Ctrl+l to live_grep
+vim.keymap.set("n", "<C-l>", "<CMD>Telescope live_grep<CR>", opts)
+vim.keymap.set("v", "<C-l>", "<CMD>Telescope live_grep<CR>", opts)
+vim.keymap.set("i", "<C-l>", "<C-\\><C-n><CMD>Telescope live_grep<CR>", opts)
+
+-- Ctrl+n to navigate
+vim.keymap.set("n", "<C-n>", "<CMD>NavigateDirectory<CR>", opts)
+vim.keymap.set("v", "<C-n>", "<CMD>NavigateDirectory<CR>", opts)
+vim.keymap.set("i", "<C-n>", "<C-\\><C-n><CMD>NavigateDirectory<CR>", opts)
 
 -- \\ to switch buffer
-vim.keymap.set("n", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
-vim.keymap.set("v", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>")
+vim.keymap.set("n", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>", opts)
+vim.keymap.set("v", "<Bslash><Bslash>", "<CMD>Telescope buffers<CR>", opts)
 
 -- Ctrl+o to go to symbol
-vim.keymap.set("n", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>")
-vim.keymap.set("v", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>")
-vim.keymap.set("v", "<C-o>", "<c-\\><c-n><CMD>Telescope lsp_workspace_symbols<CR>")
+vim.keymap.set("n", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>", opts)
+vim.keymap.set("v", "<C-o>", "<CMD>Telescope lsp_workspace_symbols<CR>", opts)
+vim.keymap.set("i", "<C-o>", "<C-\\><C-n><CMD>Telescope lsp_workspace_symbols<CR>", opts)
 
 -- Ctrl+t to open telescope
-vim.keymap.set("n", "<C-t>", "<CMD>Telescope<CR>")
-vim.keymap.set("v", "<C-t>", "<CMD>Telescope<CR>")
-vim.keymap.set("v", "<C-t>", "<c-\\><c-n><CMD>Telescope<CR>")
+vim.keymap.set("n", "<C-t>", "<CMD>Telescope<CR>", opts)
+vim.keymap.set("v", "<C-t>", "<CMD>Telescope<CR>", opts)
+vim.keymap.set("v", "<C-t>", "<C-\\><C-n><CMD>Telescope<CR>", opts)
 
 
 
