@@ -1,37 +1,45 @@
 local dapui = require("dapui")
 local dap = require("dap")
 
-require("dapui").setup({
+dapui.setup {
+    expand_lines = true,
+    icons = { expanded = "", collapsed = "", circular = "" },
     layouts = {
         {
             elements = {
-                "stacks",
+                { id = "scopes", size = 0.33 },
+                { id = "breakpoints", size = 0.17 },
+                { id = "stacks", size = 0.25 },
+                { id = "watches", size = 0.25 },
             },
-            size = 30,
+            size = 0.33,
             position = "right",
         },
         {
             elements = {
-                "scopes",
-                "breakpoints",
+                { id = "repl", size = 0.45 },
+                { id = "console", size = 0.55 },
             },
-            size = 40,
-            position = "left",
-        },
-        {
-            elements = {
-                "console",
-            },
-            size = 10,
+            size = 0.27,
             position = "bottom",
         },
-    }
-})
+    },
+    floating = {
+        max_height = 0.9,
+        max_width = 0.5, -- Floats will be treated as percentage of your screen.
+        border = vim.g.border_chars, -- Border style. Can be 'single', 'double' or 'rounded'
+        mappings = {
+            close = { "q", "<Esc>" },
+        },
+    },
+}
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
-    require("neo-tree").close_all()
-    require("aerial").close_all()
+    local neotree_loaded, neotree = pcall(require, "neo-tree")
+    if neotree_loaded then
+        neotree.close_all()
+    end
 end
 
 dap.listeners.before.event_terminated["dapui_config"] = function()
@@ -55,3 +63,4 @@ vim.keymap.set("n", "<F6>", "<CMD>DapStepOver<CR>")
 vim.keymap.set("n", "<F7>", "<CMD>DapStepInto<CR>")
 vim.keymap.set("n", "<F8>", "<CMD>DapStepOut<CR>")
 vim.keymap.set("n", "<F9>", "<CMD>DapToggleBreakpoint<CR>")
+
