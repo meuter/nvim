@@ -8,7 +8,7 @@ require("user.utils.packer_utils").startup {
         use "valloric/listtoggle"                   -- toggle quick and location lists
         use "b0o/schemastore.nvim"                  -- collection of json schema (used by jsonls)
         use "nvim-lua/plenary.nvim"                 -- common lua library used by a lot of plugins
-        use "svermeulen/vim-cutlass"                -- prevent delete and cut operation from poluting the yank register
+        use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register
         use "moll/vim-bbye"                         -- allow to kill buffer without exiting VIM
         use "lewis6991/impatient.nvim"              -- profile startup and byte compile what can be
         use "fedepujol/move.nvim"                   -- move lines around in V mode

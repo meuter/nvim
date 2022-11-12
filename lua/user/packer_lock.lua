@@ -41,7 +41,7 @@ return {
     ["toggleterm.nvim"] = "9db6f98af4f700945cff0f4f34b92ec80ab67a2b",
     ["vim-bbye"] = "25ef93ac5a87526111f43e5110675032dbcacf56",
     ["vim-better-whitespace"] = "1b22dc57a2751c7afbc6025a7da39b7c22db635d",
-    ["vim-cutlass"] = "7afd649415541634c8ce317fafbc31cd19d57589",
+    ["cutlass.nvim"] = "e607a4787ae898fe844ea678e7f5977a9358d0b1",
     ["vim-fugitive"] = "9a13fc87c4ab83ea81e71ccad9b846a5eb31a998",
     ["vim-lastplace"] = "cef9d62165cd26c3c2b881528a5290a84347059e",
     ["onenord.nvim"] = "749ee2f7fdeb9a02f25195d4850d2ff16240c863",
