@@ -31,7 +31,7 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install nodejs
 
 # install neovim
-RUN wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb && \
+RUN wget https://github.com/neovim/neovim/releases/download/v0.8.0/nvim-linux64.deb && \
     dpkg -i nvim-linux64.deb && \
     rm -vf nvim-linux64.deb
 

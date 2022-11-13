@@ -37,6 +37,7 @@ local options = {
     hidden = true,                           -- hide buffer when switching
     foldenable = false,                      -- disable folding
     showcmd = false,                         -- faster over slow SSH
+    cmdheight = 0,                           -- hide command line when not used
     laststatus= 3,                           -- one global status bar
     shell = "/bin/bash"                      -- default shell
 }
