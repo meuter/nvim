@@ -26,7 +26,7 @@ return {
     ["nvim-cmp"] = "aee40113c2ba3ab158955f233ca083ca9958d6f8",
     ["nvim-comment"] = "e9ac16ab056695cad6461173693069ec070d2b23",
     ["nvim-dap"] = "61643680dcb771a29073cd432894e2f81a7c2ae3",
-    ["nvim-dap-ui"] = "1e21b3b50e67700e32285b5a74e645311fd8bbea",
+    ["nvim-dap-ui"] = "d7a9f032e7e45b37d778ef83e3d412566ba97cb5",
     ["nvim-lastplace"] = "ecced899435c6bcdd81becb5efc6d5751d0dc4c8",
     ["nvim-lspconfig"] = "2b802ab1e94d595ca5cc7c55f9d1fb9b17f9754c",
     ["nvim-treesitter"] = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
