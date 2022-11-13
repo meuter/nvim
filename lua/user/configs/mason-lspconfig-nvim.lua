@@ -24,7 +24,7 @@ local extra_config = {
             },
         }
     },
-    ["lua-language-server"] = {
+    ["sumneko_lua"] = {
         settings = {
             Lua = {
                 diagnostics = {
