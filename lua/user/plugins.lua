@@ -4,7 +4,6 @@ require("user.utils.packer_utils").startup {
         use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
         use "stevearc/dressing.nvim"                -- improved vim.input() and vim.select() used e.g. for LSP renaming
         use "ethanholz/nvim-lastplace"              -- rememnber position in file when restarting
-        use "tpope/vim-fugitive"                    -- magit style plugin for VIM
         use "b0o/schemastore.nvim"                  -- collection of json schema (used by jsonls)
         use "nvim-lua/plenary.nvim"                 -- common lua library used by a lot of plugins
         use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register
@@ -20,8 +19,16 @@ require("user.utils.packer_utils").startup {
         use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
         use "windwp/nvim-autopairs"                 -- automativally insert matching pair for parens and quotes
         use "nvim-lualine/lualine.nvim"             -- status line at the botton
-        use "sindrets/diffview.nvim"                -- dedicated tab pane to view the git diffs
         use "williamboman/mason.nvim"               -- external tool installer
+
+        -- Git interation
+        use {
+            "sindrets/diffview.nvim",
+            requires = {
+                "tpope/vim-fugitive",
+                "nvim-lua/plenary.nvim"
+            }
+        }
 
         -- hook external linters, formatters,... into LSP
         use {
@@ -72,7 +79,7 @@ require("user.utils.packer_utils").startup {
         }
 
         -- Debugger Adapter Protocol
-        use 'mfussenegger/nvim-dap'
+        use "mfussenegger/nvim-dap"
         use {
             "rcarriga/nvim-dap-ui",
             requires = { "mfussenegger/nvim-dap" }
