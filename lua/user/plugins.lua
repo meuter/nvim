@@ -60,11 +60,11 @@ require("user.utils.packer_utils").startup {
             }
         }
 
-        -- language server protocol
+        -- Language Server Protocol
         use "neovim/nvim-lspconfig"
         use {
-            "williamboman/nvim-lsp-installer",
-            require = "neovim/nvim-lspconfig"
+            "williamboman/mason-lspconfig.nvim",
+            requires = "williamboman/mason.nvim"
         }
 
         -- completion engine

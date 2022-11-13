@@ -25,13 +25,13 @@ local function install_language_support()
     print("-- Installing Language Support...")
     local languages = require("user.languages")
     local ts_installed, ts = pcall(require, "nvim-treesitter.install")
-    local lsp_installed, lsp = pcall(require, "nvim-lsp-installer")
-    for language, lsp in pairs(languages) do
+    local mason_installed, mason = pcall(require, "mason.api.command")
+    for language, components in pairs(languages) do
         if ts_installed then
             ts.ensure_installed_sync(language)
         end
-        if lsp_installed then
-            require("nvim-lsp-installer").install_sync({ lsp })
+        if mason_installed then
+            mason.MasonInstall(components)
         end
     end
 end

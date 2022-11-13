@@ -26,7 +26,6 @@ return {
     ["nvim-comment"] = "861921706a39144ea528a6200a059a549b02d8f0",
     ["nvim-dap"] = "3ec739523a8c94e5d134330a046efcfc4e310236",
     ["nvim-dap-ui"] = "b7b71444128f5aa90e4aee8dbfa36b14afddfb7a",
-    ["nvim-lsp-installer"] = "d1d888fda594ffcf41213ba4df40a9478096b226",
     ["nvim-lspconfig"] = "dcb7ebb36f0d2aafcc640f520bb1fc8a9cc1f7c8",
     ["nvim-neoclip.lua"] = "a6adb2c0c84ad14ef63d148fbfeb372596cec48c",
     ["nvim-treesitter"] = "783c74cefc21eda9602acc3f50409432c95c76b8",
@@ -45,6 +44,7 @@ return {
     ["vim-fugitive"] = "9a13fc87c4ab83ea81e71ccad9b846a5eb31a998",
     ["vim-lastplace"] = "cef9d62165cd26c3c2b881528a5290a84347059e",
     ["onenord.nvim"] = "749ee2f7fdeb9a02f25195d4850d2ff16240c863",
+    ["mason-lspconfig.nvim"] = "a910b4d50f7a32d2f9057d636418a16843094b7c",
     ["mason.nvim"] = "d85d71e910d1b2c539d17ae0d47dad48f8f3c8a7",
     ["crates.nvim"] = "1dffccc0a95f656ebe00cacb4de282473430c5a1"
 }
