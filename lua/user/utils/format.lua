@@ -2,7 +2,7 @@ local M = { }
 local lsp_formatting_group = vim.api.nvim_create_augroup("LspFormatting", {})
 
 function M.format()
-    vim.lsp.buf.formatting_sync()
+    vim.lsp.buf.format()
 end
 
 function M.enable_format_on_save()
