@@ -20,7 +20,6 @@ require("user.utils.packer_utils").startup {
         use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
         use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
         use "windwp/nvim-autopairs"                 -- automativally insert matching pair for parens and quotes
-        use "mrjones2014/smart-splits.nvim"         -- allow to resize splits
         use "nvim-lualine/lualine.nvim"             -- status line at the botton
         use "sindrets/diffview.nvim"                -- dedicated tab pane to view the git diffs
         use "williamboman/mason.nvim"               -- external tool installer

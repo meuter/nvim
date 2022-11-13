@@ -31,7 +31,6 @@ return {
     ["packer.nvim"] = "494fd5999b19e29992eb0978c4fa8988d2023ad8",
     ["plenary.nvim"] = "986ad71ae930c7d96e812734540511b4ca838aa2",
     ["schemastore.nvim"] = "61856a41b17a5e3dbce52d6f61077be642e247e4",
-    ["smart-splits.nvim"] = "2af8bc37db4d94027a52f0fdd5674e45e0878df9",
     ["telescope-fzf-native.nvim"] = "6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6",
     ["telescope.nvim"] = "b5833a682c511885887373aad76272ad70f7b3c2",
     ["toggleterm.nvim"] = "9db6f98af4f700945cff0f4f34b92ec80ab67a2b",
