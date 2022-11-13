@@ -1,7 +1,7 @@
 return {
     ["c"]               = { "clangd", "codelldb" },
-    ["python"]          = { "pyright", "debugpy" },
-    ["lua"]             = { "lua-language-server" },
+    ["python"]          = { "pyright", "debugpy", "black" },
+    ["lua"]             = { "lua-language-server", "stylua" },
     ["dockerfile"]      = { "dockerfile-language-server" },
     ["bash"]            = { "bash-language-server" },
     ["json"]            = { "json-lsp" },

@@ -24,7 +24,6 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     fzf \
     tree \
     locales \
-    black \
     bfs
 
 # install node 14 (dockerls and sumneko_lua do not work with node 11)
@@ -35,12 +34,6 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
 RUN wget https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb && \
     dpkg -i nvim-linux64.deb && \
     rm -vf nvim-linux64.deb
-
-# install clang and lldb-vscode (dap does not seem to work with the lldb packaged with 22.04)
-ENV TARBALL=clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
-RUN cd /tmp && wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.0/${TARBALL} && \
-    cd /usr/local/ && tar xvf /tmp/${TARBALL} --strip-components=1 && \
-    rm -vf /tmp/${TARBALL}
 
 # set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
@@ -61,9 +54,6 @@ ENV RUSTUP_HOME="/home/${USER_NAME}/.local/rustup"
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
 ENV PATH="${CARGO_HOME}/bin:${PATH}"
 RUN echo 'source ~/.local/cargo/env' >> $HOME/.bashrc
-
-# install stylua
-RUN echo $PATH && cargo install stylua
 
 # install go
 ENV GOROOT="/home/${USER_NAME}/.local/go"
