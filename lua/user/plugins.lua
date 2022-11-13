@@ -12,7 +12,7 @@ require("user.utils.packer_utils").startup {
         use "moll/vim-bbye"                         -- allow to kill buffer without exiting VIM
         use "fedepujol/move.nvim"                   -- move lines around in V mode
         use "rmehri01/onenord.nvim"                 -- nord colorscheme
-        use "kyazdani42/nvim-web-devicons"          -- icons for bufferline and others.
+        use "kyazdani42/nvim-web-devicons"          -- icons for neotree and others.
         use "nvim-treesitter/nvim-treesitter"       -- improved syntax hightlighing
         use "terrortylor/nvim-comment"              -- toggle comment blocks/lines
         use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
@@ -23,7 +23,6 @@ require("user.utils.packer_utils").startup {
         use "mrjones2014/smart-splits.nvim"         -- allow to resize splits
         use "nvim-lualine/lualine.nvim"             -- status line at the botton
         use "sindrets/diffview.nvim"                -- dedicated tab pane to view the git diffs
-        use "akinsho/bufferline.nvim"               -- tabs line but for buffers
         use "williamboman/mason.nvim"               -- external tool installer
 
         -- hook external linters, formatters,... into LSP

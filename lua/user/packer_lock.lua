@@ -1,7 +1,6 @@
 return {
     LuaSnip = "be3083bbb8ebc21671bf7c91c27f043ebe0a8d8d",
     ["aosp-vim-syntax"] = "cc978efd478972a56d04c8272f1a72439c62b95d",
-    ["bufferline.nvim"] = "e164face76ddb589ba3493092c3ad7cf3afd98f0",
     ["cmp-buffer"] = "62fc67a2b0205136bc3e312664624ba2ab4a9323",
     ["cmp-cmdline"] = "c36ca4bc1dedb12b4ba6546b96c43896fd6e7252",
     ["cmp-nvim-lsp"] = "935efd37af5c02b7f97a25e37a80d461c15c5f1c",
