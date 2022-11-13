@@ -5,7 +5,6 @@ require("user.utils.packer_utils").startup {
         use "stevearc/dressing.nvim"                -- improved vim.input() and vim.select() used e.g. for LSP renaming
         use "ethanholz/nvim-lastplace"              -- rememnber position in file when restarting
         use "tpope/vim-fugitive"                    -- magit style plugin for VIM
-        use "valloric/listtoggle"                   -- toggle quick and location lists
         use "b0o/schemastore.nvim"                  -- collection of json schema (used by jsonls)
         use "nvim-lua/plenary.nvim"                 -- common lua library used by a lot of plugins
         use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register

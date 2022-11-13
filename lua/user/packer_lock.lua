@@ -13,7 +13,6 @@ return {
     ["gitsigns.nvim"] = "bb6c3bf6f584e73945a0913bb3adf77b60d6f6a2",
     ["impatient.nvim"] = "2aa872de40dbbebe8e2d3a0b8c5651b81fe8b235",
     ["indent-blankline.nvim"] = "4a58fe6e9854ccfe6c6b0f59abb7cb8301e23025",
-    listtoggle = "63fb8acb57d57380b2e30e7a831247140559c95f",
     ["lualine.nvim"] = "5f68f070e4f7158517afc55f125a6f5ed1f7db47",
     ["move.nvim"] = "902110c584d214951b8bac52374afc7263d02a6a",
     ["neo-tree.nvim"] = "3f8997e7e2819eb75e42386bcf761382766f265d",
