@@ -3,7 +3,7 @@ require("user.utils.packer_utils").startup {
         use "wbthomason/packer.nvim"                -- manage packer itself when updating
         use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
         use "stevearc/dressing.nvim"                -- improved vim.input() and vim.select() used e.g. for LSP renaming
-        use "farmergreg/vim-lastplace"              -- rememnber position in file when restarting
+        use "ethanholz/nvim-lastplace"              -- rememnber position in file when restarting
         use "tpope/vim-fugitive"                    -- magit style plugin for VIM
         use "valloric/listtoggle"                   -- toggle quick and location lists
         use "b0o/schemastore.nvim"                  -- collection of json schema (used by jsonls)
