@@ -51,15 +51,6 @@ require("user.utils.packer_utils").startup {
             run = "make",
         }
 
-        -- add clipboard history search in telescope
-        use {
-            "AckslD/nvim-neoclip.lua",
-            requires = {
-                { "tami5/sqlite.lua", module = "sqlite" },
-                { "nvim-telescope/telescope.nvim" },
-            }
-        }
-
         -- Language Server Protocol
         use "neovim/nvim-lspconfig"
         use {
