@@ -47,13 +47,7 @@ local extra_config = {
     },
 }
 
-local function update_capabilities()
-    return require("cmp_nvim_lsp").update_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-    )
-end
-
-function common_capabilities()
+local function common_capabilities()
     local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
     if status_ok then
         return cmp_nvim_lsp.default_capabilities()
