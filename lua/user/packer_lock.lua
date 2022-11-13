@@ -10,7 +10,6 @@ return {
     ["diffview.nvim"] = "a45163cb9ee65742cf26b940c2b24cc652f295c9",
     ["dressing.nvim"] = "e9d0de44707fe5ce06be6f6959d33a3fab985a3c",
     ["friendly-snippets"] = "40c306be87059d27f82fc5d00c60e62e1fb48078",
-    ["github-nvim-theme"] = "81c6a906845b150bb5b51c9979e290e9874efff1",
     ["gitsigns.nvim"] = "bb6c3bf6f584e73945a0913bb3adf77b60d6f6a2",
     ["impatient.nvim"] = "2aa872de40dbbebe8e2d3a0b8c5651b81fe8b235",
     ["indent-blankline.nvim"] = "4a58fe6e9854ccfe6c6b0f59abb7cb8301e23025",
