@@ -16,7 +16,7 @@ local extra_config = {
             "--pch-storage=memory",
         }
     },
-    ["json-lsp"] = {
+    ["jsonls"] = {
         settings = {
             json = {
                 schemas = require('schemastore').json.schemas(),
