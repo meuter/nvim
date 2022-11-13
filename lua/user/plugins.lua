@@ -11,7 +11,6 @@ require("user.utils.packer_utils").startup {
         use "fedepujol/move.nvim"                   -- move lines around in V mode
         use "rmehri01/onenord.nvim"                 -- nord colorscheme
         use "kyazdani42/nvim-web-devicons"          -- icons for neotree and others.
-        use "nvim-treesitter/nvim-treesitter"       -- improved syntax hightlighing
         use "terrortylor/nvim-comment"              -- toggle comment blocks/lines
         use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
         use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
@@ -20,6 +19,13 @@ require("user.utils.packer_utils").startup {
         use "windwp/nvim-autopairs"                 -- automativally insert matching pair for parens and quotes
         use "nvim-lualine/lualine.nvim"             -- status line at the botton
         use "williamboman/mason.nvim"               -- external tool installer
+
+        -- improved syntax hightlighing
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            branch = "v0.8.0"
+        }
+
 
         -- Git interation
         use {
