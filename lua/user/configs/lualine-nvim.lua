@@ -60,9 +60,11 @@ local lsp = function()
                         table.insert(buf_client_names, formatter)
                     end
                 end
-                -- local linters = require "lvim.lsp.null-ls.linters"
-                -- local supported_linters = linters.list_registered(vim.bo.filetype)
-                -- vim.list_extend(buf_client_names, supported_linters)
+                for linter, linter_config in pairs(null_ls.builtins.diagnostics) do
+                    if vim.tbl_contains(linter_config.filetypes, vim.bo.filetype) then
+                        table.insert(buf_client_names, linter)
+                    end
+                end
             end
         else
             table.insert(buf_client_names, client.name)
