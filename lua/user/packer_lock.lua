@@ -4,7 +4,7 @@ return {
     ["bufferline.nvim"] = "e164face76ddb589ba3493092c3ad7cf3afd98f0",
     ["cmp-buffer"] = "62fc67a2b0205136bc3e312664624ba2ab4a9323",
     ["cmp-cmdline"] = "c36ca4bc1dedb12b4ba6546b96c43896fd6e7252",
-    ["cmp-nvim-lsp"] = "affe808a5c56b71630f17aa7c38e15c59fd648a8",
+    ["cmp-nvim-lsp"] = "935efd37af5c02b7f97a25e37a80d461c15c5f1c",
     ["cmp-nvim-lua"] = "d276254e7198ab7d00f117e88e223b4bd8c02d21",
     ["cmp-path"] = "981baf9525257ac3269e1b6701e376d6fbff6921",
     cmp_luasnip = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
