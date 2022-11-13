@@ -43,15 +43,28 @@ local diagnostics = {
     always_visible = true,
 }
 
+
 local lsp = function()
     local buf_clients = vim.lsp.buf_get_clients()
     if next(buf_clients) == nil then
         return ""
     end
 
+    local null_ls_installed, null_ls = pcall(require, "null-ls")
     local buf_client_names = {}
     for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" then
+        if client.name == "null-ls" then
+            if null_ls_installed then
+                for formatter, formatter_config in pairs(null_ls.builtins.formatting) do
+                    if vim.tbl_contains(formatter_config.filetypes, vim.bo.filetype) then
+                        table.insert(buf_client_names, formatter)
+                    end
+                end
+                -- local linters = require "lvim.lsp.null-ls.linters"
+                -- local supported_linters = linters.list_registered(vim.bo.filetype)
+                -- vim.list_extend(buf_client_names, supported_linters)
+            end
+        else
             table.insert(buf_client_names, client.name)
         end
     end
@@ -76,4 +89,3 @@ require("lualine").setup {
         lualine_z = { "fileformat" }
     },
 }
-
