@@ -10,7 +10,6 @@ require("user.utils.packer_utils").startup {
         use "nvim-lua/plenary.nvim"                 -- common lua library used by a lot of plugins
         use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register
         use "moll/vim-bbye"                         -- allow to kill buffer without exiting VIM
-        use "lewis6991/impatient.nvim"              -- profile startup and byte compile what can be
         use "fedepujol/move.nvim"                   -- move lines around in V mode
         use "rmehri01/onenord.nvim"                 -- nord colorscheme
         use "kyazdani42/nvim-web-devicons"          -- icons for bufferline and others.
