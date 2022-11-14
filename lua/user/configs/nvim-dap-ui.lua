@@ -3,7 +3,23 @@ local dap = require("dap")
 
 dapui.setup {
     expand_lines = true,
-    icons = { expanded = "", collapsed = "", circular = "" },
+    icons = {
+        expanded = "",
+        collapsed = "",
+        circular = ""
+    },
+    controls = {
+        icons = {
+            pause = "",
+            play = "",
+            step_into = "",
+            step_over = "",
+            step_out = "",
+            step_back = "",
+            run_last = "↻",
+            terminate = "□",
+        },
+    },
     layouts = {
         {
             elements = {
