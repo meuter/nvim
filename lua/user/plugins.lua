@@ -26,7 +26,6 @@ require("user.utils.packer_utils").startup {
             branch = "v0.8.0"
         }
 
-
         -- Git interation
         use {
             "sindrets/diffview.nvim",
@@ -34,6 +33,12 @@ require("user.utils.packer_utils").startup {
                 "tpope/vim-fugitive",
                 "nvim-lua/plenary.nvim"
             }
+        }
+
+        -- improve LSP diagnostic
+        use {
+            "folke/trouble.nvim",
+            requires = "kyazdani42/nvim-web-devicons",
         }
 
         -- hook external linters, formatters,... into LSP

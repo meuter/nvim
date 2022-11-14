@@ -71,7 +71,6 @@ local function on_attach(_, buffer)
     local telescope_available, _ = pcall(require, "telescope")
     if telescope_available then
         vim.keymap.set("n", "<F3>", "<cmd>Telescope lsp_references<CR>", opts)
-        vim.keymap.set("n", "<F10>", "<cmd>Telescope diagnostics<CR>", opts)
         vim.keymap.set("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
     else
         vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
