@@ -27,8 +27,8 @@ The install script will take care of
 (see [`install.lua`](install.lua) for the list of supported languages)
 
 By default all plugins are pinned to commits listed in [`packer_lock.lua`](lua/user/packer_lock.lua).
-To update all plugins to the HEAD instead and regenerate [`packer_lock.lua`](lua/user/packer_lock.lua),
-use `PackerUpdate --nolockfile` 
+To update all plugins to the HEAD and regenerate [`packer_lock.lua`](lua/user/packer_lock.lua),
+use `PackerUpdate --nolockfile`.
 
 ## Trying it out
 
