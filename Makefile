@@ -36,7 +36,7 @@ build/container: Dockerfile $(SOURCE) build
 	touch $@
 
 build/packer_lock.lua: build/container
-	docker run $(DOCKER_RUN_NON_INTERACTIVE_ARGS) /bin/bash -c "cat ~/.config/nvim/lua/user/packer_lock.lua" > $@
+	docker run $(DOCKER_RUN_NON_INTERACTIVE_ARGS) /bin/bash -c "nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerUpdate --nolockfile' && cat ~/.config/nvim/lua/user/packer_lock.lua" > $@
 
 test: build/container
 	docker run $(DOCKER_RUN_INTERACTIVE_ARGS) nvim

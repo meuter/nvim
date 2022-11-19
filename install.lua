@@ -21,9 +21,8 @@ local function install_packages()
     end
 end
 
-local function install_language_support()
+local function install_language_support(languages)
     print("-- Installing Language Support...")
-    local languages = require("user.languages")
     local ts_installed, ts = pcall(require, "nvim-treesitter.install")
     local mason_installed, mason = pcall(require, "mason.api.command")
     for language, components in pairs(languages) do
@@ -36,23 +35,6 @@ local function install_language_support()
     end
 end
 
-local function pin_package_to_commits()
-    if os.getenv("NVIM_CONFIG_INSTALL_ALL_FROM_MASTER") ~= nil then
-        print("-- Pinning Packages ...")
-        local packer_utils = require("user.utils.packer_utils")
-        local installed = packer_utils.list_installed_plugins_paths()
-        local packer_lock_table = {}
-        for _, plugin_path in ipairs(installed) do
-            local plugin_name = packer_utils.extract_plugin_name_from_path(plugin_path)
-            packer_lock_table[plugin_name] = packer_utils.get_plugin_revision(plugin_path)
-        end
-        local packer_lock_path = vim.fn.stdpath("config") .. "/lua/user/packer_lock.lua"
-        local packer_lock_file = assert(io.open(packer_lock_path, "wb"))
-        packer_lock_file:write("return " .. vim.inspect(packer_lock_table, {indent="    "}))
-        packer_lock_file:close()
-    end
-end
-
 local function all_done()
     print("-- All Done!")
     vim.cmd("quitall")
@@ -60,6 +42,16 @@ end
 
 install_packer()
 install_packages()
-pin_package_to_commits()
-install_language_support()
+install_language_support {
+    ["c"]               = { "clangd", "codelldb" },
+    ["python"]          = { "pyright", "debugpy", "black" },
+    ["lua"]             = { "lua-language-server" },
+    ["dockerfile"]      = { "dockerfile-language-server" },
+    ["bash"]            = { "bash-language-server" },
+    ["json"]            = { "json-lsp" },
+    ["go"]              = { "gopls", "delve" },
+    ["markdown_inline"] = { "remark-language-server" },
+    ["cmake"]           = { "cmake-language-server" },
+    ["rust"]            = { "rust-analyzer", "codelldb" },
+}
 all_done()
