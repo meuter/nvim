@@ -44,7 +44,7 @@ test: build/container
 shell: build/container
 	docker run $(DOCKER_RUN_INTERACTIVE_ARGS) /bin/bash
 
-release: build/packer_lock.lua
+lock: build/packer_lock.lua
 	cp -v $< lua/user/packer_lock.lua
 
 clean:
