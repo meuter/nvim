@@ -3,7 +3,7 @@
 This is my-own little attempt at a neovim configuration that turns neovim into an 'IDE'. 
 This configuration has support for LSP, Treesitter for the programming languages I use. 
 Mainly: C/C++, python, Rust, Go, Lua, Dockerfile, bash. It also comes with other goodies.
-For a complete list of plugins, see [`packer_specs.lua`](lua/user/packer_specs.lua).
+For a complete list of plugins, see [`plugins.lua`](lua/user/plugins.lua).
 All plugin configurations can be found in [`lua/user/configs`](lua/user/configs).
 
 ![Screenshot](screenshots/debugging-c.jpg)
@@ -24,13 +24,11 @@ The install script will take care of
 - installing all Treesitter parser for all supported languages
 - installing all LSP servers for all supported languages 
 
-(see [`lua/user/languages.lua`](lua/user/languages.lua) for the list of supported languages)
+(see [`install.lua`](install.lua) for the list of supported languages)
 
 By default all plugins are pinned to commits listed in [`packer_lock.lua`](lua/user/packer_lock.lua).
-To install all plugins from HEAD instead, set `config.lockfile.use_pinned_commit` to `false` in 
-[`packer_specs.lua`](lua/user/packer_specs.lua) 
-
-Note that the install pin all packages and store the result in [`packer_lock.lua`](lua/user/packer_lock.lua).
+To update all plugins to the HEAD instead and regenerate [`packer_lock.lua`](lua/user/packer_lock.lua),
+use `PackerUpdate --nolockfile` 
 
 ## Trying it out
 
