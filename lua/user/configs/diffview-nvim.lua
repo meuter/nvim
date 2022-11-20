@@ -1,5 +1,8 @@
--- Lua
-local actions = require("diffview.actions")
+
+-- NOTE(cme): this is the old way of doing it, but since plugin is pinned
+--            to old version, it will have to do for now...
+local actions = require("diffview.config").actions
+-- local actions = require("diffview.actions")
 
 local function open_commit_window(args)
     vim.cmd("G commit " .. args)

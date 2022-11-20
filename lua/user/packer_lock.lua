@@ -10,7 +10,9 @@ return {
     ["cmp_luasnip"] = { commit = "1809552", date = "1666943769" },
     ["crates.nvim"] = { commit = "e11e278", date = "1668709750" },
     ["cutlass.nvim"] = { commit = "e607a47", date = "1664184362" },
-    ["diffview.nvim"] = { commit = "f32a722", date = "1668725363" },
+    -- Recent diffview require git 2.35 which is not available out of the box
+    -- on Ubuntu 20.04
+    ["diffview.nvim"] = { commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6" },
     ["dressing.nvim"] = { commit = "7894d5b", date = "1668805748" },
     ["friendly-snippets"] = { commit = "ef8caa5", date = "1668616918" },
     ["gitsigns.nvim"] = { commit = "9ff7dfb", date = "1668016276" },
