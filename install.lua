@@ -15,6 +15,7 @@ local function install_packages()
         end
     })
     require("user.plugins")
+    require("packer.log").cfg({ log = { level = "trace" } })
     require("packer").sync()
     while not packer_done do
         vim.cmd [[ sleep 1 ]]
