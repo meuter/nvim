@@ -44,9 +44,9 @@ end
 install_packer()
 install_packages()
 install_language_support {
-    ["c"]               = { "clangd", "codelldb" },
-    ["python"]          = { "pyright", "debugpy", "black" },
     ["lua"]             = { "lua-language-server" },
+    ["python"]          = { "pyright", "debugpy", "black" },
+    ["c"]               = { "clangd", "codelldb" },
     ["dockerfile"]      = { "dockerfile-language-server" },
     ["bash"]            = { "bash-language-server" },
     ["json"]            = { "json-lsp" },
