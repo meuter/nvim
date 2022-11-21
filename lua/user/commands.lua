@@ -1,8 +1,11 @@
 local command = vim.api.nvim_create_user_command
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 local toggle_mouse_copy = require("user.utils.mouse_copy").toggle_mouse_copy
 local hexconvert = require("user.utils.hexconvert")
 local format = require("user.utils.format")
 
+-- some utility functions
 command("CloseOthers", "%bd|e#|bd#", { desc="Close All Buffers Except Current"})
 command("ConvertHexStringLineToCArray", hexconvert.convert_hexstring_current_line_to_c_array, { desc="Converts Hex String to C Array" })
 command("ConvertHexStringSelectionToCArray", hexconvert.convert_hexstring_selection_to_c_array, { desc="Converts Hex String to C Array" })
@@ -12,14 +15,10 @@ command("EnableFormatOnSave", format.enable_format_on_save, {desc="Enable Format
 command("DisableFormatOnSave", format.disable_format_on_save, {desc="Disable Format on Save"})
 command("CodeAction", vim.lsp.buf.code_action, { desc="Execute LSP code action"})
 
+-- disable paren highlight in insert mode
+autocmd("InsertEnter", { group = augroup("MatchParenDisable", { clear = true }), command = "NoMatchParen" })
+autocmd("InsertLeave", { group = augroup("MatchParenEnable", { clear = true }), command = "DoMatchParen" })
 
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-    group = vim.api.nvim_create_augroup("MatchParenDisable", { clear = true }),
-    command = "NoMatchParen"
-})
-
-vim.api.nvim_create_autocmd("InsertLeave", {
-    group = vim.api.nvim_create_augroup("MatchParenEnable", { clear = true }),
-    command = "DoMatchParen"
-})
+-- show cmd bar when recorgin macro
+autocmd("RecordingEnter", { group = augroup("StartRecordingMacro", { clear = true }), callback = function() vim.opt.cmdheight=1 end})
+autocmd("RecordingLeave", { group = augroup("StopRecordingMacro", { clear = true }), callback = function() vim.opt.cmdheight=0 end })
