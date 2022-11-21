@@ -23,7 +23,6 @@ map("n", "<A-Right>", "<C-I>")
 map("i", "<C-w>", "<C-\\><C-N><C-w>")
 
 -- dismiss search highlight with esc x 3
-map("n", "<esc><esc><esc>", "<CMD>nohl<CR>")
-map("v", "<esc><esc><esc>", "<CMD>nohl<CR>")
-map("i", "<esc><esc><esc>", "<C-\\><C-N><CMD>nohl<CR>")
+map("n", "<esc>", "<CMD>nohl<CR><esc>")
+map("v", "<esc>", "<CMD>nohl<CR><esc>")
 
