@@ -41,8 +41,13 @@ require("packer").startup {
         use "akinsho/toggleterm.nvim" -- improved persistent embedded terminal
         use "lewis6991/gitsigns.nvim" -- display green/red/blue guidelines for git
         use "windwp/nvim-autopairs" -- automativally insert matching pair for parens and quotes
-        use "nvim-lualine/lualine.nvim" -- status line at the botton
         use "williamboman/mason.nvim" -- external tool installer
+
+        -- status line at the botton
+        use {
+            "nvim-lualine/lualine.nvim",
+            requires = "nvim-lua/plenary.nvim"
+        }
 
         -- improved syntax hightlighing
         use {
