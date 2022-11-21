@@ -45,6 +45,19 @@ local extra_config = {
             },
         }
     },
+    ["eslint"] = {
+        root_dir = function()
+            return vim.loop.cwd()
+        end,
+        handlers = {
+            ["eslint/probeFailed"] = function()
+                return {}
+            end,
+            ["eslint/noLibrary"] = function()
+                return {}
+            end,
+        },
+    }
 }
 
 local function common_capabilities()
@@ -98,4 +111,3 @@ mason_lspconfig.setup_handlers {
         lspconfig[server_name].setup(server_options)
     end
 }
-
