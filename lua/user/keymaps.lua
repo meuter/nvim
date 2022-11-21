@@ -1,5 +1,5 @@
 -- Functional wrapper for mapping custom keybindings
-function map(mode, lhs, rhs)
+local function map(mode, lhs, rhs)
     local opts = { noremap = true, silent = true }
     vim.api.nvim_set_keymap(mode, lhs, rhs, opts)
 end
