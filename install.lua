@@ -22,17 +22,26 @@ local function install_packages()
     end
 end
 
+local function deduplicate(list)
+    local hashed = {}
+    for i, item in ipairs(list) do
+        hashed[item] = i
+    end
+    return vim.tbl_keys(hashed)
+end
+
 local function install_language_support(languages)
     print("-- Installing Language Support...")
     local ts_installed, ts = pcall(require, "nvim-treesitter.install")
+    if ts_installed then
+        local grammars = vim.tbl_keys(languages)
+        ts.ensure_installed_sync(grammars)
+    end
+
     local mason_installed, mason = pcall(require, "mason.api.command")
-    for language, components in pairs(languages) do
-        if ts_installed then
-            ts.ensure_installed_sync(language)
-        end
-        if mason_installed then
-            mason.MasonInstall(components)
-        end
+    if mason_installed then
+        local tools = deduplicate(vim.tbl_flatten(vim.tbl_values(languages)))
+        mason.MasonInstall(tools)
     end
 end
 
@@ -47,6 +56,7 @@ install_language_support {
     ["lua"]             = { "lua-language-server" },
     ["python"]          = { "pyright", "debugpy", "black" },
     ["c"]               = { "clangd", "codelldb" },
+    ["cpp"]             = { "clangd", "codelldb" },
     ["dockerfile"]      = { "dockerfile-language-server" },
     ["bash"]            = { "bash-language-server" },
     ["json"]            = { "json-lsp" },
@@ -54,5 +64,10 @@ install_language_support {
     ["markdown_inline"] = { "remark-language-server" },
     ["cmake"]           = { "cmake-language-server" },
     ["rust"]            = { "rust-analyzer", "codelldb" },
+    ["javascript"]      = { "typescript-language-server", "eslint-lsp" },
+    ["typescript"]      = { "typescript-language-server", "eslint-lsp" },
+    ["html"]            = { "html-lsp" },
+    ["yaml"]            = { "yaml-language-server"},
+    ["css"]             = { "css-lsp" }
 }
 all_done()
