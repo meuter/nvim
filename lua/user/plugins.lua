@@ -26,22 +26,22 @@ require("packer").startup {
             branch = "feat/lockfile"
         }
 
-        use "kheaactua/aosp-vim-syntax" -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
-        use "stevearc/dressing.nvim" -- improved vim.input() and vim.select() used e.g. for LSP renaming
-        use "ethanholz/nvim-lastplace" -- rememnber position in file when restarting
-        use "b0o/schemastore.nvim" -- collection of json schema (used by jsonls)
-        use "gbprod/cutlass.nvim" -- prevent delete and cut operation from poluting the yank register
-        use "moll/vim-bbye" -- allow to kill buffer without exiting VIM
-        use "fedepujol/move.nvim" -- move lines around in V mode
-        use "rmehri01/onenord.nvim" -- nord colorscheme
-        use "kyazdani42/nvim-web-devicons" -- icons for neotree and others.
-        use "terrortylor/nvim-comment" -- toggle comment blocks/lines
-        use "lukas-reineke/indent-blankline.nvim" -- show indent guides and hidden tabs/space/return
-        use "ntpeters/vim-better-whitespace" -- hightlight and strip trailing whitespaces
-        use "akinsho/toggleterm.nvim" -- improved persistent embedded terminal
-        use "lewis6991/gitsigns.nvim" -- display green/red/blue guidelines for git
-        use "windwp/nvim-autopairs" -- automativally insert matching pair for parens and quotes
-        use "williamboman/mason.nvim" -- external tool installer
+        use "kheaactua/aosp-vim-syntax"             -- syntax highlight for Android.bp, XML manifest, AIDL, HIDL, etc.
+        use "stevearc/dressing.nvim"                -- improved vim.input() and vim.select() used e.g. for LSP renaming
+        use "ethanholz/nvim-lastplace"              -- rememnber position in file when restarting
+        use "b0o/schemastore.nvim"                  -- collection of json schema (used by jsonls)
+        use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register
+        use "moll/vim-bbye"                         -- allow to kill buffer without exiting VIM
+        use "fedepujol/move.nvim"                   -- move lines around in V mode
+        use "rmehri01/onenord.nvim"                 -- nord colorscheme
+        use "kyazdani42/nvim-web-devicons"          -- icons for neotree and others.
+        use "terrortylor/nvim-comment"              -- toggle comment blocks/lines
+        use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return
+        use "ntpeters/vim-better-whitespace"        -- hightlight and strip trailing whitespaces
+        use "akinsho/toggleterm.nvim"               -- improved persistent embedded terminal
+        use "lewis6991/gitsigns.nvim"               -- display green/red/blue guidelines for git
+        use "windwp/nvim-autopairs"                 -- automativally insert matching pair for parens and quotes
+        use "williamboman/mason.nvim"               -- external tool installer
 
         -- status line at the botton
         use {
