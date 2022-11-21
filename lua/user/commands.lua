@@ -19,6 +19,3 @@ command("CodeAction", vim.lsp.buf.code_action, { desc="Execute LSP code action"}
 autocmd("InsertEnter", { group = augroup("MatchParenDisable", { clear = true }), command = "NoMatchParen" })
 autocmd("InsertLeave", { group = augroup("MatchParenEnable", { clear = true }), command = "DoMatchParen" })
 
--- show cmd bar when recorgin macro
-autocmd("RecordingEnter", { group = augroup("StartRecordingMacro", { clear = true }), callback = function() vim.opt.cmdheight=1 end})
-autocmd("RecordingLeave", { group = augroup("StopRecordingMacro", { clear = true }), callback = function() vim.opt.cmdheight=0 end })
