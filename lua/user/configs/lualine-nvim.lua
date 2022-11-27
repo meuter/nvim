@@ -1,150 +1,84 @@
-local Path = require("plenary.path")
-local lualine = require("lualine")
-local autocmd = vim.api.nvim_create_autocmd
+local path = require("plenary.path")
 
-local cwd = {
-    function()
-        local home = os.getenv("HOME")
-        local icon = "📁 "
-        return icon .. vim.fn.getcwd():gsub(home, "~")
-    end,
-    color = { fg = "LightYellow" }
-}
+local function search_count()
+    local search = vim.fn.searchcount({ maxcount = 0 })
+    if search.current > 0 and vim.v.hlsearch ~= 0 then
+        return search.current .. "/" .. search.total
+    end
+    return ""
+end
 
-local filename = {
-    function()
-        local filename = vim.fn.expand("%")
-        if vim.bo.filetype == "neo-tree" then return "" end
-        if vim.bo.filetype == "toggleterm" then return "" end
-        if vim.bo.filetype == "Trouble" then return "" end
-        if vim.bo.filetype == "DiffviewFiles" then return "" end
-        if vim.bo.filetype == "packer" then return "" end
-        if filename == "" then return "" end
-        return "📝 " .. Path:new { filename, sep = "/" }:make_relative(vim.fn.getcwd())
-    end,
-    color = { fg = "AliceBlue" }
-}
+local function filename()
+    local result = vim.fn.expand("%")
+    if vim.bo.filetype == "neo-tree" then return "" end
+    if vim.bo.filetype == "toggleterm" then return "" end
+    if vim.bo.filetype == "Trouble" then return "" end
+    if vim.bo.filetype == "DiffviewFiles" then return "" end
+    if vim.bo.filetype == "packer" then return "" end
+    if result == "" then return "" end
+    return path:new { result, sep = "/" }:make_relative(vim.fn.getcwd())
+end
 
-
-local branch = {
-    "branch",
-    icons_enabled = true,
-    icon = "",
-}
-
-local mode = {
-    "mode",
-    color = { gui = "NONE" },
-}
-
-local diagnostics = {
-    "diagnostics",
-    sources = { "nvim_diagnostic" },
-    sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
-    colored = true,
-    update_in_insert = false,
-    always_visible = false,
-}
-
-local search_count = {
-    function()
-        -- maxcount = 0 makes the number not be capped at 99
-        local search = vim.fn.searchcount({ maxcount = 0 })
-        local current = search.current
-        local total = search.total
-        if current > 0 and vim.v.hlsearch ~= 0 then
-            return "🔎" .. current .. "/" .. total
-        else
-            return ""
-        end
-    end,
-    color = { fg = "AliceBlue" }
-}
-
-local lsp = {
-    function()
-        local buf_clients = vim.lsp.buf_get_clients()
-        if next(buf_clients) == nil then
-            return ""
-        end
-
-        local null_ls_installed, null_ls = pcall(require, "null-ls")
-        local buf_client_names = {}
-        for _, client in pairs(buf_clients) do
-            if client.name == "null-ls" then
-                if null_ls_installed then
-                    for formatter, formatter_config in pairs(null_ls.builtins.formatting) do
-                        if vim.tbl_contains(formatter_config.filetypes, vim.bo.filetype) then
-                            table.insert(buf_client_names, formatter)
-                        end
-                    end
-                    for linter, linter_config in pairs(null_ls.builtins.diagnostics) do
-                        if vim.tbl_contains(linter_config.filetypes, vim.bo.filetype) then
-                            table.insert(buf_client_names, linter)
-                        end
+local function lsp()
+    local buf_clients = vim.lsp.buf_get_clients()
+    local null_ls_installed, null_ls = pcall(require, "null-ls")
+    local buf_client_names = {}
+    for _, client in pairs(buf_clients) do
+        if client.name == "null-ls" then
+            if null_ls_installed then
+                for formatter, formatter_config in pairs(null_ls.builtins.formatting) do
+                    if vim.tbl_contains(formatter_config.filetypes, vim.bo.filetype) then
+                        table.insert(buf_client_names, formatter)
                     end
                 end
-            else
-                table.insert(buf_client_names, client.name)
+                for linter, linter_config in pairs(null_ls.builtins.diagnostics) do
+                    if vim.tbl_contains(linter_config.filetypes, vim.bo.filetype) then
+                        table.insert(buf_client_names, linter)
+                    end
+                end
             end
-        end
-        return "📡" .. table.concat(buf_client_names, ", ") .. "🛰️"
-    end,
-    color = { gui = "NONE" },
-}
-
-local macro = {
-    function()
-        local recording_register = vim.fn.reg_recording()
-        if recording_register == "" then
-            return ""
         else
-            return "🎥" .. recording_register
+            table.insert(buf_client_names, client.name)
         end
-    end,
-    color = { fg = "AliceBlue" }
-}
+    end
+    return table.concat(buf_client_names, ", ")
+end
 
--- see https://www.reddit.com/r/neovim/comments/xy0tu1/cmdheight0_recording_macros_message/
-autocmd("RecordingEnter", {
-    callback = function()
-        lualine.refresh({
-            place = { "statusline" },
-        })
-    end,
-})
-autocmd("RecordingLeave", {
-    callback = function()
-        local timer = vim.loop.new_timer()
-        timer:start(
-            50,
-            0,
-            vim.schedule_wrap(function()
-                lualine.refresh({
-                    place = { "statusline" },
-                })
-            end)
-        )
-    end,
-})
+local function cwd()
+    return vim.fn.getcwd():gsub(os.getenv("HOME"), "~")
+end
 
-
-lualine.setup {
+require("lualine").setup {
     options = {
-        icons_enabled = true,
         theme = "seoul256",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
-        always_divide_middle = true,
-        globalstatus = true
+        globalstatus = true,
+        refresh = {
+            statusline = 100
+        }
     },
     sections = {
-        lualine_a = { mode },
-        lualine_b = { branch },
-        lualine_c = { cwd, filename },
-        lualine_x = { macro, diagnostics, search_count },
-        lualine_y = { "filetype" },
-        lualine_z = { lsp }
+        lualine_a = {
+            { "mode", color = { gui = "NONE" } }
+        },
+        lualine_b = {
+            { "branch", icons_enabled = true, icon = "", }
+        },
+        lualine_c = {
+            { cwd, icon = "📁", color = { fg = "LightYellow" } },
+            { filename, icon = "📝", color = { fg = "AliceBlue" } }
+        },
+        lualine_x = {
+            { function() return vim.fn.reg_recording() end, icon = "🎥", color = { fg = "AliceBlue" } },
+            { "diagnostics", symbols = { error = " ", warn = " ", hint = " ", info = " " }, },
+            { search_count, icon = "🔎" },
+        },
+        lualine_y = {
+            "filetype"
+        },
+        lualine_z = {
+            { lsp, icon = "📡", color = { gui = "NONE" } }
+        },
     },
 }
