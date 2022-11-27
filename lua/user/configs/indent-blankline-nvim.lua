@@ -1,11 +1,6 @@
 vim.g.indent_blankline_char = "▏"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:")
-vim.opt.listchars:append("tab: ")
-
 require("indent_blankline").setup {
     enabled = true,
     show_trailing_blankline_indent = false,
