@@ -30,8 +30,7 @@ require("diffview").setup({
 })
 
 -- Use ctrl+g to open fugitive
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<C-g>", "<CMD>DiffviewOpen<CR>", opts)
-vim.cmd[[ set fillchars+=diff:\  ]]
+vim.keymap.set({ "n", "v" }, "<C-g>", "<CMD>DiffviewOpen<CR>")
+vim.keymap.set("i", "<C-g>", "<C-\\><C-n><CMD>DiffviewOpen<CR>")
 
 
