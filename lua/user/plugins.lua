@@ -33,7 +33,6 @@ require("packer").startup {
         use "gbprod/cutlass.nvim"                   -- prevent delete and cut operation from poluting the yank register
         use "moll/vim-bbye"                         -- allow to kill buffer without exiting VIM
         use "fedepujol/move.nvim"                   -- move lines around in V mode
-        use "rmehri01/onenord.nvim"                 -- nord colorscheme
         use "kyazdani42/nvim-web-devicons"          -- icons for neotree and others.
         use "terrortylor/nvim-comment"              -- toggle comment blocks/lines
         use "lukas-reineke/indent-blankline.nvim"   -- show indent guides and hidden tabs/space/return

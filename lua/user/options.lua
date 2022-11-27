@@ -50,6 +50,14 @@ vim.opt.shortmess:append "c"
 vim.opt.whichwrap:append "<,>,[,],h,l"
 vim.opt.iskeyword:append "-"
 
+-- color scheme
+vim.cmd("colorscheme habamax")
+vim.cmd("hi VertSplit guifg=NONE guibg=NONE")
+local opt = vim.opt
+opt.fillchars:append("eob: ")
+opt.fillchars:append("fold: ")
+opt.list = true
+
 
 
 

@@ -133,7 +133,7 @@ autocmd("RecordingLeave", {
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = "onenord",
+        theme = "seoul256",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         always_divide_middle = true,
