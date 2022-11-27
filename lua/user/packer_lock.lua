@@ -35,7 +35,9 @@ return {
     ["nvim-treesitter"] = { commit = "4cccb6f4", date = "1665907845" },
     ["nvim-web-devicons"] = { commit = "3b1b794", date = "1668465005" },
     ["onenord.nvim"] = { commit = "0cd9f68", date = "1667762816" },
-    ["packer.nvim"] = { commit = "dd9facb", date = "1669000952" },
+    -- Waiting to https://github.com/wbthomason/packer.nvim/pull/1010
+    -- (updated to the PR branch are forced pushed so commit disappears)
+    -- ["packer.nvim"] = { commit = "dd9facb", date = "1669000952" },
     ["plenary.nvim"] = { commit = "4b7e520", date = "1664607953" },
     ["schemastore.nvim"] = { commit = "8789a28", date = "1668981656" },
     ["telescope-fzf-native.nvim"] = { commit = "65c0ee3", date = "1662442760" },
