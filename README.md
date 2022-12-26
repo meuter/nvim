@@ -10,9 +10,6 @@ found in [`lua/languages`](lua/languages).
 
 ![Screenshot](screenshots/lsp-integration.jpg)
 
-For a complete list of supported languages, see
-[`languages.lua`](lua/user/languages.lua)
-
 ## Fuzzy Finding
 
 ![Screenshot](screenshots/telescope.jpg)
