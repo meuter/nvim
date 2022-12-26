@@ -8,13 +8,13 @@ local language = {
 
 function language.on_mason_install(install)
     install {
-        -- pu all the tools to install using mason
+        -- put all the mason tools here
     }
 end
 
 function language.on_treesitter_install(install)
     install {
-        -- add all the grammars to install for treesitter
+        -- put all the treesitter grammars here
     }
 end
 

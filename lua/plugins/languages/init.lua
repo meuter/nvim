@@ -7,7 +7,9 @@ local languages = {
     "docker",
     "golang",
     "json",
-    "yaml"
+    "yaml",
+    "markdown",
+    "webdev"
 }
 
 local function for_each_languages(callback)
