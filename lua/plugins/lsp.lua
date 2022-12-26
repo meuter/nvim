@@ -47,6 +47,17 @@ function mason.build()
 end
 
 -------------------------------------------------------------------------------
+-- lsp-format
+-------------------------------------------------------------------------------
+local lspformat = {
+    "lukas-reineke/lsp-format.nvim"
+}
+
+function lspformat.config()
+    require("lsp-format").setup({})
+end
+
+-------------------------------------------------------------------------------
 -- null-ls
 -------------------------------------------------------------------------------
 local nullls = {
@@ -178,6 +189,7 @@ end
 return {
     trouble,
     mason,
+    lspformat,
     nullls,
     lspzero,
 }
