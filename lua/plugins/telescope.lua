@@ -10,6 +10,29 @@ local telescope = {
     }
 }
 
+function telescope.commits()
+    local previewers = require('telescope.previewers')
+    local builtin    = require('telescope.builtin')
+    local delta      = previewers.new_termopen_previewer {
+        get_command = function(entry)
+            return {
+                'git',
+                '-c', 'core.pager=delta',
+                '-c', 'delta.side-by-side=false',
+                'diff', entry.value .. '^!', '--',
+                entry.current_file
+            }
+        end
+    }
+    builtin.git_commits {
+        previewer = {
+            delta,
+            previewers.git_commit_message.new({}),
+            previewers.git_commit_diff_as_was.new({}),
+        }
+    }
+end
+
 function telescope.init()
     -- Ctrl+p to open project files using fuzzy finder
     vim.keymap.set({ "n", "v" }, "<C-p>", "<CMD>Telescope find_files<CR>")
@@ -42,6 +65,8 @@ function telescope.init()
         local selected = string.gsub(vim.fn.getreg("v"), "\n", "")
         require("telescope.builtin").grep_string({ search = selected })
     end)
+
+    vim.api.nvim_create_user_command("GitHistory", telescope.commits, {})
 end
 
 function telescope.config()
