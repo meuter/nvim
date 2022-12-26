@@ -22,9 +22,9 @@ DOCKER_RUN_NON_INTERACTIVE_ARGS = \
 DOCKER_RUN_INTERACTIVE_ARGS = \
 	-ti $(DOCKER_RUN_NON_INTERACTIVE_ARGS)
 
-SOURCE = $(shell find lua/user/ -type f | sort) \
+SOURCE = $(shell find lua -type f | sort) \
 		 $(shell find samples -type f | sort) \
-		 init.lua 
+		 init.lua
 
 default: build/packer_lock.lua
 
@@ -49,5 +49,12 @@ lock: build/packer_lock.lua
 
 clean:
 	rm -rf build
+
+install:
+	$(RM) -rf ~/.local/share/nvim/lazy
+	$(RM) -rf ~/.local/state/nvim/lazy
+	nvim --headless "+Lazy! sync" +qa
+	# git checkout lazy-lock.json
+	# nvim --headless "+Lazy! restore" +qa
 
 .PHONY: clean shell test default
