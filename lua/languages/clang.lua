@@ -1,7 +1,23 @@
 -------------------------------------------------------------------------------
+-- clang-extensions
+-------------------------------------------------------------------------------
+local clangd_extensions = {
+    "p00f/clangd_extensions.nvim",
+    dependencies = {
+        "VonHeikemen/lsp-zero.nvim",
+        "neovim/nvim-lspconfig",
+        "nvim-lua/plenary.nvim",
+        "mfussenegger/nvim-dap",
+    }
+}
+
+-------------------------------------------------------------------------------
 -- clang
 -------------------------------------------------------------------------------
 local clang = {
+    plugins = {
+        clangd_extensions
+    },
     tools = {
         "clangd",
         "cmake-language-server",
@@ -16,20 +32,22 @@ local clang = {
 }
 
 function clang.on_lspzero_setup()
-    require("lsp-zero").configure("clangd", {
-        cmd = {
-            "clangd",
-            "-j=4",
-            "--clang-tidy",
-            "--background-index",
-            "--suggest-missing-includes",
-            "--header-insertion=never",
-            "--fallback-style=webkit",
-            "--all-scopes-completion",
-            "--completion-style=detailed",
-            "--pch-storage=memory",
-        },
-    })
+    require("clangd_extensions").setup {
+        server = require("lsp-zero").build_options("clangd", {
+            cmd = {
+                "clangd",
+                "-j=4",
+                "--clang-tidy",
+                "--background-index",
+                "--suggest-missing-includes",
+                "--header-insertion=never",
+                "--fallback-style=webkit",
+                "--all-scopes-completion",
+                "--completion-style=detailed",
+                "--pch-storage=memory",
+            },
+        })
+    }
 end
 
 function clang.on_dap_setup()
