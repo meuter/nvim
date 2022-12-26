@@ -152,6 +152,9 @@ function lspzero.config()
     -- override nvim-cmp configuration
     local cmp = require("cmp")
     cmp.setup(lsp.defaults.cmp_config {
+        completion = {
+            completeopt = "menu,menuone,noselect,noinsert"
+        },
         window = {
             completion = { border = "single" },
             documentation = { border = "single" },

@@ -43,7 +43,7 @@ vim.opt.laststatus = 3
 vim.opt.showtabline = 0
 
 -- completion menu
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
 vim.opt.pumheight = 10
 
 -- misc
