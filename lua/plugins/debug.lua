@@ -1,7 +1,7 @@
 return {
     -- Debugger Adapter Protocol
     "rcarriga/nvim-dap-ui",
-    requires = {
+    dependencies = {
         "mfussenegger/nvim-dap",
     },
     config = function()

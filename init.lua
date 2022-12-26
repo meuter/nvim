@@ -84,6 +84,9 @@ vim.api.nvim_set_hl(0, "PmenuSel", { fg = "NONE", bg = visual_selected })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "NONE", bg = float_bg })
 vim.api.nvim_set_hl(0, "LspInfoBorder", { fg = "NONE", bg = float_bg })
 
+-- support for gitsign
+vim.api.nvim_set_hl(0, "GitSignsChange", { fg = "#c2c253", bg = "NONE" })
+
 -- support for Neotree
 vim.api.nvim_set_hl(0, "NeoTreeDirectoryIcon", { fg = "SkyBlue3" })
 vim.api.nvim_set_hl(0, "NeoTreeDirectoryName", { fg = "white" })

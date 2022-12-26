@@ -1,7 +1,4 @@
 return {
-    -- the orginal git integration for vim
-    { "tpope/vim-fugitive" },
-
     -- display green/red/blue guidelines for git
     {
         "lewis6991/gitsigns.nvim",
@@ -33,8 +30,9 @@ return {
         "sindrets/diffview.nvim",
         -- NOTE(cme): HEAD requires git 2.35+ which is not available on older systems
         commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6",
-        requires = {
+        dependencies = {
             "nvim-lua/plenary.nvim",
+            "tpope/vim-fugitive",
         },
         config = function()
             local actions = require("diffview.config").actions

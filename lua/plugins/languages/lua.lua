@@ -11,7 +11,6 @@ local neodev = {
 -------------------------------------------------------------------------------
 -- lua
 -------------------------------------------------------------------------------
-
 local lua = { neodev }
 
 function lua.on_mason_install(install)
@@ -32,12 +31,9 @@ function lua.on_setup_lspzero()
     require("lsp-zero").configure("sumneko_lua", {
         settings = {
             Lua = {
-                diagnostics = {
-                    globals = { "vim" },
-                    disable = { "different-requires" }
-                },
-                telemetry = { enable = false, },
-                workspace = { checkThirdParty = false, },
+                diagnostics = { globals = { "vim" } },
+                telemetry = { enable = false },
+                workspace = { checkThirdParty = false },
             },
         }
     })
