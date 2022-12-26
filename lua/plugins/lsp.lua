@@ -14,7 +14,7 @@ function trouble.init()
 end
 
 function trouble.config()
-    require("trouble").setup({
+    require("trouble").setup {
         signs = {
             error = "",
             warning = "",
@@ -22,7 +22,7 @@ function trouble.config()
             information = "",
             other = "",
         },
-    })
+    }
 end
 
 -------------------------------------------------------------------------------
@@ -147,6 +147,9 @@ function lspzero.config()
     vim.diagnostic.config { virtual_text = true }
 end
 
+-------------------------------------------------------------------------------
+-- lsp
+-------------------------------------------------------------------------------
 return {
     trouble,
     nullls,

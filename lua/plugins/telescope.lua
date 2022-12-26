@@ -41,7 +41,7 @@ function telescope.init()
 end
 
 function telescope.config()
-    require("telescope").setup({
+    require("telescope").setup {
         defaults = {
             prompt_prefix = "🔎 ",
             color_devicons = true,
@@ -51,7 +51,7 @@ function telescope.config()
             },
             borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         },
-    })
+    }
     require("telescope").load_extension("fzf")
 end
 

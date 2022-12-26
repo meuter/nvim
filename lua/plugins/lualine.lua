@@ -1,3 +1,6 @@
+-------------------------------------------------------------------------------
+-- custom components
+-------------------------------------------------------------------------------
 local function search_count()
     local search = vim.fn.searchcount({ maxcount = 0 })
     if search.current > 0 and vim.v.hlsearch ~= 0 then
@@ -78,6 +81,9 @@ local function terminal()
     return "[ " .. vim.b.toggle_number .. " ]"
 end
 
+-------------------------------------------------------------------------------
+-- lualine
+-------------------------------------------------------------------------------
 local lualine = {
     "nvim-lualine/lualine.nvim",
     dependencies = {
