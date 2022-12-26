@@ -26,7 +26,8 @@ end
 local lspzero = {
     "VonHeikemen/lsp-zero.nvim",
     dependencies = {
-        "neovim/nvim-lspconfig",
+        -- see https://github.com/folke/neodev.nvim/issues/98
+        { "neovim/nvim-lspconfig", commit = "3e2cc7061957292850cc386d9146f55458ae9fe3" },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/nvim-cmp",
