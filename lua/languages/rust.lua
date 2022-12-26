@@ -5,8 +5,8 @@ local crates = {
     "saecki/crates.nvim",
     tag = "v0.3.0",
     dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "hrsh7th/nvim-cmp" }
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp"
     }
 }
 
