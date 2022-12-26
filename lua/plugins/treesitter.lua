@@ -67,7 +67,7 @@ function treesitter.config()
 end
 
 function treesitter.build()
-    require("plugins.languages").on_treesitter_install()
+    require("plugins.languages.all").on_treesitter_install()
 end
 
 return treesitter

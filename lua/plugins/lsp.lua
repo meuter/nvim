@@ -39,7 +39,7 @@ function mason.config()
 end
 
 function mason.build()
-    require("plugins.languages").on_mason_install()
+    require("plugins.languages.all").on_mason_install()
 end
 
 -------------------------------------------------------------------------------
@@ -127,7 +127,7 @@ function lspzero.config()
         vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     end)
-    require("plugins.languages").on_setup_lspzero()
+    require("plugins.languages.all").on_setup_lspzero()
     lsp.setup()
 
     -- override nvim-cmp configuration
