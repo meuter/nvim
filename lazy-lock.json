@@ -15,7 +15,7 @@
   "gitsigns.nvim": { "branch": "main", "commit": "2ab3bdf0a40bab53033048c6be75bda86316b55d" },
   "harpoon": { "branch": "master", "commit": "21d0d1bfa3000e4384740bfaefa0ebc51c773786" },
   "indent-blankline.nvim": { "branch": "master", "commit": "c4c203c3e8a595bc333abaf168fcb10c13ed5fb7" },
-  "lazy.nvim": { "branch": "main", "commit": "e6de63bc9cc7f07821cc392c39361ccbfd7770e2" },
+  "lazy.nvim": { "branch": "main", "commit": "1d3da277da31ced9db941d215854b3217ee566c4" },
   "lsp-format.nvim": { "branch": "master", "commit": "ca0df5c8544e51517209ea7b86ecc522c98d4f0a" },
   "lsp-zero.nvim": { "branch": "main", "commit": "5b1b2390b375c87ed952ed038ced8dce9044fcfb" },
   "lspkind.nvim": { "branch": "master", "commit": "c68b3a003483cf382428a43035079f78474cd11e" },
