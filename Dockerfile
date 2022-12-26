@@ -75,10 +75,10 @@ RUN git config --global user.email "${USER_NAME}@sample.com" && \
 ADD "https://www.random.org/cgi-bin/randbyte?nbytes=10&format=h" /tmp/skipcache
 
 # copy config to container
-COPY --chown=${USER_NAME} [ "init.lua", "install.lua", ".config/nvim/" ]
+COPY --chown=${USER_NAME} [ "init.lua", ".config/nvim/" ]
 COPY --chown=${USER_NAME} [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
-RUN nvim --headless -u .config/nvim/install.lua
+RUN nvim --headless "+Lazy! sync" +qa 
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]

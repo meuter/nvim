@@ -24,7 +24,7 @@ DOCKER_RUN_INTERACTIVE_ARGS = \
 
 SOURCE = $(shell find lua/user/ -type f | sort) \
 		 $(shell find samples -type f | sort) \
-		 init.lua install.lua
+		 init.lua 
 
 default: build/packer_lock.lua
 
