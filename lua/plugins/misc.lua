@@ -155,7 +155,9 @@ end
 function harpoon.config()
     require("harpoon").setup {
         menu = {
-            width = vim.api.nvim_win_get_width(0) - 4,
+            width = math.floor(vim.api.nvim_win_get_width(0) * .5),
+            height = math.floor(vim.api.nvim_win_get_height(0) * .4),
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
         }
     }
 end
