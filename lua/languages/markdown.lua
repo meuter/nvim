@@ -1,19 +1,14 @@
 -------------------------------------------------------------------------------
 -- markdown
 -------------------------------------------------------------------------------
-local markdown = {}
-
-function markdown.on_mason_install(install)
-    install {
+local markdown = {
+    tools = {
         "remark-language-server",
-    }
-end
-
-function markdown.on_treesitter_install(install)
-    install {
+    },
+    grammars = {
         "markdown",
         "markdown_inline"
     }
-end
+}
 
 return markdown

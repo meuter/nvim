@@ -11,17 +11,19 @@ local neodev = {
 -------------------------------------------------------------------------------
 -- lua
 -------------------------------------------------------------------------------
-local lua = { neodev }
+local lua = {
+    plugins = {
+        neodev
+    },
+    tools = {
+        "lua-language-server"
+    },
+    grammars = {
+        "lua"
+    }
+}
 
-function lua.on_mason_install(install)
-    install { "lua-language-server" }
-end
-
-function lua.on_treesitter_install(install)
-    install { "lua" }
-end
-
-function lua.on_setup_lspzero()
+function lua.on_lspzero_setup()
     require("neodev").setup {
         library = {
             plugins = false,

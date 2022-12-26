@@ -1,21 +1,18 @@
 -------------------------------------------------------------------------------
 -- python
 -------------------------------------------------------------------------------
-local python = {}
-
-function python.on_mason_install(install)
-    install {
+local python = {
+    tools = {
         "pyright",
         "black",
         "debugpy"
+    },
+    grammars = {
+        "python"
     }
-end
+}
 
-function python.on_treesitter_install(install)
-    install { "python" }
-end
-
-function python.on_setup_dap()
+function python.on_dap_setup()
     local dap = require("dap")
 
     dap.adapters.python = {

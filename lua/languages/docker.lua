@@ -1,14 +1,9 @@
 -------------------------------------------------------------------------------
 -- docker
 -------------------------------------------------------------------------------
-local docker = {}
-
-function docker.on_mason_install(install)
-    install { "dockerfile-language-server" }
-end
-
-function docker.on_treesitter_install(install)
-    install { "dockerfile" }
-end
+local docker = {
+    tools = { "dockerfile-language-server" },
+    grammars = { "dockerfile" }
+}
 
 return docker

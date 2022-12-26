@@ -43,32 +43,28 @@ local rust_tools = {
 -------------------------------------------------------------------------------
 
 local rust = {
-    crates,
-    rust_tools
-}
-
-function rust.on_mason_install(install)
-    install {
+    plugins = {
+        crates,
+        rust_tools
+    },
+    tools = {
         "rust-analyzer",
         "codelldb",
         "taplo"
-    }
-end
-
-function rust.on_treesitter_install(install)
-    install {
+    },
+    grammars = {
         "rust",
         "toml",
     }
-end
+}
 
-function rust.on_setup_lspzero()
+function rust.on_lspzero_setup()
     require("rust-tools").setup {
         server = require("lsp-zero").build_options("rust_analyzer", {})
     }
 end
 
-function rust.on_setup_dap()
+function rust.on_dap_setup()
     local dap = require("dap")
 
     dap.adapters.codelldb = {

@@ -7,8 +7,8 @@ local nvim_dap = {
 
 function nvim_dap.config()
     require("languages").for_each(function(language)
-        if language.on_setup_dap ~= nil then
-            language.on_setup_dap()
+        if language.on_dap_setup ~= nil then
+            language.on_dap_setup()
         end
     end)
 end

@@ -39,11 +39,10 @@ function mason.config()
 end
 
 function mason.build()
-    local install = require("mason.api.command").MasonInstall
     require("languages").for_each(function(language)
-        if language.on_mason_install ~= nil then
-            language.on_mason_install(install)
-        end
+        local tools = language.tools or {}
+        print("language: ", tools)
+        require("mason.api.command").MasonInstall(tools)
     end)
 end
 
@@ -133,8 +132,8 @@ function lspzero.config()
         vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     end)
     require("languages").for_each(function(language)
-        if language.on_setup_lspzero ~= nil then
-            language.on_setup_lspzero()
+        if language.on_lspzero_setup ~= nil then
+            language.on_lspzero_setup()
         end
     end)
     lsp.setup()

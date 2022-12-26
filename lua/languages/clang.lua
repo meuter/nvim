@@ -1,26 +1,21 @@
 -------------------------------------------------------------------------------
 -- clang
 -------------------------------------------------------------------------------
-local clang = {}
-
-function clang.on_mason_install(install)
-    install {
+local clang = {
+    tools = {
         "clangd",
         "cmake-language-server",
         "codelldb",
-    }
-end
-
-function clang.on_treesitter_install(install)
-    install {
+    },
+    grammars = {
         "c",
         "cpp",
         "cmake",
         "make",
     }
-end
+}
 
-function clang.on_setup_lspzero()
+function clang.on_lspzero_setup()
     require("lsp-zero").configure("clangd", {
         cmd = {
             "clangd",
@@ -37,7 +32,7 @@ function clang.on_setup_lspzero()
     })
 end
 
-function clang.on_setup_dap()
+function clang.on_dap_setup()
     local dap = require("dap")
 
     dap.adapters.codelldb = {

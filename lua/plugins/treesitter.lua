@@ -67,11 +67,9 @@ function treesitter.config()
 end
 
 function treesitter.build()
-    local install = require("nvim-treesitter.install").ensure_installed_sync
     require("languages").for_each(function(language)
-        if language.on_treesitter_install ~= nil then
-            language.on_treesitter_install(install)
-        end
+        local grammars = language.grammars or {}
+        require("nvim-treesitter.install").ensure_installed_sync(grammars or {})
     end)
 end
 

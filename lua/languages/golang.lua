@@ -1,22 +1,17 @@
 -------------------------------------------------------------------------------
 -- golang
 -------------------------------------------------------------------------------
-local golang = {}
-
-function golang.on_mason_install(install)
-    install {
+local golang = {
+    tools = {
         "gopls",
         "delve"
-    }
-end
-
-function golang.on_treesitter_install(install)
-    install {
+    },
+    grammars = {
         "go"
     }
-end
+}
 
-function golang.on_setup_dap()
+function golang.on_dap_setup()
     local dap = require("dap")
 
     dap.adapters.delve = {

@@ -1,29 +1,24 @@
 -------------------------------------------------------------------------------
 -- webdev
 -------------------------------------------------------------------------------
-local webdev = {}
-
-function webdev.on_mason_install(install)
-    install {
+local webdev = {
+    tools = {
         "typescript-language-server",
         "eslint-lsp",
         "html-lsp",
         "emmet-ls",
         "css-lsp",
-    }
-end
-
-function webdev.on_treesitter_install(install)
-    install {
+    },
+    grammars = {
         "javascript",
         "typescript",
         "html",
         "yaml",
         "css",
     }
-end
+}
 
-function webdev.on_setup_lspzero()
+function webdev.on_lspzero_setup()
     require("lsp-zero").configure("eslint", {
         root_dir = function()
             return vim.loop.cwd()

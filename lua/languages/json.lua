@@ -1,23 +1,13 @@
 -------------------------------------------------------------------------------
 -- json
 -------------------------------------------------------------------------------
-local language = {
-    "b0o/schemastore.nvim"
+local json = {
+    plugins = { "b0o/schemastore.nvim" },
+    tools = { "json-lsp" },
+    grammars = { "json" }
 }
 
-function language.on_mason_install(install)
-    install {
-        "json-lsp"
-    }
-end
-
-function language.on_treesitter_install(install)
-    install {
-        "json"
-    }
-end
-
-function language.on_setup_lspzero()
+function json.on_lspzero_setup()
     require("lsp-zero").configure("jsonls", {
         settings = {
             json = {
@@ -28,4 +18,4 @@ function language.on_setup_lspzero()
     })
 end
 
-return language
+return json
