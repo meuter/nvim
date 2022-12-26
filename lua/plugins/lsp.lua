@@ -32,6 +32,12 @@ local mason = {
     "williamboman/mason.nvim",
 }
 
+function mason.init()
+    vim.api.nvim_create_user_command("MasonInstallMissing", function()
+        mason.build()
+    end, {})
+end
+
 function mason.config()
     require("mason").setup {
         ui = { border = "single" }
@@ -39,11 +45,22 @@ function mason.config()
 end
 
 function mason.build()
+    local to_be_installed = {}
+    local already_installed = {}
+    local registry = require("mason-registry")
     require("languages").for_each(function(language)
-        local tools = language.tools or {}
-        print("language: ", tools)
-        require("mason.api.command").MasonInstall(tools)
+        local tools_for_language = language.tools or {}
+        for _, tool in ipairs(tools_for_language) do
+            if not registry.is_installed(tool) then
+                table.insert(to_be_installed, tool)
+            else
+                table.insert(already_installed, tool)
+            end
+        end
     end)
+    print("Already installed : " .. vim.inspect(already_installed))
+    print("To be installed   : " .. vim.inspect(to_be_installed))
+    require("mason.api.command").MasonInstall(to_be_installed)
 end
 
 -------------------------------------------------------------------------------

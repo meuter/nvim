@@ -54,7 +54,5 @@ install:
 	$(RM) -rf ~/.local/share/nvim/lazy
 	$(RM) -rf ~/.local/state/nvim/lazy
 	nvim --headless "+Lazy! sync" +qa
-	# git checkout lazy-lock.json
-	# nvim --headless "+Lazy! restore" +qa
 
 .PHONY: clean shell test default

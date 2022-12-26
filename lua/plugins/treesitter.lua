@@ -73,4 +73,10 @@ function treesitter.build()
     end)
 end
 
+function treesitter.init()
+    vim.api.nvim_create_user_command("TSInstallMissing", function()
+        treesitter.build()
+    end, {})
+end
+
 return treesitter
