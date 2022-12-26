@@ -2,7 +2,9 @@ local languages = {
     "clang",
     "rust",
     "lua",
-    "python"
+    "python",
+    "bash",
+    "docker"
 }
 
 local function for_each_languages(callback)
