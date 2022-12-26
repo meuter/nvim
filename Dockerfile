@@ -35,6 +35,11 @@ RUN wget https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.
     dpkg -i nvim-linux64.deb && \
     rm -vf nvim-linux64.deb
 
+# install space age sed
+RUN wget https://github.com/ms-jpq/sad/releases/download/v0.4.22/x86_64-unknown-linux-gnu.deb && \
+    dpkg -i x86_64-unknown-linux-gnu.deb && \
+    rm -vf x86_64-unknown-linux-gnu.deb
+
 # set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8
