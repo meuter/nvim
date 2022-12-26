@@ -1,4 +1,6 @@
--- Togglable Diagnostics Panel
+-------------------------------------------------------------------------------
+-- trouble
+-------------------------------------------------------------------------------
 local trouble = {
     "folke/trouble.nvim",
     dependencies = {
@@ -23,6 +25,40 @@ function trouble.config()
     })
 end
 
+-------------------------------------------------------------------------------
+-- null-ls
+-------------------------------------------------------------------------------
+local nullls = {
+    "jayp0521/mason-null-ls.nvim",
+    dependencies = {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+        "nvim-lua/plenary.nvim",
+        "lukas-reineke/lsp-format.nvim",
+    },
+    config = function()
+        require("mason-null-ls").setup {
+            automatic_setup = true,
+        }
+        require("mason-null-ls").setup_handlers {
+            function(source_name, methods)
+                require("mason-null-ls.automatic_setup")(source_name, methods)
+            end,
+        }
+        require("null-ls").setup {
+            on_attach = require("lsp-format").on_attach,
+        }
+    end,
+    init = function()
+        vim.api.nvim_create_user_command("NullLsInfo", function()
+            require("null-ls.info").show_window({ border = "single" })
+        end, {})
+    end,
+}
+
+-------------------------------------------------------------------------------
+-- lsp-zero
+-------------------------------------------------------------------------------
 local lspzero = {
     "VonHeikemen/lsp-zero.nvim",
     dependencies = {
@@ -112,6 +148,7 @@ function lspzero.config()
 end
 
 return {
+    trouble,
+    nullls,
     lspzero,
-    trouble
 }
