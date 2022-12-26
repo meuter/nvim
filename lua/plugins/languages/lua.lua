@@ -14,6 +14,14 @@ local neodev = {
 
 local lua = { neodev }
 
+function lua.on_mason_install(install)
+    install { "lua-language-server" }
+end
+
+function lua.on_treesitter_install(install)
+    install { "lua" }
+end
+
 function lua.on_setup_lspzero()
     require("neodev").setup {
         library = {
@@ -33,14 +41,6 @@ function lua.on_setup_lspzero()
             },
         }
     })
-end
-
-function lua.on_mason_install(install)
-    install { "lua-language-server" }
-end
-
-function lua.on_treesitter_install(install)
-    install { "lua" }
 end
 
 return lua

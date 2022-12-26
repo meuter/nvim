@@ -47,12 +47,6 @@ local rust = {
     rust_tools
 }
 
-function rust.on_setup_lspzero()
-    require("rust-tools").setup {
-        server = require("lsp-zero").build_options("rust_analyzer", {})
-    }
-end
-
 function rust.on_mason_install(install)
     install {
         "rust-analyzer",
@@ -65,6 +59,12 @@ function rust.on_treesitter_install(install)
     install {
         "rust",
         "toml",
+    }
+end
+
+function rust.on_setup_lspzero()
+    require("rust-tools").setup {
+        server = require("lsp-zero").build_options("rust_analyzer", {})
     }
 end
 

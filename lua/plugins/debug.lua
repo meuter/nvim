@@ -8,6 +8,8 @@ return {
         local dapui = require("dapui")
         local dap = require("dap")
 
+        require("plugins.languages").on_setup_dap()
+
         dapui.setup({
             expand_lines = true,
             icons = {

@@ -1,4 +1,5 @@
 local languages = {
+    "clang",
     "rust",
     "lua"
 }
@@ -9,7 +10,7 @@ local function for_each_languages(callback)
     end
 end
 
-local function collect_plugins()
+local function collect_plugins_for_all_languages()
     local plugins = {}
     for_each_languages(function(language)
         for _, plugin in ipairs(language) do
@@ -19,25 +20,39 @@ local function collect_plugins()
     return plugins
 end
 
-local M = collect_plugins()
+local M = collect_plugins_for_all_languages()
 
 function M.on_setup_lspzero()
     for_each_languages(function(language)
-        language.on_setup_lspzero()
+        if language.on_setup_lspzero ~= nil then
+            language.on_setup_lspzero()
+        end
+    end)
+end
+
+function M.on_setup_dap()
+    for_each_languages(function(language)
+        if language.on_setup_dap ~= nil then
+            language.on_setup_dap()
+        end
     end)
 end
 
 function M.on_mason_install()
     local install = require("mason.api.command").MasonInstall
     for_each_languages(function(language)
-        language.on_mason_install(install)
+        if language.on_mason_install ~= nil then
+            language.on_mason_install(install)
+        end
     end)
 end
 
 function M.on_treesitter_install()
     local install = require("nvim-treesitter.install").ensure_installed_sync
     for_each_languages(function(language)
-        language.on_treesitter_install(install)
+        if language.on_treesitter_install ~= nil then
+            language.on_treesitter_install(install)
+        end
     end)
 end
 

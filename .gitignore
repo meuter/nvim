@@ -1,2 +1,3 @@
 build/
 plugin/
+/samples/rust/target
