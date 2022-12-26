@@ -126,7 +126,6 @@ vim.keymap.set("i", "<C-w>", "<C-\\><C-n><C-w>")
 -- dismiss search highlight with esc
 vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 
-
 -------------------------------------------------------------------------------
 -- commands
 -------------------------------------------------------------------------------
@@ -169,5 +168,20 @@ vim.opt.runtimepath:prepend(lazypath)
 
 -- load all plugins
 require("lazy").setup("plugins", {
-    ui = { border = "single" },
+    ui = {
+        border = "single",
+        icons = {
+            cmd = "🚦",
+            config = "🎛️",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            source = "📄",
+            start = "🚀",
+            task = "📌",
+        },
+    }
 })
