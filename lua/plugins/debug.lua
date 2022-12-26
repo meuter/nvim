@@ -6,7 +6,11 @@ local nvim_dap = {
 }
 
 function nvim_dap.config()
-    require("plugins.languages.all").on_setup_dap()
+    require("languages").for_each(function(language)
+        if language.on_setup_dap ~= nil then
+            language.on_setup_dap()
+        end
+    end)
 end
 
 -------------------------------------------------------------------------------

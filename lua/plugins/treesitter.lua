@@ -67,7 +67,12 @@ function treesitter.config()
 end
 
 function treesitter.build()
-    require("plugins.languages.all").on_treesitter_install()
+    local install = require("nvim-treesitter.install").ensure_installed_sync
+    require("languages").for_each(function(language)
+        if language.on_treesitter_install ~= nil then
+            language.on_treesitter_install(install)
+        end
+    end)
 end
 
 return treesitter
