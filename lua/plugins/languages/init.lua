@@ -4,7 +4,10 @@ local languages = {
     "lua",
     "python",
     "bash",
-    "docker"
+    "docker",
+    "golang",
+    "json",
+    "yaml"
 }
 
 local function for_each_languages(callback)

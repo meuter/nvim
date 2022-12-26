@@ -1,29 +1,31 @@
 -------------------------------------------------------------------------------
--- <language>
+-- json
 -------------------------------------------------------------------------------
 local language = {
-    -- put all language specific plugin specs here
-    -- something like rust-tools for rust or neodev for lua
+    "b0o/schemastore.nvim"
 }
 
 function language.on_mason_install(install)
     install {
-        -- pu all the tools to install using mason
+        "json-lsp"
     }
 end
 
 function language.on_treesitter_install(install)
     install {
-        -- add all the grammars to install for treesitter
+        "json"
     }
 end
 
 function language.on_setup_lspzero()
-    -- put your lsp configuration here
-end
-
-function language.on_setup_dap()
-    -- put you dap configuration here
+    require("lsp-zero").configure("jsonls", {
+        settings = {
+            json = {
+                schemas = require("schemastore").json.schemas(),
+                validate = { enable = true },
+            },
+        },
+    })
 end
 
 return language
