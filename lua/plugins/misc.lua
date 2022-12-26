@@ -111,6 +111,18 @@ function better_whitespace.config()
     vim.g.better_whitespace_enabled = 1
     vim.g.strip_whitespace_on_save = 1
     vim.g.strip_whitespace_confirm = 0
+    vim.g.better_whitespace_filetypes_blacklist = {
+        "terminal",
+        "toggleterm",
+        "diff",
+        "git",
+        "gitcommit",
+        "unite",
+        "qf",
+        "help",
+        "markdown",
+        "fugitive",
+    }
 end
 
 -------------------------------------------------------------------------------
@@ -119,6 +131,34 @@ end
 local toggleterm = {
     "akinsho/toggleterm.nvim"
 }
+
+local function prompt_and_replace(old)
+    vim.ui.input({ prompt = "Replace '" .. old .. "' with:" }, function(new)
+        local cmd = "fd | FZF_DEFAULT_OPTS='--reverse --multi --bind=\"ctrl-a:toggle-all\"' sad '"
+            .. old
+            .. "' '"
+            .. new
+            .. "'"
+        local terminal = require("toggleterm.terminal").Terminal:new({
+            cmd = cmd,
+            direction = "float",
+        })
+        terminal:toggle()
+    end)
+end
+
+function toggleterm.init()
+    -- Ctrl+f to search word under the cursor/selected text
+    vim.keymap.set("n", "<C-f>", function()
+        local old = vim.fn.expand("<cword>")
+        prompt_and_replace(old)
+    end)
+    vim.keymap.set("v", "<C-f>", function()
+        vim.cmd([[ noau normal! "vy" ]])
+        local old = string.gsub(vim.fn.getreg("v"), "\n", "")
+        prompt_and_replace(old)
+    end)
+end
 
 function toggleterm.config()
     require("toggleterm").setup {
