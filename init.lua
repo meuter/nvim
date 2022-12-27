@@ -49,12 +49,20 @@ vim.opt.pumheight = 10
 -- misc
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
-vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
 vim.opt.foldenable = false
 vim.opt.wrap = false
 vim.opt.updatetime = 100
 vim.opt.shell = "/bin/bash"
+
+-- detecting the clipboard manager takes about 150ms on startup
+-- not need to do this before showing the main window.
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        vim.opt.clipboard = "unnamedplus"
+    end,
+})
 
 -------------------------------------------------------------------------------
 -- colors
