@@ -34,6 +34,12 @@ local diffview = {
     "sindrets/diffview.nvim",
     -- NOTE(cme): HEAD requires git 2.35+ which is not available on older systems
     commit = "9359f7b1dd3cb9fb1e020f57a91f8547be3558c6",
+    keys = {
+        { "<C-g>", "<CMD>DiffviewOpen<CR>", mode = { "n", "v", "i" } },
+    },
+    cmd = {
+        "DiffviewOpen"
+    },
     dependencies = {
         "nvim-lua/plenary.nvim",
         "tpope/vim-fugitive",
@@ -74,12 +80,6 @@ function diffview.config()
             },
         },
     }
-end
-
-function diffview.init()
-    -- Use ctrl+g to open fugitive
-    vim.keymap.set({ "n", "v" }, "<C-g>", "<CMD>DiffviewOpen<CR>")
-    vim.keymap.set("i", "<C-g>", "<C-\\><C-n><CMD>DiffviewOpen<CR>")
 end
 
 -------------------------------------------------------------------------------

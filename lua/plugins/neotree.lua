@@ -3,6 +3,9 @@
 -------------------------------------------------------------------------------
 local neotree = {
     "nvim-neo-tree/neo-tree.nvim",
+    keys = {
+        { "<C-b>", "<CMD>NeoTreeRevealToggle<CR>", mode = { "n", "v", "i" } }
+    },
     dependencies = {
         "MunifTanjim/nui.nvim",
         "kyazdani42/nvim-web-devicons"
@@ -45,12 +48,6 @@ function neotree.config()
             },
         },
     }
-end
-
-function neotree.init()
-    -- Ctrl+B to open file using fuzzy finder
-    vim.keymap.set({ "n", "v" }, "<C-b>", "<CMD>NeoTreeRevealToggle<CR>")
-    vim.keymap.set("i", "<C-b>", "<C-\\><C-n><CMD>NeoTreeRevealToggle<CR>")
 end
 
 return neotree
