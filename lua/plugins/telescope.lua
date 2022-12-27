@@ -20,6 +20,7 @@ local telescope = {
         { "<C-s>", "<CMD>Telescope grep_string<CR>", mode = { "n", "i" } },
         { "<C-s>", search_selected_text, mode = { "v" } }
     },
+    lazy = true,
     cmd = {
         "Telescope",
         "GitHistory"

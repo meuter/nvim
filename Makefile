@@ -55,4 +55,12 @@ install:
 	$(RM) -rf ~/.local/state/nvim/lazy
 	nvim --headless "+Lazy! sync" +qa
 
+startup:
+	rm /tmp/startup
+	nvim --headless --startuptime /tmp/startup +qa
+	tail -n1 /tmp/startup
+
+profile:
+	hyperfine "nvim --headless +qa" --warmup 10 -r 30
+
 .PHONY: clean shell test default

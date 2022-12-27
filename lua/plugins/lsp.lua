@@ -3,15 +3,13 @@
 -------------------------------------------------------------------------------
 local trouble = {
     "folke/trouble.nvim",
+    keys = {
+        { "<F10>", "<CMD>TroubleToggle<CR>", mode = { "n", "v", "i" } }
+    },
     dependencies = {
         "kyazdani42/nvim-web-devicons"
     },
 }
-
-function trouble.init()
-    -- <F11> to toggle diagnostic panel
-    vim.keymap.set("n", "<F10>", "<CMD>TroubleToggle<CR>")
-end
 
 function trouble.config()
     require("trouble").setup {

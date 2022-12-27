@@ -6,6 +6,7 @@ local neotree = {
     keys = {
         { "<C-b>", "<CMD>NeoTreeRevealToggle<CR>", mode = { "n", "v", "i" } }
     },
+    lazy = true,
     dependencies = {
         "MunifTanjim/nui.nvim",
         "kyazdani42/nvim-web-devicons"
