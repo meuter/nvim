@@ -147,7 +147,6 @@ function lspzero.config()
         end
         vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
         vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        vim.keymap.set("n", "<F4>", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
     end)
     require("languages").for_each(function(language)
         if language.on_lspzero_setup ~= nil then
@@ -194,6 +193,18 @@ function lspzero.config()
 end
 
 -------------------------------------------------------------------------------
+-- toggle-lsp-diagnostics
+-------------------------------------------------------------------------------
+local toggle_lsp_diagnostics = {
+    "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+    cmd = "ToggleDiag"
+}
+
+function toggle_lsp_diagnostics.config()
+    require("toggle_lsp_diagnostics").init()
+end
+
+-------------------------------------------------------------------------------
 -- lsp
 -------------------------------------------------------------------------------
 return {
@@ -202,4 +213,5 @@ return {
     lspformat,
     nullls,
     lspzero,
+    toggle_lsp_diagnostics
 }
