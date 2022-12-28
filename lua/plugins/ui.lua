@@ -5,11 +5,8 @@ local noice = {
     "folke/noice.nvim",
     dependencies = {
         { "MunifTanjim/nui.nvim" }
-    }
-}
-
-function noice.config()
-    require("noice").setup {
+    },
+    config = {
         cmdline = { view = "cmdline" },
         lsp = {
             hover = { enabled = false },
@@ -17,7 +14,7 @@ function noice.config()
         },
         messages = { view_search = false },
     }
-end
+}
 
 -------------------------------------------------------------------------------
 -- dressing
@@ -32,7 +29,34 @@ local dressing = {
 -------------------------------------------------------------------------------
 -- UI
 -------------------------------------------------------------------------------
+
+local winbar = {
+    "fgheng/winbar.nvim",
+    config = {
+        enabled = true,
+        colors = {
+            path = "AliceBlue",
+        },
+        icons = {
+            seperator = "❯",
+        },
+        exclude_filetype = {
+            "gitcommit",
+            "neo-tree",
+            "toggleterm",
+            "DiffviewFiles",
+            "help",
+            "Trouble",
+            "qf",
+        }
+    }
+}
+
+-------------------------------------------------------------------------------
+-- UI
+-------------------------------------------------------------------------------
 return {
     noice,
-    dressing
+    dressing,
+    winbar,
 }

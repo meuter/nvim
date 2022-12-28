@@ -20,30 +20,6 @@ local function mode()
     return center(require("lualine.utils.mode").get_mode(), 8)
 end
 
-local function filename()
-    local result = vim.fn.expand("%")
-    if vim.bo.filetype == "neo-tree" then
-        return ""
-    end
-    if vim.bo.filetype == "toggleterm" then
-        return ""
-    end
-    if vim.bo.filetype == "Trouble" then
-        return ""
-    end
-    if vim.bo.filetype == "DiffviewFiles" then
-        return ""
-    end
-    if vim.bo.filetype == "packer" then
-        return ""
-    end
-    if result == "" then
-        return ""
-    end
-    local path = require("plenary.path")
-    return path:new({ result, sep = "/" }):make_relative(vim.fn.getcwd())
-end
-
 local function lsp()
     local buf_clients = vim.lsp.buf_get_clients()
     local null_ls_installed, null_ls = pcall(require, "null-ls")
@@ -118,8 +94,7 @@ function lualine.config()
                 },
             },
             lualine_c = {
-                { cwd, icon = "📁", color = { fg = "LightYellow" } },
-                { filename, icon = "📝", color = { fg = "AliceBlue" } },
+                { cwd, icon = "📁", color = { fg = "AliceBlue" } },
                 { terminal, icon = "🖥️", color = { fg = "AliceBlue" } },
             },
             lualine_x = {
