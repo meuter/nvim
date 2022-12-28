@@ -56,7 +56,7 @@ install:
 	nvim --headless "+Lazy! sync" +qa
 
 startup:
-	rm /tmp/startup
+	$(RM) -f /tmp/startup
 	nvim --headless --startuptime /tmp/startup +qa
 	tail -n1 /tmp/startup
 
