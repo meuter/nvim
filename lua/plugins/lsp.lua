@@ -28,18 +28,13 @@ end
 -------------------------------------------------------------------------------
 local mason = {
     "williamboman/mason.nvim",
+    config = { ui = { border = "single" } }
 }
 
 function mason.init()
     vim.api.nvim_create_user_command("MasonInstallMissing", function()
         mason.build()
     end, {})
-end
-
-function mason.config()
-    require("mason").setup {
-        ui = { border = "single" }
-    }
 end
 
 function mason.build()
@@ -65,12 +60,9 @@ end
 -- lsp-format
 -------------------------------------------------------------------------------
 local lspformat = {
-    "lukas-reineke/lsp-format.nvim"
+    "lukas-reineke/lsp-format.nvim",
+    config = true
 }
-
-function lspformat.config()
-    require("lsp-format").setup({})
-end
 
 -------------------------------------------------------------------------------
 -- null-ls

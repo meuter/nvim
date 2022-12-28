@@ -3,26 +3,18 @@
 -------------------------------------------------------------------------------
 local lastplace = {
     -- remembers last place in file and return to it afterwards
-    "ethanholz/nvim-lastplace"
+    "ethanholz/nvim-lastplace",
+    config = true,
 }
-function lastplace.config()
-    require("nvim-lastplace").setup {}
-end
 
 -------------------------------------------------------------------------------
 -- cutlass
 -------------------------------------------------------------------------------
 local cutlass = {
     -- prevent delete and cut operation from poluting the yank register
-    "gbprod/cutlass.nvim"
+    "gbprod/cutlass.nvim",
+    config = { cut_key = "m", override_del = true }
 }
-
-function cutlass.config()
-    require("cutlass").setup {
-        cut_key = "m",
-        override_del = true,
-    }
-end
 
 -------------------------------------------------------------------------------
 -- move
@@ -129,7 +121,8 @@ end
 -- misc
 -------------------------------------------------------------------------------
 local toggleterm = {
-    "akinsho/toggleterm.nvim"
+    "akinsho/toggleterm.nvim",
+    config = { open_mapping = [[<c-\>]], direction = "tab" }
 }
 
 local function prompt_and_replace(old)
@@ -158,13 +151,6 @@ function toggleterm.init()
         local old = string.gsub(vim.fn.getreg("v"), "\n", "")
         prompt_and_replace(old)
     end)
-end
-
-function toggleterm.config()
-    require("toggleterm").setup {
-        open_mapping = [[<c-\>]],
-        direction = "tab",
-    }
 end
 
 -------------------------------------------------------------------------------

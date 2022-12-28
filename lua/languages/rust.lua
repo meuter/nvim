@@ -4,6 +4,7 @@
 local crates = {
     "saecki/crates.nvim",
     tag = "v0.3.0",
+    config = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp"
@@ -18,10 +19,6 @@ function crates.init()
             require("cmp").setup.buffer({ sources = { { name = "crates" } } })
         end,
     })
-end
-
-function crates.config()
-    require("crates").setup()
 end
 
 -------------------------------------------------------------------------------

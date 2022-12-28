@@ -24,15 +24,10 @@ end
 -------------------------------------------------------------------------------
 local dressing = {
     "stevearc/dressing.nvim",
-}
-
-function dressing.config()
-    require("dressing").setup {
-        input = {
-            border = "single",
-        },
+    config = {
+        input = { border = "single" },
     }
-end
+}
 
 -------------------------------------------------------------------------------
 -- UI

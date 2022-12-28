@@ -18,15 +18,12 @@ end
 -------------------------------------------------------------------------------
 local nvim_dap_virtual_text = {
     "theHamsta/nvim-dap-virtual-text",
+    config = true,
     dependencies = {
         "mfussenegger/nvim-dap",
         "nvim-treesitter/nvim-treesitter"
     }
 }
-
-function nvim_dap_virtual_text.config()
-    require("nvim-dap-virtual-text").setup {}
-end
 
 -------------------------------------------------------------------------------
 -- dap-ui
