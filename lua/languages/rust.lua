@@ -5,6 +5,7 @@ local crates = {
     "saecki/crates.nvim",
     tag = "v0.3.0",
     config = true,
+    ft = "toml",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp"

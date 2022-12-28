@@ -63,4 +63,7 @@ startup:
 profile:
 	hyperfine "nvim --headless +qa" --warmup 10 -r 30
 
+stats:
+	bash -c 'cloc $(shell find . -name "*.lua") --by-file'
+
 .PHONY: clean shell test default
