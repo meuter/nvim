@@ -1,4 +1,5 @@
 local function open_commit_window(args)
+    vim.cmd("DiffviewClose")
     vim.cmd("G commit " .. args)
     vim.cmd(vim.api.nvim_replace_termcodes("normal <C-w>J", true, true, true))
 end
