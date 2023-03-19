@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------
--- options
+-- Options
 -------------------------------------------------------------------------------
+
 -- backup, swap and undo
 vim.opt.backup = false
 vim.opt.swapfile = false
@@ -55,19 +56,9 @@ vim.opt.wrap = false
 vim.opt.updatetime = 100
 vim.opt.shell = "/bin/bash"
 
--- detecting the clipboard manager takes about 150ms on startup
--- not need to do this before showing the main window.
-vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-        vim.opt.clipboard = "unnamedplus"
-    end,
-})
-
 -------------------------------------------------------------------------------
--- colors
+-- Colorscheme
 -------------------------------------------------------------------------------
-
 local float_bg = "#272727"
 local diff_green = "#044025"
 local diff_red = "#400404"
@@ -78,7 +69,7 @@ local visual_selected = "#253747"
 vim.opt.termguicolors = true
 
 -- start with a builtin color scheme
-vim.cmd("colorscheme habamax")
+vim.cmd.colorscheme("habamax")
 
 -- fixup some general highlight
 vim.api.nvim_set_hl(0, "VertSplit", { bg = "NONE" })
@@ -110,7 +101,7 @@ vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "NONE", bg = float_bg })
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = float_bg })
 
 -------------------------------------------------------------------------------
--- keymaps
+-- Key Maps
 -------------------------------------------------------------------------------
 
 -- Tab/Shift+tab to indent/dedent
@@ -135,7 +126,7 @@ vim.keymap.set("i", "<C-w>", "<C-\\><C-n><C-w>")
 vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 
 -------------------------------------------------------------------------------
--- commands
+-- Autocommands
 -------------------------------------------------------------------------------
 
 -- always open help windows in full screen
@@ -149,63 +140,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
--- with autoread set, this forces a check of changed files when focus changes
--- (useful when using space age sed to search and replace behing vim's back)
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-    group = vim.api.nvim_create_augroup("CheckReloadOnFocusChange", { clear = true }),
-    command = "checktime",
-})
-
 -------------------------------------------------------------------------------
--- plugins
+-- Plugins
 -------------------------------------------------------------------------------
 
--- automatically bootstrap package manager
+-- install plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
+    print("Installing 'folke/lazy.nvim'")
     vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "--single-branch",
+        "git", "clone", "--filter=blob:none",
         "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
         lazypath,
     })
 end
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
--- load all plugins
+-- bootstrap packages
 require("lazy").setup("plugins", {
-    ui = {
-        border = "single",
-        icons = {
-            cmd = "🚦",
-            config = "🎛️",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-        },
-    },
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
-    },
-
-
+    ui = { border = "single" },
+    change_detection = { notify = false }
 })
