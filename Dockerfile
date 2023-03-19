@@ -31,14 +31,9 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install nodejs
 
 # install neovim
-RUN wget https://github.com/neovim/neovim/releases/download/v0.8.1/nvim-linux64.deb && \
+RUN wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb && \
     dpkg -i nvim-linux64.deb && \
     rm -vf nvim-linux64.deb
-
-# install space age sed
-RUN wget https://github.com/ms-jpq/sad/releases/download/v0.4.22/x86_64-unknown-linux-gnu.deb && \
-    dpkg -i x86_64-unknown-linux-gnu.deb && \
-    rm -vf x86_64-unknown-linux-gnu.deb
 
 # set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
@@ -84,6 +79,6 @@ COPY --chown=${USER_NAME} [ "init.lua", ".config/nvim/" ]
 COPY --chown=${USER_NAME} [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
-RUN nvim --headless "+Lazy! sync" +qa 
+RUN nvim --headless "+Lazy! sync" +qa
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]

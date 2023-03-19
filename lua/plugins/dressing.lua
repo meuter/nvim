@@ -1,6 +1,6 @@
 return {
     "stevearc/dressing.nvim",
-    config = {
+    opts = {
         input = { border = "single" },
     }
 }
