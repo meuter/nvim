@@ -1,7 +1,8 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- the head of treesitter is always broken!
+    -- the head of treesitter is often broken!
     commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
+    build = ":TSUpdate",
     dependencies = {
         { "nvim-treesitter/nvim-treesitter-textobjects" },
         { "p00f/nvim-ts-rainbow" }
