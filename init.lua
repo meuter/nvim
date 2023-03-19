@@ -129,13 +129,23 @@ vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 -- Autocommands
 -------------------------------------------------------------------------------
 
--- always open help windows in full screen
+-- replace window when opening help
 vim.api.nvim_create_autocmd("BufEnter", {
-    group = vim.api.nvim_create_augroup("OpenHelpInFullWindow", { clear = true }),
+    group = vim.api.nvim_create_augroup("HelpReplaceWindow", { clear = true }),
     callback = function()
-        if vim.bo.filetype == "help" then
-            local key = vim.api.nvim_replace_termcodes("<C-w>o", true, false, true)
-            vim.api.nvim_feedkeys(key, "n", false)
+        if vim.bo.filetype == "help" and vim.b.already_opened == nil then
+            -- remember we already opened this buffer
+            vim.b.already_opened = true
+
+            -- close the original window
+            local original_win = vim.fn.win_getid(vim.fn.winnr('#'))
+            local help_win = vim.api.nvim_get_current_win()
+            if original_win ~= help_win then
+                vim.api.nvim_win_close(original_win, false)
+            end
+
+            -- put the help buffer in the buffer list
+            vim.bo.buflisted = true
         end
     end,
 })
