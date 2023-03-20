@@ -28,7 +28,7 @@ return {
             callback = function()
                 local opts = { buffer = 0 }
                 vim.api.nvim_set_hl(0, "WinBarActive", { underline = false, fg = "AliceBlue" })
-                vim.keymap.set("t", "<esc><esc><esc>", [[<C-\><C-n>]], opts)
+                vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], opts)
                 vim.keymap.set({ "t", "n" }, "<F2>", "<CMD>ToggleTermSetName<CR>", opts)
                 vim.keymap.set({ "t", "n" }, "<C-w>o", function()
                     vim.cmd("ToggleTerm")
@@ -40,7 +40,6 @@ return {
                     vim.cmd("ToggleTerm direction=horizontal")
                     vim.api.nvim_feedkeys("i", "n", false)
                 end, opts)
-                -- vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
                 for i = 0, 9 do
                     vim.keymap.set({ "t", "n" }, "<C-w>" .. i, function()
                         vim.cmd("ToggleTerm")
@@ -48,6 +47,7 @@ return {
                         vim.api.nvim_feedkeys("i", "n", false)
                     end, opts)
                 end
+                vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
             end
         })
     end
