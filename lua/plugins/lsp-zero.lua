@@ -17,6 +17,7 @@ return {
         "rafamadriz/friendly-snippets",
         "lukas-reineke/lsp-format.nvim",
         "onsails/lspkind.nvim",
+        "b0o/schemastore.nvim",
     },
     config = function()
         local lsp = require("lsp-zero")
@@ -44,7 +45,21 @@ return {
             vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         end)
 
+        -- lua
         lsp.nvim_workspace()
+
+        -- json
+        require("lsp-zero").configure("jsonls", {
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                    validate = {
+                        enable = true
+                    },
+                },
+            },
+        })
+
         lsp.setup()
 
         -- override nvim-cmp configuration
