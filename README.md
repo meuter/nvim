@@ -3,8 +3,7 @@
 This is my-own little attempt at a neovim configuration that turns neovim into
 an 'IDE'. For a complete list of plugins, see
 [`lazy-lock.json`](lazy-lock.json). All plugin configurations can be found in
-[`lua/plugins`](lua/plugins) and all language specific configuration can be
-found in [`lua/languages`](lua/languages).
+[`lua/plugins`](lua/plugins).
 
 ## LSP Support
 
