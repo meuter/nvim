@@ -8,23 +8,24 @@ found in [`lua/languages`](lua/languages).
 
 ## LSP Support
 
-![Screenshot](screenshots/lsp-integration.jpg)
+![Screenshot](screenshots/lsp.png)
 
 ## Fuzzy Finding
 
-![Screenshot](screenshots/telescope.jpg)
+![Screenshot](screenshots/telescope.png)
 
 ## Integrated Terminal
 
-![Screenshot](screenshots/toggleterm.jpg)
+![Screenshot](screenshots/terminal.png)
 
 ## Git Integration
 
-![Screenshot](screenshots/git-integration.jpg)
+![Screenshot](screenshots/git-diff.png)
+![Screenshot](screenshots/git-commit.png)
 
 ## Debugging
 
-![Screenshot](screenshots/dap-integration.jpg)
+![Screenshot](screenshots/debug.png)
 
 ## Installation
 
