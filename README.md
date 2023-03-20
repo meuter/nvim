@@ -41,7 +41,7 @@ The install script will take care of
 *   installing the package manager [`lazy.nvim`](https://github.com/folke/lazy.nvim).
 *   installing all plugins.
 *   installing all Treesitter grammars for all supported languages.
-*   installing all LSP servers for all supported languages.
+*   [CURRENTLY BROKEN] installing all LSP servers for all supported languages.
 
 ## Trying it out
 
