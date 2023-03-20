@@ -1,5 +1,6 @@
 return {
     "p00f/clangd_extensions.nvim",
+    ft = { "c", "cpp" },
     dependencies = {
         "VonHeikemen/lsp-zero.nvim",
         "nvim-lua/plenary.nvim",
@@ -12,7 +13,6 @@ return {
                     "-j=4",
                     "--clang-tidy",
                     "--background-index",
-                    "--suggest-missing-includes",
                     "--header-insertion=never",
                     "--fallback-style=webkit",
                     "--all-scopes-completion",
