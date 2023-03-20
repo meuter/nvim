@@ -1,77 +1,13 @@
--------------------------------------------------------------------------------
--- custom components
--------------------------------------------------------------------------------
-local function search_count()
-    local search = vim.fn.searchcount({ maxcount = 0 })
-    if search.current > 0 and vim.v.hlsearch ~= 0 then
-        return search.current .. "/" .. search.total
-    end
-    return ""
-end
-
-local function center(text, width)
-    local spaces = width - vim.fn.strdisplaywidth(text)
-    local left = math.floor(spaces / 2)
-    local right = spaces - left
-    return string.rep(" ", left) .. text .. string.rep(" ", right)
-end
-
-local function mode()
-    return center(require("lualine.utils.mode").get_mode(), 8)
-end
-
-local function lsp()
-    local buf_clients = vim.lsp.buf_get_clients()
-    local null_ls_installed, null_ls = pcall(require, "null-ls")
-    local buf_client_names = {}
-    for _, client in pairs(buf_clients) do
-        if client.name == "null-ls" then
-            if null_ls_installed then
-                for formatter, formatter_config in pairs(null_ls.builtins.formatting) do
-                    if vim.tbl_contains(formatter_config.filetypes, vim.bo.filetype) then
-                        table.insert(buf_client_names, formatter)
-                    end
-                end
-                for linter, linter_config in pairs(null_ls.builtins.diagnostics) do
-                    if vim.tbl_contains(linter_config.filetypes, vim.bo.filetype) then
-                        table.insert(buf_client_names, linter)
-                    end
-                end
-            end
-        else
-            table.insert(buf_client_names, client.name)
-        end
-    end
-    return table.concat(buf_client_names, ", ")
-end
-
-local function macro()
-    return vim.fn.reg_recording()
-end
-
-local function cwd()
-    return vim.fn.getcwd():gsub(os.getenv("HOME"), "~")
-end
-
-local function terminal()
-    return "[ " .. vim.b.toggle_number .. " ]"
-end
-
--------------------------------------------------------------------------------
--- lualine
--------------------------------------------------------------------------------
-local lualine = {
+return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "meuter/lualine-so-fancy.nvim",
     },
-}
-
-function lualine.config()
-    require("lualine").setup {
+    opts = {
         options = {
             theme = "seoul256",
-            component_separators = { left = "", right = "" },
+            component_separators = { left = "│", right = "│" },
             section_separators = { left = "", right = "" },
             globalstatus = true,
             refresh = {
@@ -80,37 +16,27 @@ function lualine.config()
         },
         sections = {
             lualine_a = {
-                { mode, color = { gui = "NONE" } },
+                { "fancy_mode", width = 3 }
             },
             lualine_b = {
-                { "branch" },
-                {
-                    "diff",
-                    diff_color = {
-                        added = { fg = "#87af87" },
-                        modified = { fg = "#c2c253" },
-                        removed = { fg = "#d75f5f" },
-                    },
-                },
+                { "fancy_branch" },
+                { "fancy_diff" },
             },
             lualine_c = {
-                { cwd, icon = "📁", color = { fg = "AliceBlue" } },
-                { terminal, icon = "🖥️", color = { fg = "AliceBlue" } },
+                { "fancy_cwd", substitute_home = true }
             },
             lualine_x = {
+                { "fancy_macro" },
+                { "fancy_diagnostics" },
+                { "fancy_searchcount" },
                 { "location" },
-                { macro, icon = "🎥", color = { fg = "AliceBlue" } },
-                { "diagnostics", symbols = { error = " ", warn = " ", hint = " ", info = " " } },
-                { search_count, icon = "🔎" },
             },
             lualine_y = {
-                "filetype",
+                { "fancy_filetype" }
             },
             lualine_z = {
-                { lsp, icon = "📡", color = { gui = "NONE" } },
+                { "fancy_lsp_servers" }
             },
-        },
-    }
-end
-
-return lualine
+        }
+    },
+}

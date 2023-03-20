@@ -1,25 +1,24 @@
--------------------------------------------------------------------------------
--- neotree
--------------------------------------------------------------------------------
-local neotree = {
+return {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-        { "<C-b>", "<CMD>NeoTreeRevealToggle<CR>", mode = { "n", "v", "i" } }
-    },
+    branch = "v2.x",
     dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
-        "kyazdani42/nvim-web-devicons"
-    }
-}
-
-function neotree.config()
-    require("neo-tree").setup {
+    },
+    cmd = {
+        "Neotree"
+    },
+    keys = {
+        { "<C-b>", "<CMD>Neotree toggle<CR>", mode = { "n", "v", "i" } }
+    },
+    opts = {
         close_if_last_window = true,
         popup_border_style = "single",
         enable_diagnostics = false,
         enable_git_status = false,
         window = {
-            width = 40,
+            width = 30,
             mappings = {
                 ["<F5>"] = "refresh",
                 ["<F2>"] = "rename",
@@ -42,12 +41,5 @@ function neotree.config()
             },
             follow_current_file = true,
         },
-        git_status = {
-            window = {
-                position = "float",
-            },
-        },
     }
-end
-
-return neotree
+}

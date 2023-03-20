@@ -51,7 +51,6 @@ clean:
 	rm -rf build
 
 install:
-	$(RM) -rf ~/.local/share/nvim/lazy
 	$(RM) -rf ~/.local/state/nvim/lazy
 	nvim --headless "+Lazy! sync" +qa
 
