@@ -59,6 +59,10 @@ cd /tmp/test
 make test
 ```
 
+## Shameless Plug
+
+If you like the status bar, please take a look at [lualine-so-fancy.nvim](https://github.com/meuter/lualine-so-fancy.nvim).
+
 ## Prerequisite
 
 See [`Dockerfile`](Dockerfile) for the list of required packages (based on Ubuntu 20.04).
