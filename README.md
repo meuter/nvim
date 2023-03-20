@@ -44,7 +44,7 @@ The install script will take care of
 
 
 You will need a [patched font](https://www.nerdfonts.com/) including the latest 
-[codicons](https://github.com/microsoft/vscode-codicons) glyphs. The screenshot was taken using
+[codicons](https://github.com/microsoft/vscode-codicons) glyphs. All screenshots were taken using
 [Fira Code Regular Nerd Font Complete](font/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf), 
 patched manually by yours truly and [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701).
 
