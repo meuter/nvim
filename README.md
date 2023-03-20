@@ -5,13 +5,13 @@ an 'IDE'. For a complete list of plugins, see
 [`lazy-lock.json`](lazy-lock.json). All plugin configurations can be found in
 [`lua/plugins`](lua/plugins).
 
-## LSP Support
-
-![Screenshot](screenshots/lsp.png)
-
 ## Fuzzy Finding
 
 ![Screenshot](screenshots/telescope.png)
+
+## LSP Support
+
+![Screenshot](screenshots/lsp.png)
 
 ## Integrated Terminal
 
