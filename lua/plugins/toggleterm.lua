@@ -15,9 +15,9 @@ return {
             enabled = true,
             name_formatter = function(term)
                 if term.display_name then
-                    return "🖥️" .. term.display_name .. "[" .. term.id .. "]"
+                    return " 🖥️ " .. term.display_name .. " "
                 else
-                    return "🖥️" .. "[" .. term.id .. "]"
+                    return " 🖥️ " .. term.id .. " "
                 end
             end
         }
@@ -27,7 +27,8 @@ return {
             group = vim.api.nvim_create_augroup("ToggleTermKeyMap", { clear = true }),
             callback = function()
                 local opts = { buffer = 0 }
-                vim.api.nvim_set_hl(0, "WinBarActive", { underline = false, fg = "AliceBlue" })
+                vim.api.nvim_set_hl(0, "WinBarActive", { underline = false, fg = "AliceBlue", bg = "NONE" })
+                vim.api.nvim_set_hl(0, "WinBarInactive", { underline = false, fg = "#777777", bg = "NONE" })
                 vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], opts)
                 vim.keymap.set({ "t", "n" }, "<F2>", "<CMD>ToggleTermSetName<CR>", opts)
                 vim.keymap.set({ "t", "n" }, "<C-w>o", function()
@@ -35,7 +36,7 @@ return {
                     vim.cmd("ToggleTerm direction=tab")
                     vim.api.nvim_feedkeys("i", "n", false)
                 end, opts)
-                vim.keymap.set({ "t", "n" }, "<C-w>n", function()
+                vim.keymap.set({ "t", "n" }, "<C-w>m", function()
                     vim.cmd("ToggleTerm")
                     vim.cmd("ToggleTerm direction=horizontal")
                     vim.api.nvim_feedkeys("i", "n", false)
