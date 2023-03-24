@@ -5,7 +5,7 @@ return {
     },
     opts = {
         animation = false,
-        auto_hide = false,
+        auto_hide = true,
         diagnostics = {
             [vim.diagnostic.severity.ERROR] = { enabled = false },
             [vim.diagnostic.severity.WARN] = { enabled = false },
@@ -14,6 +14,7 @@ return {
         },
         icon_separator_active = "",
         icon_separator_inactive = "",
+        no_name_title = "scratch"
     },
     init = function()
         local map = vim.api.nvim_set_keymap
