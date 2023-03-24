@@ -41,7 +41,7 @@ vim.opt.fillchars:append("eob: ")
 -- status and tab bar
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
-vim.opt.showtabline = 0
+vim.opt.showtabline = 1
 
 -- completion menu
 vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
@@ -55,6 +55,7 @@ vim.opt.foldenable = false
 vim.opt.wrap = false
 vim.opt.updatetime = 100
 vim.opt.shell = "/bin/bash"
+vim.opt.confirm = true
 
 -------------------------------------------------------------------------------
 -- Colorscheme
@@ -99,6 +100,30 @@ vim.api.nvim_set_hl(0, "NeoTreeSymbolicLinkTarget", { fg = "cyan" })
 -- support for Telescope
 vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "NONE", bg = float_bg })
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = float_bg })
+
+-- support for BarBar
+local barbecue = "#30302c"
+vim.api.nvim_set_hl(0, "BufferCurrent", { fg = "AliceBlue", bg = float_bg })
+vim.api.nvim_set_hl(0, "BufferCurrentIndex", { fg = "AliceBlue", bg = float_bg })
+vim.api.nvim_set_hl(0, "BufferCurrentMod", { fg = "AliceBlue", bg = float_bg })
+vim.api.nvim_set_hl(0, "BufferCurrentSign", { fg = "AliceBlue", bg = float_bg })
+vim.api.nvim_set_hl(0, "BufferCurrentTarget", { fg = "AliceBlue", bg = float_bg })
+vim.api.nvim_set_hl(0, "BufferVisible", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferVisibleIndex", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferVisibleMod", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferVisibleSign", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferVisibleTarget", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactive", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactiveIndex", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactiveMod", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactiveSign", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactiveTarget", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferTabpages", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferTabpageFill", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferCurrentIcon", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferVisibleIcon", { fg = "NONE", bg = barbecue })
+vim.api.nvim_set_hl(0, "BufferInactiveIcon", { fg = "NONE", bg = barbecue })
+
 
 -------------------------------------------------------------------------------
 -- Key Maps

@@ -1,6 +1,7 @@
 {
   "LuaSnip": { "branch": "master", "commit": "025886915e7a1442019f467e0ae2847a7cf6bf1a" },
   "aosp-vim-syntax": { "branch": "master", "commit": "cc978efd478972a56d04c8272f1a72439c62b95d" },
+  "barbar.nvim": { "branch": "master", "commit": "d0b39de8ce48e9efced88edc9244ca21e571bb98" },
   "barbecue": { "branch": "fix/E36", "commit": "3dbfe7bd2398774d00afa3e2130dae97ea344d5b" },
   "bufdelete.nvim": { "branch": "master", "commit": "8933abc09df6c381d47dc271b1ee5d266541448e" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "798e377ec859087132b81d2f347b5080580bd6b1" },

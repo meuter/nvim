@@ -8,10 +8,5 @@ return {
         "SmiteshP/nvim-navic",
         "nvim-tree/nvim-web-devicons",
     },
-    opts = {
-        theme = {
-            -- match the color of lualine using the seoul256 theme
-            normal = { bg = "#30302c" },
-        }
-    }
+    config = true
 }
