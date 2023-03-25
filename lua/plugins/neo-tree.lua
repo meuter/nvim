@@ -16,7 +16,6 @@ return {
         close_if_last_window = true,
         popup_border_style = "single",
         enable_diagnostics = false,
-        enable_git_status = false,
         window = {
             width = 30,
             mappings = {
