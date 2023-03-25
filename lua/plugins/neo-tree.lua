@@ -41,5 +41,10 @@ return {
             },
             follow_current_file = true,
         },
+        default_component_configs = {
+            icon = {
+                folder_empty = ""
+            }
+        }
     }
 }
