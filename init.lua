@@ -34,14 +34,14 @@ vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("lead:⋅")
 vim.opt.listchars:append("trail:⋅")
 vim.opt.listchars:append("eol:")
-vim.opt.listchars:append("tab: ")
+vim.opt.listchars:append("tab:▸▸")
 vim.opt.fillchars:append("diff: ")
 vim.opt.fillchars:append("eob: ")
 
 -- status and tab bar
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
-vim.opt.showtabline = 1
+vim.opt.showtabline = 0
 
 -- completion menu
 vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
