@@ -57,7 +57,14 @@ vim.opt.updatetime = 100
 vim.opt.shell = "/bin/bash"
 vim.opt.confirm = true
 vim.opt.termguicolors = true
-vim.opt.clipboard = "unnamedplus"
+
+-- not need to do this before showing the main window.
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        vim.opt.clipboard = "unnamedplus"
+    end,
+})
 
 -------------------------------------------------------------------------------
 -- Key Maps
