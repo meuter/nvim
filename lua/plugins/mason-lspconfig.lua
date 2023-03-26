@@ -8,7 +8,6 @@ return {
                 "clangd",
                 "neocmake",
                 "dockerls",
-                "docker_compose_language_service",
                 "gopls",
                 "emmet_ls",
                 "html",
