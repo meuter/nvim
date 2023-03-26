@@ -21,7 +21,7 @@ return {
                 { name = "buffer" },
                 { name = "luasnip" },
             },
-            mappings = {
+            mapping = {
                 ['<CR>'] = cmp.mapping.confirm { select = false },
                 ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
                 ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
