@@ -6,9 +6,8 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "L3MON4D3/LuaSnip",
         "lukas-reineke/lsp-format.nvim",
-        "b0o/schemastore.nvim",
     },
-    config = function()
+    config = function(_, opts)
         local lsp = require("lsp-zero").preset({
             name = "recommended",
             suggest_lsp_servers = false,
@@ -22,33 +21,25 @@ return {
         })
         lsp.on_attach(function(client, buffer)
             require("lsp-format").on_attach(client)
-            local opts = { noremap = true, silent = true, buffer = buffer }
+            local keymap_opts = { noremap = true, silent = true, buffer = buffer }
             local telescope_available, _ = pcall(require, "telescope")
             if telescope_available then
-                vim.keymap.set("n", "<F3>", "<cmd>Telescope lsp_references<CR>", opts)
-                vim.keymap.set("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", opts)
+                vim.keymap.set("n", "<F3>", "<cmd>Telescope lsp_references<CR>", keymap_opts)
+                vim.keymap.set("n", "<F12>", "<cmd>Telescope lsp_definitions<CR>", keymap_opts)
             else
-                vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-                vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+                vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.references()<CR>", keymap_opts)
+                vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", keymap_opts)
             end
-            vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+            vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
         end)
 
         -- lua
         lsp.nvim_workspace()
 
-        -- json
-        require("lsp-zero").configure("jsonls", {
-            settings = {
-                json = {
-                    schemas = require("schemastore").json.schemas(),
-                    validate = {
-                        enable = true
-                    },
-                },
-            },
-        })
-
+        -- other languages callback if any
+        for _, setup in ipairs(opts.on_setup or {}) do
+            setup(lsp)
+        end
         lsp.setup()
 
         -- tweak lsp UI
@@ -61,5 +52,9 @@ return {
             vim.lsp.handlers.signature_help,
             { border = "single" }
         )
+    end,
+    on_setup = function(opts, setup)
+        opts.on_setup = opts.on_setup or {}
+        table.insert(opts.on_setup, setup)
     end
 }
