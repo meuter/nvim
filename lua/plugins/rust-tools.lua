@@ -10,6 +10,18 @@ return {
     config = function()
         require("rust-tools").setup {
             server = require("lsp-zero").build_options("rust_analyzer", {}),
+            hover_actions = {
+                border = {
+                    { "┌", "FloatBorder" },
+                    { "─", "FloatBorder" },
+                    { "┐", "FloatBorder" },
+                    { "│", "FloatBorder" },
+                    { "┘", "FloatBorder" },
+                    { "─", "FloatBorder" },
+                    { "└", "FloatBorder" },
+                    { "│", "FloatBorder" },
+                },
+            }
         }
     end
 }
