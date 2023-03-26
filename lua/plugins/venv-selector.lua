@@ -5,6 +5,5 @@ return {
         "nvim-telescope/telescope.nvim"
     },
     config = true,
-    event = "VeryLazy",
     cmd = "VenvSelect"
 }
