@@ -1,5 +1,5 @@
 return {
-    "jayp0521/mason-null-ls.nvim",
+    "jay-babu/mason-null-ls.nvim",
     dependencies = {
         "williamboman/mason.nvim",
         "jose-elias-alvarez/null-ls.nvim",
@@ -9,6 +9,12 @@ return {
     config = function()
         require("mason-null-ls").setup {
             automatic_setup = true,
+            ensure_installed = {
+                "isort",
+                "black",
+                "eslint_lsp",
+                "prettierd"
+            }
         }
         require("mason-null-ls").setup_handlers {
             function(source_name, methods)
@@ -19,5 +25,5 @@ return {
             on_attach = require("lsp-format").on_attach,
             border = "single"
         }
-    end,
+    end
 }
