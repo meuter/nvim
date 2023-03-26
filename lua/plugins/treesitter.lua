@@ -1,38 +1,37 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- the head of treesitter is often broken!
+    -- the help parser is broken in the HEAD
     commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
     build = ":TSUpdate",
     dependencies = {
-        { "nvim-treesitter/nvim-treesitter-textobjects" },
-        { "p00f/nvim-ts-rainbow" }
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        "p00f/nvim-ts-rainbow",
     },
     config = function()
         require("nvim-treesitter.configs").setup {
             ensure_installed = {
                 "bash",
+                "css",
+                "scss",
                 "c",
                 "cpp",
                 "cmake",
                 "make",
                 "dockerfile",
+                "yaml",
                 "go",
+                "html",
                 "json",
                 "lua",
                 "markdown",
                 "markdown_inline",
                 "python",
-                "rust",
                 "toml",
-                "javascript",
+                "rust",
                 "typescript",
-                "html",
-                "yaml",
-                "css",
-                "yaml"
+                "javascript",
+                "tsx"
             },
-            auto_install = true,
-            sync_install = true,
             rainbow = {
                 enable = true,
                 disable = { "html" },
