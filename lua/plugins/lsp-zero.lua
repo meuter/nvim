@@ -2,8 +2,6 @@ return {
     "VonHeikemen/lsp-zero.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
         "hrsh7th/nvim-cmp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -20,16 +18,17 @@ return {
         "b0o/schemastore.nvim",
     },
     config = function()
-        local lsp = require("lsp-zero")
-        lsp.preset("recommended")
-        lsp.set_preferences {
+        local lsp = require("lsp-zero").preset({
+            name = "recommended",
+            set_lsp_keymaps = false,
+            suggest_lsp_servers = false,
             sign_icons = {
                 error = "",
                 warn = "",
                 hint = "",
                 info = "",
             },
-        }
+        })
         lsp.on_attach(function(client, buffer)
             require("lsp-format").on_attach(client)
             local opts = { noremap = true, silent = true, buffer = buffer }
