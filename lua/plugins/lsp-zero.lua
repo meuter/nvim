@@ -20,7 +20,6 @@ return {
     config = function()
         local lsp = require("lsp-zero").preset({
             name = "recommended",
-            set_lsp_keymaps = false,
             suggest_lsp_servers = false,
             sign_icons = {
                 error = "",
@@ -41,7 +40,6 @@ return {
                 vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
             end
             vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-            vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         end)
 
         -- lua
@@ -94,6 +92,15 @@ return {
             },
         })
 
+        -- tweak lsp UI
         vim.diagnostic.config { virtual_text = true }
+        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+            vim.lsp.handlers.hover,
+            { border = "single" }
+        )
+        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            { border = "single" }
+        )
     end
 }
