@@ -9,19 +9,15 @@ return {
     },
     config = function()
         require("rust-tools").setup {
-            server = require("lsp-zero").build_options("rust_analyzer", {}),
-            hover_actions = {
-                border = {
-                    { "┌", "FloatBorder" },
-                    { "─", "FloatBorder" },
-                    { "┐", "FloatBorder" },
-                    { "│", "FloatBorder" },
-                    { "┘", "FloatBorder" },
-                    { "─", "FloatBorder" },
-                    { "└", "FloatBorder" },
-                    { "│", "FloatBorder" },
-                },
-            }
+            server = require("lsp-zero").build_options("rust_analyzer", {
+                settings = {
+                    ["rust-analyzer"] = {
+                        checkOnSave = {
+                            command = "clippy"
+                        }
+                    }
+                }
+            })
         }
     end
 }
