@@ -79,6 +79,5 @@ COPY --chown=${USER_NAME} [ "init.lua", ".config/nvim/" ]
 COPY --chown=${USER_NAME} [ "lua", ".config/nvim/lua" ]
 
 # bootstrap vim
-RUN nvim --headless "+Lazy! sync" +qa
 WORKDIR /home/${USER_NAME}/samples
 CMD [ "nvim" ]

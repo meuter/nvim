@@ -50,10 +50,6 @@ lock: build/packer_lock.lua
 clean:
 	rm -rf build
 
-install:
-	$(RM) -rf ~/.local/state/nvim/lazy
-	nvim --headless "+Lazy! sync" +qa
-
 startup:
 	$(RM) -f /tmp/startup
 	nvim --headless --startuptime /tmp/startup +qa
