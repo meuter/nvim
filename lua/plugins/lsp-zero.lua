@@ -33,10 +33,7 @@ return {
             vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
         end)
 
-        -- lua
-        lsp.nvim_workspace()
-
-        -- other languages callback if any
+        -- configured all registered LSP setup functions
         for _, setup in ipairs(opts.on_setup or {}) do
             setup(lsp)
         end
@@ -54,6 +51,9 @@ return {
         )
     end,
     on_setup = function(opts, setup)
+        -- this function can be called by other language specific plugins
+        -- to register a setup function that will be called before lsp-zero's
+        -- setup() function.
         opts.on_setup = opts.on_setup or {}
         table.insert(opts.on_setup, setup)
     end
