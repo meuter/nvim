@@ -65,7 +65,9 @@ This will compile the docker container and run nvim inside it.
 
 ## Shameless Plug
 
-If you like the status bar, please take a look at [lualine-so-fancy.nvim](https://github.com/meuter/lualine-so-fancy.nvim).
+If you like the status bar, please take a look at [`lualine-so-fancy.nvim`](https://github.com/meuter/lualine-so-fancy.nvim).
+If you like the color scheme, please take a look at [`habamax-plus.nvim`](https://github.com/meuter/habamax-plus.nvim) which
+is a custom spin of fork of the awesome [`habamax`](https://github.com/habamax/vim-habamax), built into neovim.
 
 ## Prerequisite
 
