@@ -40,6 +40,8 @@ When Neovim starts, everything will be installed automatically:
 - all plugins.
 - all Treesitter grammars for all languages supported out of the box.
 - all LSP servers for all languages supported out of the box.
+- all [`null-ls`](https://github.com/jose-elias-alvarez/null-ls.nvim) tools.
+- all [`nvim-dap`](https://github.com/mfussenegger/nvim-dap) debuggers.
 
 ## Font
 
