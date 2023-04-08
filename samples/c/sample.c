@@ -3,6 +3,7 @@
 
 static int x = 33;
 
+// AABBCCDDEE 001122
 int foo()
 {
     int toto = 54;
