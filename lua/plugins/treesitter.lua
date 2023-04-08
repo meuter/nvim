@@ -1,7 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- the help parser is broken in the HEAD
-    commit = "4cccb6f494eb255b32a290d37c35ca12584c74d0",
+    -- treesitter HEAD is often broken, so PIN it to known version
+    commit = "584ccea56e2d37b31ba292da2b539e1a4bb411ca",
     build = ":TSUpdate",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
