@@ -12,13 +12,8 @@ return {
             name = "recommended",
             suggest_lsp_servers = false,
             manage_nvim_cmp = false,
-            sign_icons = {
-                error = "",
-                warn = "",
-                hint = "",
-                info = "",
-            },
         })
+
         lsp.on_attach(function(client, buffer)
             require("lsp-format").on_attach(client)
             local keymap_opts = { noremap = true, silent = true, buffer = buffer }
@@ -32,6 +27,13 @@ return {
             end
             vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
         end)
+
+        lsp.set_sign_icons({
+            error = "",
+            warn = "",
+            hint = "",
+            info = "",
+        })
 
         -- configured all registered LSP setup functions
         for _, setup in ipairs(opts.on_setup or {}) do
