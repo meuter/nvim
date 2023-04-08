@@ -9,6 +9,7 @@ return {
     },
     opts = {
         ui = {
+            height = 0.85,
             border = "single"
         }
     }
