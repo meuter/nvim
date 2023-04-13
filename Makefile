@@ -53,7 +53,7 @@ clean:
 startup:
 	$(RM) -f /tmp/startup
 	nvim --headless --startuptime /tmp/startup +qa
-	tail -n1 /tmp/startup
+	less /tmp/startup
 
 profile:
 	hyperfine "nvim --headless +qa" --warmup 10 -r 30
