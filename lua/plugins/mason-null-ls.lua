@@ -14,12 +14,8 @@ return {
                 "black",
                 "eslint_lsp",
                 "prettierd"
-            }
-        }
-        require("mason-null-ls").setup_handlers {
-            function(source_name, methods)
-                require("mason-null-ls.automatic_setup")(source_name, methods)
-            end,
+            },
+            handlers = {}
         }
         require("null-ls").setup {
             on_attach = require("lsp-format").on_attach,

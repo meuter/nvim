@@ -12,8 +12,8 @@ return {
                 "codelldb",
                 "delve",
                 "python"
-            }
+            },
+            handlers = {}
         }
-        require("mason-nvim-dap").setup_handlers()
     end
 }
