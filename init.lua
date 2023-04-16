@@ -117,6 +117,23 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -------------------------------------------------------------------------------
+-- Fixup Path for WSL
+-------------------------------------------------------------------------------
+if vim.fn.getenv("WSLENV") ~= nil then
+    -- on WSL the path is littered with the Windows hosts's PATH which
+    -- slows down vim.fn.exepath
+    local path = vim.fn.getenv("PATH")
+    local fixed = {}
+    for _, entry in ipairs(vim.fn.split(path, ":")) do
+        if not string.match(entry, "/mnt/c/.*") then
+            fixed[#fixed + 1] = entry
+        end
+    end
+    local fixed_path = table.concat(fixed, ":")
+    vim.fn.setenv("PATH", fixed_path)
+end
+
+-------------------------------------------------------------------------------
 -- Plugins
 -------------------------------------------------------------------------------
 
