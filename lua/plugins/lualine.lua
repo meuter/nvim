@@ -2,7 +2,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
         "nvim-tree/nvim-web-devicons",
-        "meuter/lualine-so-fancy.nvim",
+        "meuter/lualine-so-fancy.nvim"
     },
     opts = {
         options = {
@@ -28,13 +28,13 @@ return {
                 { "fancy_macro" },
                 { "fancy_diagnostics" },
                 { "fancy_searchcount" },
-                { "fancy_location" }
+                { "fancy_location" },
             },
             lualine_y = {
                 { "fancy_filetype" },
             },
             lualine_z = {
-                { "fancy_lsp_servers" }
+                { "fancy_lsp_servers" },
             },
         }
     },
