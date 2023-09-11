@@ -42,6 +42,7 @@ vim.opt.fillchars:append("eob: ")
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
 vim.opt.showtabline = 0
+vim.opt.shortmess = "nocI"
 
 -- completion menu
 vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
@@ -153,5 +154,8 @@ vim.opt.rtp:prepend(lazypath)
 -- bootstrap packages
 require("lazy").setup("plugins", {
     ui = { border = "single" },
-    change_detection = { notify = false }
+    change_detection = {
+        enabled = false,
+        notify = false
+    }
 })
