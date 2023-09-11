@@ -1,11 +1,10 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     -- treesitter HEAD is often broken, so PIN it to known version
-    commit = "584ccea56e2d37b31ba292da2b539e1a4bb411ca",
+    tag = "v0.9.1",
     build = ":TSUpdate",
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        -- "p00f/nvim-ts-rainbow",
     },
     config = function()
         require("nvim-treesitter.configs").setup {
@@ -31,19 +30,6 @@ return {
                 "typescript",
                 "javascript",
                 "tsx"
-            },
-            rainbow = {
-                enable = true,
-                disable = { "html" },
-                extended_mode = false,
-                colors = {
-                    "#b16286",
-                    "#a89984",
-                    "#d79921",
-                    "#689d6a",
-                    "#d65d0e",
-                    "#458588",
-                },
             },
             highlight = {
                 enable = true,
