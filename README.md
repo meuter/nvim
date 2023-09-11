@@ -1,5 +1,6 @@
 # Neovim Configuration
 
+
 This is my-own little attempt at a neovim configuration that turns neovim into
 my own little '[PDE](https://www.youtube.com/watch?v=QMVIJhC9Veg&ab_channel=TJDeVries)'.
 For a complete list of plugins, see [`lazy-lock.json`](lazy-lock.json). All plugin
