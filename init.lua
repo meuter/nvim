@@ -39,10 +39,9 @@ vim.opt.fillchars:append("diff: ")
 vim.opt.fillchars:append("eob: ")
 
 -- status and tab bar
-vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
+vim.opt.showmode = false
 vim.opt.showtabline = 0
-vim.opt.shortmess = "nocI"
 
 -- completion menu
 vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
