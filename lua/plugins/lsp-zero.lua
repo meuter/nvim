@@ -15,6 +15,9 @@ return {
         })
 
         lsp.on_attach(function(client, buffer)
+            if client.name ~= "taplo" then
+                require("lsp-format").on_attach(client)
+            end
             local keymap_opts = { noremap = true, silent = true, buffer = buffer }
             local telescope_available, _ = pcall(require, "telescope")
             if telescope_available then

@@ -1,7 +1,9 @@
 return {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
-    config = true,
+    config = {
+        loading_indicator = false
+    },
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp"
