@@ -6,7 +6,7 @@ return {
     },
     opts = {
         open_mapping = [[<c-\>]],
-        direction = "horizontal",
+        direction = "tab",
         shell = "/bin/bash",
         size = function()
             return math.ceil(vim.o.lines * .4)
