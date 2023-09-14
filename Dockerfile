@@ -18,6 +18,8 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     python3-pip \
     python3-venv \
     python-is-python3 \
+    ca-certificates \
+    gnupg \
     unzip \
     ripgrep \
     htop \
@@ -27,11 +29,14 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
     bfs
 
 # install node 18 (dockerls and sumneko_lua do not work with node 11)
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install nodejs
+ENV NODE_MAJOR=18
+RUN mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list &&\
+    apt-get update && sudo apt-get install nodejs -y
 
 # install neovim
-RUN wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb && \
+RUN wget https://github.com/neovim/neovim/releases/download/v0.9.2/nvim-linux64.deb && \
     dpkg -i nvim-linux64.deb && \
     rm -vf nvim-linux64.deb
 
