@@ -26,6 +26,7 @@ return {
                 vim.keymap.set("n", "<F12>", "<cmd>lua vim.lsp.buf.definition()<CR>", keymap_opts)
             end
             vim.keymap.set("n", "<F1>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", keymap_opts)
+            vim.keymap.set("n", "<S-F1>", "<cmd>lua vim.diagnostic.goto_next()<CR>", keymap_opts)
         end)
 
         lsp.set_sign_icons({
