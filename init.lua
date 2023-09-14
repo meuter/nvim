@@ -116,6 +116,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- 'set autoread' requires you to save the file to detect the change... let's fix this
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+    group = vim.api.nvim_create_augroup("AutoRealodFileModifiedInTheBackground", { clear = true }),
+    callback = function()
+        local bufnr = tonumber(vim.fn.expand("<abuf>")) or 0
+        if bufnr == 0 then
+            return
+        end
+
+        local name = vim.api.nvim_buf_get_name(bufnr)
+        if name == "" or vim.bo[bufnr].buftype ~= "" or not vim.fn.filereadable(name) then
+            return
+        end
+
+        vim.cmd(bufnr .. "checktime")
+    end,
+
+})
+
 -------------------------------------------------------------------------------
 -- Fixup Path for WSL
 -------------------------------------------------------------------------------
