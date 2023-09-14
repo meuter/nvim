@@ -35,11 +35,6 @@ RUN mkdir -p /etc/apt/keyrings && \
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list &&\
     apt-get update && sudo apt-get install nodejs -y
 
-# install neovim
-RUN wget https://github.com/neovim/neovim/releases/download/v0.9.2/nvim-linux64.deb && \
-    dpkg -i nvim-linux64.deb && \
-    rm -vf nvim-linux64.deb
-
 # set the locale
 RUN sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8
@@ -53,7 +48,17 @@ RUN echo "%${USER_NAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}/
 
-# install rustup
+# install neovim
+ENV NVIM_VERSION=0.9.2
+ENV NVIM_TARBALL=nvim-linux64.tar.gz
+ENV NVIM_HOME="/home/${USER_NAME}/.local/"
+RUN curl -L https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/${NVIM_TARBALL} --output /tmp/${NVIM_TARBALL} && \
+    mkdir -p ${NVIM_HOME} && cd ${NVIM_HOME} &&\
+    tar xvf /tmp/${NVIM_TARBALL} --strip-components=1 && \
+    rm -rf /tmp/${NVIM_TARBALL}
+ENV PATH="${NVIM_HOME}/bin:${PATH}"
+
+# install rust
 ENV CARGO_HOME="/home/${USER_NAME}/.local/cargo"
 ENV RUSTUP_HOME="/home/${USER_NAME}/.local/rustup"
 RUN curl https://sh.rustup.rs -sSf | bash -s -- -y

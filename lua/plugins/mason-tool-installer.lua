@@ -1,0 +1,13 @@
+return {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    options = {
+        ensure_installed = {
+            "isort",
+            "black",
+            "eslint_lsp",
+            "prettierd"
+        },
+        auto_update = false,
+        run_on_start = false,
+    }
+}
