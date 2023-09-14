@@ -23,6 +23,14 @@ return {
         }
     },
     init = function()
+        vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+            group = vim.api.nvim_create_augroup("ToggleTermAlwaysEnterInInsert", { clear = true }),
+            pattern = "term://*",
+            callback = function()
+                vim.cmd("startinsert")
+            end
+        })
+
         vim.api.nvim_create_autocmd({ "TermOpen" }, {
             group = vim.api.nvim_create_augroup("ToggleTermKeyMap", { clear = true }),
             callback = function()
