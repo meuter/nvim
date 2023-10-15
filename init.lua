@@ -91,6 +91,9 @@ vim.keymap.set("i", "<C-w>", "<C-\\><C-n><C-w>")
 -- dismiss search highlight with esc
 vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 
+-- Ctrl+r in visual mode to start a replace of the current visual selection
+vim.keymap.set("v", "<C-r>", "\"hy:%s/<C-r>h//gc<left><left><left>")
+
 -------------------------------------------------------------------------------
 -- Autocommands
 -------------------------------------------------------------------------------
