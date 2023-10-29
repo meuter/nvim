@@ -21,6 +21,12 @@ return {
                     yaml = {
                         schemas = require('schemastore').yaml.schemas(),
                     },
+                    redhat = {
+                        telemetry = {
+                            -- them sneaky bastards...
+                            enabled = false
+                        }
+                    }
                 },
             })
         end)
