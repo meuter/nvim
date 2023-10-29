@@ -1,6 +1,6 @@
 return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    options = {
+    opts = {
         ensure_installed = {
             "isort",
             "black",
