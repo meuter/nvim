@@ -1,7 +1,7 @@
 return {
     'saecki/crates.nvim',
     event = { "BufRead Cargo.toml" },
-    config = {
+    opts = {
         loading_indicator = false
     },
     dependencies = {
