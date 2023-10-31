@@ -5,7 +5,6 @@ return {
         { "<C-p>", "<CMD>Telescope find_files<CR>",                                            mode = { "n", "v", "i" } },
         { "<A-p>", "<CMD>Telescope buffers<CR>",                                               mode = { "n", "v", "i" } },
         { "<C-l>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n", "v", "i" } },
-        { "<C-o>", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n", "v", "i" } },
         { "<C-s>", "<CMD>Telescope grep_string<CR>",                                           mode = { "n", "i" } },
     },
     cmd = {
@@ -15,7 +14,6 @@ return {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope-fzf-native.nvim",    build = "make" },
         { "nvim-telescope/telescope-live-grep-args.nvim" },
-        { "nvim-telescope/telescope-dap.nvim" },
     },
     config = function()
         local telescope = require("telescope")
@@ -26,9 +24,6 @@ return {
                 prompt_prefix = "🔎 ",
                 color_devicons = true,
                 selection_caret = "❯ ",
-                preview = {
-                    treesitter = true,
-                },
                 borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             },
             pickers = {
@@ -59,6 +54,5 @@ return {
         }
         telescope.load_extension("fzf")
         telescope.load_extension("live_grep_args")
-        telescope.load_extension("dap")
     end
 }

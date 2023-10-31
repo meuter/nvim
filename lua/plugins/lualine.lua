@@ -34,7 +34,6 @@ return {
                 { "fancy_filetype" },
             },
             lualine_z = {
-                { "fancy_lsp_servers" },
             },
         }
     },
