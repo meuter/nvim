@@ -21,7 +21,7 @@
   "habamax-plus.nvim": { "branch": "main", "commit": "2023d991c0e25ae9cfdeba871748796824e4a56c" },
   "indent-blankline.nvim": { "branch": "master", "commit": "3c8a185da4b8ab7aef487219f5e001b11d4b6aaf" },
   "inlay-hints.nvim": { "branch": "main", "commit": "006b0898f5d3874e8e528352103733142e705834" },
-  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
+  "lazy.nvim": { "branch": "main", "commit": "83493db50a434a4c5c648faf41e2ead80f96e478" },
   "lsp-format.nvim": { "branch": "master", "commit": "31fc250a412ab24555b389f61fac0330f6bb7660" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "84771a9ec7f7d1fecec8bb84c0c97d811e4b08ec" },
   "lspkind.nvim": { "branch": "master", "commit": "7f26cf5e27e2bd910ce0ea00c514da2bf97423b8" },
