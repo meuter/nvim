@@ -58,6 +58,8 @@ vim.opt.shell = "/bin/bash"
 vim.opt.confirm = true
 vim.opt.termguicolors = true
 
+vim.opt.cmdheight = 0
+
 -- not need to do this before showing the main window.
 vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
