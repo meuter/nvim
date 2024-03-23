@@ -1,5 +1,6 @@
 return {
     "fedepujol/move.nvim",
+    config = true,
     keys = {
         { "<A-Down>", ":MoveLine(1)<CR>",              mode = { "n" } },
         { "<A-Up>",   ":MoveLine(-1)<CR>",             mode = { "n" } },
