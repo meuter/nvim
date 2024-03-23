@@ -11,6 +11,12 @@ return {
         },
         fmt = {
             stack_upwards = false
+        },
+        notification = {
+            window = {
+                winblend = 0,
+            },
         }
+
     }
 }
