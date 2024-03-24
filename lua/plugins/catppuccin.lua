@@ -50,6 +50,10 @@ return {
 
             " reset vertical split line
             hi VertSplit guifg=NONE guibg=NONE gui=NONE cterm=NONE
+
+            " selection color: let syntax hl in fg + modified background
+            hi Visual guifg=NONE guibg=#253747 gui=NONE cterm=NONE
+            hi PmenuSel guifg=NONE guibg=#253747 gui=NONE cterm=NONE
         ]]
     end
 }
