@@ -38,6 +38,7 @@ return {
                 vim.api.nvim_set_hl(0, "WinBarActive", { underline = false, fg = "AliceBlue", bg = "NONE" })
                 vim.api.nvim_set_hl(0, "WinBarInactive", { underline = false, fg = "#777777", bg = "NONE" })
                 vim.keymap.set("t", "<esc><esc>", [[<C-\><C-n>]], opts)
+                vim.keymap.set("v", [[<c-\>]], "<CMD>ToggleTerm<CR>", opts)
                 vim.keymap.set({ "t", "n" }, "<F2>", "<CMD>ToggleTermSetName<CR>", opts)
                 vim.keymap.set({ "t", "n" }, "<C-w>o", function()
                     vim.cmd("ToggleTerm")
