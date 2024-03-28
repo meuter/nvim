@@ -12,14 +12,7 @@ return {
             return math.ceil(vim.o.lines * .4)
         end,
         winbar = {
-            enabled = true,
-            name_formatter = function(term)
-                if term.display_name then
-                    return " 🖥️ " .. term.display_name .. " "
-                else
-                    return " 🖥️ " .. term.id .. " "
-                end
-            end
+            enabled = false,
         }
     },
     init = function()
