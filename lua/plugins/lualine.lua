@@ -6,8 +6,8 @@ return {
     },
     opts = {
         options = {
-            component_separators = { left = "│", right = "│" },
-            section_separators = { left = "", right = "" },
+            component_separators = { left = "", right = "" },
+            section_separators = { left = "", right = "" },
             globalstatus = true,
             refresh = {
                 statusline = 100,
@@ -18,7 +18,7 @@ return {
                 { "fancy_mode" }
             },
             lualine_b = {
-                { "fancy_branch" },
+                { "fancy_branch", color = { fg = "#ffffff" } },
                 { "fancy_diff" },
             },
             lualine_c = {
@@ -31,7 +31,7 @@ return {
                 { "fancy_location" },
             },
             lualine_y = {
-                { "fancy_filetype" },
+                { "fancy_filetype", color = { fg = "#ffffff" } },
             },
             lualine_z = {
                 { "fancy_lsp_servers" },

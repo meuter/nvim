@@ -7,24 +7,20 @@ configurations can be found in [`lua/plugins`](lua/plugins).
 
 ## Fuzzy Finding
 
-![Screenshot](screenshots/telescope.png)
+![Screenshot](screenshots/catppuccin/telescope.png)
 
 ## LSP Support
 
-![Screenshot](screenshots/lsp.png)
+![Screenshot](screenshots/catppuccin/lsp.png)
 
 ## Integrated Terminal
 
-![Screenshot](screenshots/terminal.png)
+![Screenshot](screenshots/catppuccin/terminal.png)
 
 ## Git Integration
 
-![Screenshot](screenshots/git-diff.png)
-![Screenshot](screenshots/git-commit.png)
-
-## Debugging
-
-![Screenshot](screenshots/debug.png)
+![Screenshot](screenshots/catppuccin/git-diff.png)
+![Screenshot](screenshots/catppuccin/git-commit.png)
 
 ## Installation
 
@@ -51,24 +47,39 @@ patched manually by yours truly and [Windows Terminal](https://apps.microsoft.co
 
 ## Trying it out
 
+### Using Docker
+
 If you simply want to test this config without messing up your own, you can do
 so in the provided Docker container:
 
 ```bash
-git clone https://github.com/meuter/nvim /tmp/test
-cd /tmp/test
+git clone https://github.com/meuter/nvim /tmp/nvim
+cd /tmp/nvim/docker/
 make test
 ```
 
-This will compile the docker container and run nvim inside it.
+This will compile the docker container and run a shell. You can then type `nvim`. All the necessary
+plugins, packages, etc. will be installed on first start.
+
+### Using NVIM_APPNAME
+
+You can also install this config side-by-side any other config and run it using the `NVIM_APPNAME` 
+environement variable:
+
+```bash
+git clone https://github.com/meuter/nvim ~/.config/meuter-nvim
+NVIM_APPNAME=meuter-nvim nvim
+```
 
 ## Shameless Plug
 
 If you like the status bar, please take a look at [`lualine-so-fancy.nvim`](https://github.com/meuter/lualine-so-fancy.nvim).
-If you like the color scheme, please take a look at [`habamax-plus.nvim`](https://github.com/meuter/habamax-plus.nvim) which
-is a custom spin of fork of the awesome [`habamax`](https://github.com/habamax/vim-habamax), built into neovim.
+The current version uses a color scheme called [`catppuccin`](https://github.com/catppuccin/nvim), but you might also
+enjoy [`habamax-plus.nvim`](https://github.com/meuter/habamax-plus.nvim) which
+is a custom fork of the awesome [`habamax`](https://github.com/habamax/vim-habamax), built into neovim.
+This config is part of my dotfiles that can be found [here](https://github.com/meuter/dotfiles).
 
 ## Prerequisite
 
-See [`Dockerfile`](Dockerfile) for the list of required packages (based on Ubuntu 20.04).
+See [`Dockerfile`](Dockerfile) for the list of required packages (based on Ubuntu 22.04).
 Adapt to your distro accordingly.
