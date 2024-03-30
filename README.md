@@ -7,24 +7,20 @@ configurations can be found in [`lua/plugins`](lua/plugins).
 
 ## Fuzzy Finding
 
-![Screenshot](screenshots/telescope.png)
+![Screenshot](screenshots/catppuccin/telescope.png)
 
 ## LSP Support
 
-![Screenshot](screenshots/lsp.png)
+![Screenshot](screenshots/catppuccin/lsp.png)
 
 ## Integrated Terminal
 
-![Screenshot](screenshots/terminal.png)
+![Screenshot](screenshots/catppuccin/terminal.png)
 
 ## Git Integration
 
-![Screenshot](screenshots/git-diff.png)
-![Screenshot](screenshots/git-commit.png)
-
-## Debugging
-
-![Screenshot](screenshots/debug.png)
+![Screenshot](screenshots/catppuccin/git-diff.png)
+![Screenshot](screenshots/catppuccin/git-commit.png)
 
 ## Installation
 
@@ -85,5 +81,5 @@ This config is part of my dotfiles that can be found [here](https://github.com/m
 
 ## Prerequisite
 
-See [`Dockerfile`](Dockerfile) for the list of required packages (based on Ubuntu 20.04).
+See [`Dockerfile`](Dockerfile) for the list of required packages (based on Ubuntu 22.04).
 Adapt to your distro accordingly.
