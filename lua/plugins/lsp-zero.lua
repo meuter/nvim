@@ -7,6 +7,7 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         "L3MON4D3/LuaSnip",
         "lukas-reineke/lsp-format.nvim",
+        "MysticalDevil/inlay-hints.nvim",
     },
     config = function(_, opts)
         local lsp = require("lsp-zero").preset({
@@ -17,6 +18,7 @@ return {
 
         lsp.on_attach(function(client, buffer)
             require("lsp-format").on_attach(client)
+            require("inlay-hints").on_attach(client, bufnr)
             local keymap_opts = { noremap = true, silent = true, buffer = buffer }
             local telescope_available, _ = pcall(require, "telescope")
             if telescope_available then

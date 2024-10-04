@@ -11,6 +11,17 @@ return {
     },
     config = function()
         local server_options = require("lsp-zero").build_options("clangd", {
+            settings = {
+                clangd = {
+                    InlayHints = {
+                        Designators = true,
+                        Enabled = true,
+                        ParameterNames = true,
+                        DeducedTypes = true,
+                    },
+                },
+                fallbackFlags = { "-std=c++20" },
+            },
             cmd = {
                 "clangd",
                 "-j=4",
@@ -25,7 +36,5 @@ return {
         })
         require("lspconfig").clangd.setup(server_options)
         require("clangd_extensions").setup()
-        require("clangd_extensions.inlay_hints").setup_autocmd()
-        require("clangd_extensions.inlay_hints").set_inlay_hints()
     end
 }

@@ -1,6 +1,11 @@
 return {
-    "simrat39/inlay-hints.nvim",
-    opts = {
-        renderer = "inlay-hints/render/eol"
-    }
+    "MysticalDevil/inlay-hints.nvim",
+    event = "LspAttach",
+    dependencies = { "neovim/nvim-lspconfig" },
+    keys = {
+        { "<A-i>", "<CMD>InlayHintsToggle<CR>", mode = { "n", "i", "v" } },
+    },
+    config = function()
+        require("inlay-hints").setup()
+    end
 }
