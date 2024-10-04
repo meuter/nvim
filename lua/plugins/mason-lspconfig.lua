@@ -18,7 +18,7 @@ return {
                 "ruff_lsp",
                 "taplo",
                 "rust_analyzer",
-                "tsserver",
+                "ts_ls",
                 "yamlls"
             }
         }
