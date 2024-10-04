@@ -6,6 +6,9 @@ return {
         "neovim/nvim-lspconfig",
         "nvim-lua/plenary.nvim",
     },
+    keys = {
+        { "<A-h>", "<CMD>ClangdSwitchSourceHeader<CR>", mode = { "n", "i", "v" } },
+    },
     config = function()
         local server_options = require("lsp-zero").build_options("clangd", {
             cmd = {
