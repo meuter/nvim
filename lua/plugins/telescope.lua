@@ -3,6 +3,7 @@ return {
     keys = {
         { "<C-t>", "<CMD>Telescope<CR>",                                                       mode = { "n", "v", "i" } },
         { "<C-p>", "<CMD>Telescope find_files<CR>",                                            mode = { "n", "v", "i" } },
+        { "<A-d>", "<CMD>Telescope diagnostics<CR>",                                           mode = { "n", "v", "i" } },
         { "<A-p>", "<CMD>Telescope buffers<CR>",                                               mode = { "n", "v", "i" } },
         { "<C-l>", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", mode = { "n", "v", "i" } },
         { "<C-o>", "<CMD>Telescope lsp_document_symbols<CR>",                                  mode = { "n", "v", "i" } },

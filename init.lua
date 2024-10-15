@@ -96,6 +96,13 @@ vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 -- Ctrl+r in visual mode to start a replace of the current visual selection
 vim.keymap.set("v", "<C-r>", "\"hy:%s/<C-r>h//gc<left><left><left>")
 
+-- ';' and ',' key in normal mode, appends ';' or ',' at the end of the line
+vim.keymap.set("n", ";", "msA;<ESC>`s<CMD>delmakrs s<CR><ESC>")
+vim.keymap.set("n", ",", "msA,<ESC>`s<CMD>delmakrs s<CR><ESC>")
+
+-- kill buffer without exiting
+vim.keymap.set("n", "<A-w>", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>")
+
 -------------------------------------------------------------------------------
 -- Autocommands
 -------------------------------------------------------------------------------
