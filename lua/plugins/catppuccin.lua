@@ -3,7 +3,7 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
-        require("catppuccin").setup {
+        require("catppuccin").setup({
             color_overrides = {
                 all = {
                     text = "#dddddd",
@@ -39,11 +39,11 @@ return {
                     alt_background = false,
                 },
                 fidget = true,
-            }
-        }
+            },
+        })
         vim.cmd.colorscheme("catppuccin-mocha")
 
-        vim.cmd [[
+        vim.cmd([[
             " folders are blue by default with catppuccin-mocha, override after scheme is loaded
             hi NeoTreeDirectoryName guifg=#ffffff guibg=NONE gui=bold cterm=bold
             hi NeoTreeRootName guifg=#ffffff guibg=NONE gui=bold cterm=bold
@@ -54,6 +54,6 @@ return {
             " selection color: let syntax hl in fg + modified background
             hi Visual guifg=NONE guibg=#253747 gui=NONE cterm=NONE
             hi PmenuSel guifg=NONE guibg=#253747 gui=NONE cterm=NONE
-        ]]
-    end
+        ]])
+    end,
 }
