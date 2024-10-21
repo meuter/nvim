@@ -78,11 +78,10 @@ vim.opt.inccommand = "split"
 -------------------------------------------------------------------------------
 
 -- Tab/Shift+tab to indent/dedent
-vim.keymap.set("n", "<Tab>", ">>")
-vim.keymap.set("n", "<S-Tab>", "<<")
-vim.keymap.set("v", "<Tab>", ">gv")
-vim.keymap.set("v", "<S-Tab>", "<gv")
-vim.keymap.set("i", "<S-Tab>", "<C-\\><C-N><<<C-\\><C-N>^i")
+vim.keymap.set("n", ">", ">>")
+vim.keymap.set("n", "<", "<<")
+vim.keymap.set("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
 
 -- Ctrl+Left/Right use word boundary
 vim.keymap.set("n", "<C-Left>", "b")
