@@ -10,7 +10,7 @@ return {
         "Neotree"
     },
     keys = {
-        { "<C-b>", "<CMD>Neotree toggle<CR>", mode = { "n", "v", "i" } }
+        { "<C-b>", "<CMD>Neotree toggle<CR>", mode = { "n", "v", "i" } },
     },
     opts = {
         close_if_last_window = true,
@@ -21,6 +21,7 @@ return {
             mappings = {
                 ["<F5>"] = "refresh",
                 ["<F2>"] = "rename",
+                ["<C-b>"] = "close",
             },
         },
         filesystem = {
@@ -38,7 +39,7 @@ return {
                     ".git",
                 },
             },
-            follow_current_file = true,
+            follow_current_file = { enabled = true },
             use_libuv_file_watcher = true,
         },
         default_component_configs = {
