@@ -1,76 +1,49 @@
 return {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-cmdline",
-        "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
-        "rafamadriz/friendly-snippets",
-        "onsails/lspkind.nvim",
+        "saadparwaiz1/cmp_luasnip",
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
     },
     config = function()
         local cmp = require("cmp")
+        local luasnip = require("luasnip")
+        luasnip.config.setup({})
+
         cmp.setup({
-            sources = {
-                { name = "path" },
-                { name = "nvim_lsp" },
-                { name = "buffer" },
-                { name = "luasnip" },
-            },
-            mapping = {
-                ['<CR>'] = cmp.mapping.confirm { select = false },
-                ['<Up>'] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-                ['<Down>'] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-            },
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    luasnip.lsp_expand(args.body)
                 end,
             },
-            completion = {
-                completeopt = "menu,menuone,noselect,noinsert"
-            },
-            window = {
-                completion = { border = "single" },
-                documentation = { border = "single" },
-            },
-            formatting = {
-                fields = { "kind", "abbr", "menu" },
-                format = require("lspkind").cmp_format({
-                    mode = "symbol",
-                    maxwidth = 50,
-                    ellipsis_char = "...",
-                }),
-            },
-        })
-        cmp.setup.cmdline("/", {
-            mapping = cmp.mapping.preset.cmdline(),
+            mapping = cmp.mapping.preset.insert({
+                ["<C-n>"] = cmp.mapping.select_next_item(),
+                ["<C-p>"] = cmp.mapping.select_prev_item(),
+                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete({}),
+                ["<C-l>"] = cmp.mapping(function()
+                    if luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
+                    end
+                end, { "i", "s" }),
+                ["<C-h>"] = cmp.mapping(function()
+                    if luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                    end
+                end, { "i", "s" }),
+            }),
             sources = {
-                { name = "buffer", keyword_length = 3 },
+                { name = "lazydev", group_index = 0 },
+                { name = "nvim_lsp" },
+                { name = "luasnip" },
+                { name = "path" },
             },
         })
-        cmp.setup.cmdline(":", {
-            mapping = cmp.mapping.preset.cmdline(),
-            sources = {
-                { name = "path",    keyword_length = 3 },
-                { name = "cmdline", keyword_length = 3 },
-            },
-        })
-    end
+    end,
 }
