@@ -15,6 +15,8 @@ return {
             "help",
             "markdown",
             "fugitive",
+            "neogit",
+            "neo-tree",
         }
-    end
+    end,
 }
