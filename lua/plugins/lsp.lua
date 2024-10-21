@@ -4,8 +4,9 @@ return {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
-        { "j-hui/fidget.nvim", opts = {} },
+        { "j-hui/fidget.nvim",   opts = {} },
         "hrsh7th/cmp-nvim-lsp",
+        { "mrcjkb/rustaceanvim", version = '^5', lazy = false }
     },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -70,43 +71,6 @@ return {
                     "--pch-storage=memory",
                 },
             },
-            rust_analyzer = {
-                checkOnSave = {
-                    command = "clippy",
-                },
-                inlayHints = {
-                    bindingModeHints = {
-                        enable = false,
-                    },
-                    chainingHints = {
-                        enable = true,
-                    },
-                    closingBraceHints = {
-                        enable = true,
-                        minLines = 25,
-                    },
-                    closureReturnTypeHints = {
-                        enable = "never",
-                    },
-                    lifetimeElisionHints = {
-                        enable = "never",
-                        useParameterNames = false,
-                    },
-                    maxLength = 25,
-                    parameterHints = {
-                        enable = true,
-                    },
-                    reborrowHints = {
-                        enable = "never",
-                    },
-                    renderColons = true,
-                    typeHints = {
-                        enable = true,
-                        hideClosureInitialization = false,
-                        hideNamedConstructor = false,
-                    },
-                },
-            },
             lua_ls = {
                 settings = {
                     Lua = {
@@ -127,6 +91,10 @@ return {
         require("mason-lspconfig").setup({
             handlers = {
                 function(server_name)
+                    if server_name == "rust_analyzer" then
+                        return -- already done by rustaceans
+                    end
+
                     local server = servers[server_name] or {}
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
