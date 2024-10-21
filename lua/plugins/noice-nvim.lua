@@ -1,10 +1,13 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+    },
     opts = {
         -- search and command at the bottom
         cmdline = {
-            view = "cmdline"
+            view = "cmdline",
         },
 
         routes = {
@@ -27,7 +30,7 @@ return {
             },
         },
     },
-    dependencies = {
-        "MunifTanjim/nui.nvim",
-    }
+    init = function()
+        vim.opt.cmdheight = 0
+    end,
 }
