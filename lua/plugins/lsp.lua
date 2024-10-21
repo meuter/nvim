@@ -30,11 +30,9 @@ return {
                 map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
                 map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-                if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-                    map("<A-i>", function()
-                        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-                    end, "Toggle Inlay Hints")
-                end
+                map("<A-i>", function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+                end, "Toggle Inlay Hints")
             end,
         })
 
