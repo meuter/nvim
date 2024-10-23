@@ -92,6 +92,9 @@ vim.keymap.set("n", "<", "<<")
 vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("v", "<", "<gv")
 
+-- When pasting over a visual selection, avoid clobbering register
+vim.keymap.set("v", "p", '"_dP')
+
 -- Ctrl+Left/Right use word boundary
 vim.keymap.set("n", "<C-Left>", "b")
 vim.keymap.set("n", "<C-Right>", "w")
