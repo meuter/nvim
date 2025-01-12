@@ -1,7 +1,10 @@
 return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    cmd = { "ConformInfo", "Format", "FormatEnable", "FormatDisable" },
+    keys = {
+        { "<C-F>", "<cmd>Format<cr>", desc = "Format current buffer" },
+    },
     config = function()
         require("conform").setup({
             format_on_save = function()
@@ -10,6 +13,12 @@ return {
                 end
                 return { timeout_ms = 500, lsp_format = "fallback" }
             end,
+        })
+
+        vim.api.nvim_create_user_command("Format", function()
+            vim.lsp.buf.format()
+        end, {
+            desc = "Format current buffer",
         })
 
         vim.api.nvim_create_user_command("FormatDisable", function()
