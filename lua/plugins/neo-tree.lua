@@ -123,13 +123,16 @@ return {
                 vim.fn.system(command)
                 events.fire_event(events.GIT_EVENT)
             end,
-            git_commit_custom = function()
-                vim.schedule(function()
+            git_commit_custom = function(state)
+                print(vim.inspect(state.config))
+                if state.config.amend then
+                    vim.cmd [[ wincmd l | Git commit --amend | wincmd j | wincmd c ]]
+                else
                     vim.cmd [[ wincmd l | Git commit | wincmd j | wincmd c ]]
-                    vim.schedule(function()
-                        local events = require("neo-tree.events")
-                        events.fire_event(events.GIT_EVENT)
-                    end)
+                end
+                vim.schedule(function()
+                    local events = require("neo-tree.events")
+                    events.fire_event(events.GIT_EVENT)
                 end)
             end,
             switch_to_filesystem = function()
