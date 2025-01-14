@@ -32,7 +32,7 @@ return {
         use_libuv_file_watcher = true,
         open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
         git_status_async = false,
-        close_if_last_window = true,
+        close_if_last_window = false,
         popup_border_style = "single",
         enable_diagnostics = false,
         enable_git_status = false,
@@ -127,6 +127,7 @@ return {
                 print(vim.inspect(state.config))
                 if state.config.amend then
                     vim.cmd [[ wincmd l | Git commit --amend | wincmd j | wincmd c ]]
+                    print("toto")
                 else
                     vim.cmd [[ wincmd l | Git commit | wincmd j | wincmd c ]]
                 end
