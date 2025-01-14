@@ -48,6 +48,7 @@ return {
                     ["<CR>"]  = "show_diff",
                     ["o"]     = "open_custom",
                     ["<C-g>"] = "close_window",
+                    ["<C-b>"] = "switch_to_filesystem",
                     ["S"]     = "git_add_all",
                     ["U"]     = "git_unstage_all",
                     ["s"]     = "git_add_file",
@@ -130,6 +131,9 @@ return {
                         events.fire_event(events.GIT_EVENT)
                     end)
                 end)
+            end,
+            switch_to_filesystem = function()
+                vim.cmd [[ Neotree filesystem reveal ]]
             end
         }
 
