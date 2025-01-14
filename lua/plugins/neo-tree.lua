@@ -53,6 +53,7 @@ return {
                     ["U"]     = "git_unstage_all",
                     ["s"]     = "git_add_file",
                     ["u"]     = "git_unstage_file",
+                    ["X"]     = "git_revert_file",
                     ["cc"]    = { "git_commit_custom", config = { amend = false } },
                     ["ca"]    = { "git_commit_custom", config = { amend = true } },
                     ["c"]     = "noop",
