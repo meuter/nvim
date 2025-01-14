@@ -45,8 +45,10 @@ return {
             window = {
                 width = 30,
                 mappings = {
-                    ["<CR>"]  = "show_diff",
+                    ["<CR>"]  = "preview_diff",
+                    ["d"]     = "open_diff",
                     ["o"]     = "open_custom",
+                    ["<tab>"] = "preview_file",
                     ["<C-g>"] = "close_window",
                     ["<C-b>"] = "switch_to_filesystem",
                     ["S"]     = "git_add_all",
@@ -109,14 +111,24 @@ return {
             }
         },
         commands = {
-            show_diff = function(state)
+            preview_diff = function(state)
                 close_vim_fugitive_window()
                 require("neo-tree.sources.filesystem.commands").open(state)
                 vim.cmd [[ Gvdiffsplit! | wincmd = | Neotree git_status reveal ]]
             end,
+            open_diff = function(state)
+                close_vim_fugitive_window()
+                require("neo-tree.sources.filesystem.commands").open(state)
+                vim.cmd [[ Gvdiffsplit! | wincmd = | wincmd h ]]
+            end,
             open_custom = function(state)
                 close_vim_fugitive_window()
                 require("neo-tree.sources.filesystem.commands").open(state)
+            end,
+            preview_file = function(state)
+                close_vim_fugitive_window()
+                require("neo-tree.sources.filesystem.commands").open(state)
+                vim.cmd [[ Neotree git_status reveal ]]
             end,
             git_unstage_all = function()
                 local events = require("neo-tree.events")
