@@ -118,6 +118,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 ---@diagnostic disable-next-line: undefined-field
 if not vim.loop.fs_stat(lazypath) then
+    print("Installing 'folke/lazy.nvim'...")
     vim.fn.system({
         "git",
         "clone",
