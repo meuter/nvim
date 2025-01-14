@@ -3,7 +3,6 @@ return {
     dependencies = {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
         { "j-hui/fidget.nvim",   opts = {} },
         "hrsh7th/cmp-nvim-lsp",
         { "mrcjkb/rustaceanvim", version = '^5', lazy = false }
@@ -91,8 +90,9 @@ return {
         local ensure_installed = vim.tbl_keys(servers or {})
 
         require("mason").setup()
-        require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
         require("mason-lspconfig").setup({
+            ensure_installed = ensure_installed,
+            automatic_installation = true,
             handlers = {
                 function(server_name)
                     if server_name == "rust_analyzer" then
