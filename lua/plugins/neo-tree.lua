@@ -100,11 +100,11 @@ return {
                     deleted   = " ",
                     renamed   = "󰁕", -- this can only be used in the git_status source
                     -- Status type
-                    untracked = "",
-                    ignored   = "",
+                    untracked = "",
+                    ignored   = "",
                     unstaged  = "󰄱",
                     staged    = "",
-                    conflict  = "",
+                    conflict  = "",
                 }
             }
         },
