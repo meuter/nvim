@@ -8,6 +8,8 @@ return {
         { "mrcjkb/rustaceanvim", version = '^5', lazy = false }
     },
     config = function()
+        require("lspconfig.ui.windows").default_options = { border = "single" }
+
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
             callback = function(event)
@@ -50,6 +52,7 @@ return {
         end
 
         local servers = {
+            bashls = {},
             clangd = {
                 settings = {
                     clangd = {
@@ -85,6 +88,7 @@ return {
                     },
                 },
             },
+            pyright = {},
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
