@@ -51,8 +51,11 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
         end
 
+
         local servers = {
-            bashls = {},
+            bashls = {
+                wincmd = "bash-language-server/node_modules/.bin/bash-language-server"
+            },
             clangd = {
                 settings = {
                     clangd = {
@@ -76,6 +79,7 @@ return {
                     "--completion-style=detailed",
                     "--pch-storage=memory",
                 },
+                wincmd = "clangd/clangd_19.1.2/bin/clangd.exe",
             },
             docker_compose_language_service = {},
             dockerls = {},
@@ -89,12 +93,14 @@ return {
                         hint = { enable = true },
                     },
                 },
+                wincmd = "lua-language-server/bin/lua-language-server.exe",
             },
             pyright = {},
             rust_analyzer = {},
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
+        local is_windows = vim.fn.has("win32") or vim.fn.has("win64")
 
         require("mason").setup()
         require("mason-lspconfig").setup({
@@ -107,6 +113,18 @@ return {
                     end
 
                     local server = servers[server_name] or {}
+
+                    if is_windows ~= 0 and server.wincmd ~= nil then
+                        -- NOTE: on windows, mason tries to run CMD script but that does not work
+                        --       on powershell. Need to hack the path to the underlying binary.
+                        local lsp_bin = vim.fn.stdpath("data") .. "/mason/packages/" .. server.wincmd
+                        if server.cmd == nil then
+                            server.cmd = { lsp_bin }
+                        else
+                            server.cmd[1] = lsp_bin
+                        end
+                    end
+
                     server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
                     require("lspconfig")[server_name].setup(server)
                 end,
