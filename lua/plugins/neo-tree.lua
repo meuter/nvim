@@ -32,7 +32,7 @@ return {
         use_libuv_file_watcher = true,
         open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
         git_status_async = false,
-        close_if_last_window = false,
+        close_if_last_window = true,
         popup_border_style = "single",
         enable_diagnostics = false,
         enable_git_status = false,
