@@ -2,7 +2,7 @@ local close_vim_fugitive_window = function()
     for _, window in ipairs(vim.api.nvim_list_wins()) do
         local buffer = vim.api.nvim_win_get_buf(window)
         local buffer_name = vim.api.nvim_buf_get_name(buffer)
-        if buffer_name:find("fugitive://", 1, true) then
+        if buffer_name:find("fugitive:", 1, true) then
             vim.api.nvim_win_close(window, false)
         end
     end
