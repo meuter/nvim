@@ -77,6 +77,8 @@ return {
                     "--pch-storage=memory",
                 },
             },
+            docker_compose_language_service = {},
+            dockerls = {},
             lua_ls = {
                 settings = {
                     Lua = {

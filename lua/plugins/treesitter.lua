@@ -17,6 +17,8 @@ return {
             "vimdoc",
             "cpp",
             "rust",
+            "dockerfile",
+            "yaml",
         },
         auto_install = true,
         highlight = {
