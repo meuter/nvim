@@ -69,7 +69,7 @@ return {
                 mappings = {
                     ["<F5>"] = "refresh",
                     ["<F2>"] = "rename",
-                    ["D"] = "show_diff",
+                    ["D"] = "open_diff",
                     ["<C-b>"] = "close_window",
                 },
             },
