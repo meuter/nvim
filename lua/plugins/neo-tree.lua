@@ -46,7 +46,7 @@ return {
                 width = 30,
                 mappings = {
                     ["<CR>"]  = "preview_diff",
-                    ["d"]     = "open_diff",
+                    ["D"]     = "open_diff",
                     ["o"]     = "open_custom",
                     ["<tab>"] = "preview_file",
                     ["<C-g>"] = "close_window",
