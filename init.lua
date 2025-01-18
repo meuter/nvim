@@ -58,7 +58,6 @@ vim.opt.cursorline = true
 vim.opt.foldenable = false
 vim.opt.wrap = false
 vim.opt.updatetime = 100
-vim.opt.shell = "/bin/bash"
 vim.opt.confirm = true
 vim.opt.termguicolors = true
 
@@ -72,6 +71,16 @@ vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.list = true
 vim.opt.inccommand = "split"
+
+-- shell
+if vim.fn.has("win32") or vim.fn.has("win64") then
+    vim.opt.shell = "pwsh"
+    vim.opt.shellcmdflag = "-command"
+    vim.opt.shellquote = "\""
+    vim.opt.shellxquote = ""
+else
+    vim.opt.shell = "/bin/bash"
+end
 
 -------------------------------------------------------------------------------
 -- Keymap

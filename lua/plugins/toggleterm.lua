@@ -4,6 +4,5 @@ return {
     opts = {
         open_mapping = [[<c-\>]],
         direction = "tab",
-        shell = "/bin/bash",
     },
 }
