@@ -95,6 +95,10 @@ return {
                 },
                 wincmd = "lua-language-server/bin/lua-language-server.exe",
             },
+            neocmake = {
+                cmd = { "neocmakelsp", "--stdio" },
+                wincmd = "neocmakelsp/bin/neocmakelsp.exe"
+            },
             pyright = {},
             rust_analyzer = {},
         }
