@@ -28,6 +28,16 @@ return {
         { "<C-g>", "<CMD>Neotree git_status<CR>", mode = { "n", "v", "i" } },
     },
     main = "neo-tree",
+    init = function()
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { "gitcommit" },
+            callback = function(opts)
+                vim.keymap.set("n", "<C-c><C-c>", ":w<CR>:Bd<CR>", { buffer = opts.buf })
+                vim.keymap.set("i", "<C-c><C-c>", "<C-\\><C-n>:w<CR>:Bd<CR>", { buffer = opts.buf })
+            end,
+            group = vim.api.nvim_create_augroup("git-commit-keymap", { clear = true })
+        })
+    end,
     opts = {
         use_libuv_file_watcher = true,
         open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
@@ -137,7 +147,6 @@ return {
                 events.fire_event(events.GIT_EVENT)
             end,
             git_commit_custom = function(state)
-                print(vim.inspect(state.config))
                 if state.config.amend then
                     vim.cmd [[ wincmd l | Git commit --amend | wincmd j | wincmd c ]]
                     print("toto")
