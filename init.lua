@@ -120,6 +120,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("cpp-commentstring", { clear = true }),
+    pattern = { "c", "cpp" },
+    callback = function()
+        vim.opt.commentstring = "// %s"
+    end,
+})
+
 -------------------------------------------------------------------------------
 -- Plugins
 -------------------------------------------------------------------------------
