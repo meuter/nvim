@@ -1,4 +1,5 @@
 {
+  "Comment": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "blink.cmp": { "branch": "main", "commit": "1cc3b1a908fbcfd15451c4772759549724f38524" },
   "bufdelete.nvim": { "branch": "master", "commit": "f6bcea78afb3060b198125256f897040538bcb81" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
@@ -27,7 +28,6 @@
   "nvim-lspconfig": { "branch": "master", "commit": "14b5a806c928390fac9ff4a5630d20eb902afad8" },
   "nvim-treesitter": { "branch": "master", "commit": "5da195ac3dfafd08d8b10756d975f0e01e1d563a" },
   "nvim-web-devicons": { "branch": "master", "commit": "aafa5c187a15701a7299a392b907ec15d9a7075f" },
-  "nvim_comment": { "branch": "main", "commit": "e9ac16ab056695cad6461173693069ec070d2b23" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "rustaceanvim": { "branch": "master", "commit": "0a1876b970ab946be3f4d341e9d743a5d62d646a" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },

@@ -24,8 +24,8 @@ return {
         "Neotree"
     },
     keys = {
-        { "<C-b>", "<CMD>Neotree filesystem<CR>", mode = { "n", "v", "i" } },
-        { "<C-g>", "<CMD>Neotree git_status<CR>", mode = { "n", "v", "i" } },
+        { "<C-b>", "<CMD>Neotree source=filesystem action=focus position=left<CR>", mode = { "n", "v", "i" } },
+        { "<C-g>", "<CMD>Neotree source=git_status action=focus position=left<CR>", mode = { "n", "v", "i" } },
     },
     main = "neo-tree",
     init = function()
