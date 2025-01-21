@@ -101,6 +101,9 @@ return {
             },
             pyright = {},
             rust_analyzer = {},
+            glsl_analyzer = {
+                wincmd = "glsl_analyzer/bin/glsl_analyzer.exe"
+            },
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
