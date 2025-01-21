@@ -149,7 +149,6 @@ return {
             git_commit_custom = function(state)
                 if state.config.amend then
                     vim.cmd [[ wincmd l | Git commit --amend | wincmd j | wincmd c ]]
-                    print("toto")
                 else
                     vim.cmd [[ wincmd l | Git commit | wincmd j | wincmd c ]]
                 end
