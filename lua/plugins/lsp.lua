@@ -104,6 +104,9 @@ return {
             glsl_analyzer = {
                 wincmd = "glsl_analyzer/bin/glsl_analyzer.exe"
             },
+            zls = {
+                wincmd = "zls/zls.exe"
+            },
         }
 
         local ensure_installed = vim.tbl_keys(servers or {})
