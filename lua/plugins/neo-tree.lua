@@ -39,7 +39,7 @@ return {
         })
     end,
     opts = {
-        use_libuv_file_watcher = true,
+        use_libuv_file_watcher = (vim.fn.has("win32") == 0 and vim.fn.has("win64") == 0),
         open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
         git_status_async = false,
         close_if_last_window = true,
