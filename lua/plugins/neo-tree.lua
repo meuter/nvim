@@ -1,4 +1,4 @@
-local close_vim_fugitive_window = function()
+local function close_vim_fugitive_window()
     for _, window in ipairs(vim.api.nvim_list_wins()) do
         local buffer = vim.api.nvim_win_get_buf(window)
         local buffer_name = vim.api.nvim_buf_get_name(buffer)
@@ -7,6 +7,13 @@ local close_vim_fugitive_window = function()
         end
     end
 end
+
+local function is_windows()
+    local result = (vim.fn.has("win32") == 1) or (vim.fn.has("win64") == 1)
+    print("Windows?", result)
+    return result
+end
+
 
 
 return {
@@ -39,7 +46,7 @@ return {
         })
     end,
     opts = {
-        use_libuv_file_watcher = (vim.fn.has("win32") == 0 and vim.fn.has("win64") == 0),
+        use_libuv_file_watcher = (not is_windows()),
         open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
         git_status_async = false,
         close_if_last_window = true,
