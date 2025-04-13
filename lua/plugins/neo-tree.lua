@@ -10,7 +10,6 @@ end
 
 local function is_windows()
     local result = (vim.fn.has("win32") == 1) or (vim.fn.has("win64") == 1)
-    print("Windows?", result)
     return result
 end
 
