@@ -26,6 +26,7 @@ return {
                 map("gca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
                 map("gs", function() Snacks.picker.lsp_symbols() end, "Document Symbols")
                 map("gS", function() Snacks.picker.lsp_workspace_symbols() end, "Workspace Symbols")
+                map("gt", function() Snacks.picker.diagnostics() end, "Diagnostics")
 
                 map("<A-i>", function()
                     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -36,12 +37,16 @@ return {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-        local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-
+        vim.diagnostic.config({
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = "",
+                    [vim.diagnostic.severity.WARN] = "",
+                    [vim.diagnostic.severity.HINT] = "",
+                    [vim.diagnostic.severity.INFO] = ""
+                },
+            },
+        })
 
         local servers = {
             bashls = {
