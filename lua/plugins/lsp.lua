@@ -18,23 +18,14 @@ return {
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                 end
 
-                map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-                map("<F12>", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-
-                map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-                map("<F3>", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-
-                map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-                map("<F4>", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-
-                map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-                map("<F2>", vim.lsp.buf.rename, "[R]e[n]ame")
-
-                map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-                map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-                map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-                map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-                map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+                map("gd", function() Snacks.picker.lsp_definitions() end, "Goto Definition")
+                map("gr", function() Snacks.picker.lsp_references() end, "Goto Definition")
+                map("gD", function() Snacks.picker.lsp_declarations() end, "Goto Declaration")
+                map("gI", function() Snacks.picker.lsp_implementations() end, "Goto Implementation")
+                map("grn", vim.lsp.buf.rename, "Rename")
+                map("gca", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
+                map("gs", function() Snacks.picker.lsp_symbols() end, "Document Symbols")
+                map("gS", function() Snacks.picker.lsp_workspace_symbols() end, "Workspace Symbols")
 
                 map("<A-i>", function()
                     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
