@@ -9,7 +9,7 @@ configurations can be found in [`lua/plugins`](lua/plugins).
 
 Fuzzy finding using [snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md).
 
-## Lamguage Support
+## Language Support
 
 Language support for C/C++, Rust, Python, Docker and more out of the box with
 proper syntax highlighting using [treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
