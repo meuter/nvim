@@ -7,7 +7,7 @@ configurations can be found in [`lua/plugins`](lua/plugins).
 
 ## Fuzzy Finding
 
-Fuzzy finding using [telescope](https://github.com/nvim-telescope/telescope.nvim).
+Fuzzy finding using [snacks.picker](https://github.com/folke/snacks.nvim/blob/main/docs/picker.md).
 
 ## Lamguage Support
 
