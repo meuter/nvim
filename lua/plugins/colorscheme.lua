@@ -6,6 +6,6 @@ return {
             commentStyle = { italic = false },
             keywordStyle = { italic = false },
         })
-        require("kanagawa").load("dragon")
+        require("kanagawa").load("wave")
     end
 }
