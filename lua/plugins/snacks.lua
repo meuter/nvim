@@ -38,7 +38,6 @@ return {
 
     },
     opts = {
-        input = { enabled = true },
         picker = { enabled = true },
         bufdelete = { enabled = true },
         terminal = { enabled = true },
