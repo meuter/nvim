@@ -102,9 +102,6 @@ vim.keymap.set("n", "<C-Right>", "w")
 -- Ctrl+w in insert mode automatically escpaces
 vim.keymap.set("i", "<C-w>", "<C-\\><C-n><C-w>")
 
--- kill buffer without exiting
-vim.keymap.set("n", "<A-w>", "<CMD>bp<bar>sp<bar>bn<bar>bd<CR>")
-
 -- dismiss search highlight with esc
 vim.keymap.set({ "n", "v" }, "<ESC>", "<CMD>nohl<CR><ESC>")
 
