@@ -7,7 +7,13 @@ return {
     build = "cargo build --release",
     opts = {
         keymap = {
-            preset = "default"
+            preset = "none",
+            ["<S-Esc>"] = { "hide", "fallback_to_mappings" },
+            ["<CR>"] = { "accept", "fallback" },
+            ["<Tab>"] = { "select_next", "fallback" },
+            ["<S-Tab>"] = { "select_prev", "fallback" },
+            ["<Up>"] = { "select_prev", "fallback" },
+            ["<Down>"] = { "select_next", "fallback" },
         },
 
         appearance = {
@@ -18,13 +24,13 @@ return {
         completion = {
             list = {
                 selection = {
-                    preselect = function(ctx) return ctx.mode ~= 'cmdline' end,
-                    auto_insert = function(ctx) return ctx.mode ~= 'cmdline' end
+                    preselect = false,
+                    auto_insert = false
                 }
             },
             menu = {
                 auto_show = function(ctx)
-                    return ctx.mode ~= "cmdline" or not vim.tbl_contains({ '/', '?' }, vim.fn.getcmdtype())
+                    return ctx.mode ~= "cmdline" or not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype())
                 end,
             }
         },
@@ -32,10 +38,10 @@ return {
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
             min_keyword_length = function(ctx)
-                if ctx.mode == 'cmdline' and string.find(ctx.line, ' ') == nil then
+                if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
                     return 3
                 end
-                return 2
+                return 0
             end
         },
     },
