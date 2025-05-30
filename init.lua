@@ -148,6 +148,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
+    concurrency = 4,
     change_detection = {
         enabled = false,
         notify = false,
