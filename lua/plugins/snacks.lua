@@ -28,6 +28,7 @@ return {
         { "gt",     function() Snacks.picker.diagnostics() end,           mode = "n" },
         { "grn",    function() vim.lsp.buf.rename() end,                  mode = "n" },
         { "gca",    function() vim.lsp.buf.code_action() end,             mode = "n" },
+        { "T",      function() vim.diagnostic.open_float() end,           mode = "n" },
         {
             "<A-i>",
             function()
