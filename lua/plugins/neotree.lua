@@ -155,7 +155,8 @@ return {
                 if state.config.amend then
                     vim.cmd [[ wincmd l | Git commit --amend | wincmd j | wincmd c ]]
                 else
-                    vim.cmd [[ wincmd l | Git commit | wincmd j | wincmd c ]]
+                    print("Commiting")
+                    vim.cmd [[ wincmd l | Git commit | wincmd k | wincmd c ]]
                 end
                 vim.schedule(function()
                     local events = require("neo-tree.events")
