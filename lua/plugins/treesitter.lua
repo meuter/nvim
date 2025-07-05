@@ -19,6 +19,7 @@ return {
             "rust",
             "dockerfile",
             "yaml",
+            "regex"
         },
         auto_install = true,
         highlight = {
