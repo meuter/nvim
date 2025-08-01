@@ -6,8 +6,8 @@ return {
     },
     config = function()
         vim.diagnostic.config({
-            virtual_lines = true,
-            -- virtual_text = true,
+            virtual_lines = { current_line = false },
+            virtual_text = false,
             underline = true,
             update_in_insert = false,
             severity_sort = true,
@@ -19,6 +19,20 @@ return {
                     [vim.diagnostic.severity.INFO] = ""
                 },
             },
+        })
+        vim.api.nvim_create_autocmd("CursorHold", {
+            pattern = "*",
+            callback = function()
+                vim.diagnostic.config({ virtual_lines = { current_line = true } })
+            end,
+            desc = "Enable virtual_lines with current_line",
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            pattern = "*",
+            callback = function()
+                vim.diagnostic.config({ virtual_lines = false })
+            end,
+            desc = "Disable virtual_lines",
         })
         vim.filetype.add {
             pattern = {
